@@ -1,0 +1,27 @@
+{
+  "name": "castillo-next-app",
+  "version": "0.1.0",
+  "description": "Castillo is a next application for a vacation home rental business",
+  "main": "index.js",
+  "repository": "https://github.com/Davestring/castillo-next-app.git",
+  "author": "David Martinez <davestringm@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
