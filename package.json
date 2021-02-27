@@ -8,11 +8,15 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "eslint": "eslint --init",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "js:lint": "eslint --format stylish ./src",
+    "js:lint:fix": "eslint --fix --format stylish ./src",
+    "js:prettier": "prettier --write ./src/**/*.js",
+    "lint": "yarn js:lint",
+    "lint:fix": "yarn js:lint:fix",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "husky install"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
@@ -51,13 +55,8 @@
     }
   },
   "lint-staged": {
-    "(src|features)/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "git add"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "lint"
     ]
-  },
-  "pre-commit": [
-    "lint",
-    "test"
-  ]
+  }
 }
