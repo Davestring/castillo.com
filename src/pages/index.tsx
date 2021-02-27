@@ -1,9 +1,16 @@
+import Head from 'next/head';
+
 import { Heading } from '@chakra-ui/react';
 
-function App() {
+function CastilloCasa() {
     return (
-        <Heading>Castillo Casa</Heading>
+        <>
+            <Head>
+                <title>Casa Castillo: Oaxtepec</title>
+            </Head>
+            <Heading>Castillo Casa</Heading>
+        </>
     );
 }
 
-export default App;
+export default CastilloCasa;
