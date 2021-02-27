@@ -1,6 +1,8 @@
+import { Heading } from '@chakra-ui/react';
+
 function App() {
     return (
-        <h1>Castillo Casa</h1>
+        <Heading>Castillo Casa</Heading>
     );
 }
 
