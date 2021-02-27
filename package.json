@@ -8,20 +8,55 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "js:lint": "eslint --format stylish ./src",
+    "js:lint:fix": "eslint --fix --format stylish ./src",
+    "js:prettier": "prettier --write ./src/**/*.js",
+    "lint": "yarn js:lint",
+    "lint:fix": "yarn js:lint:fix",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "husky install"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^5.1.1",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
     "typescript": "^4.1.5"
   },
   "dependencies": {
+    "@chakra-ui/css-reset": "^1.0.0",
+    "@chakra-ui/react": "^1.3.3",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "framer-motion": "^3.7.0",
     "next": "^10.0.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "lint"
+    ]
   }
 }
