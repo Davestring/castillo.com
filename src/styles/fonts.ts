@@ -1,7 +1,7 @@
 const fonts = {
-  heading: '\'Roboto\', sans-serif',
-  body: '\'Roboto\', sans-serif',
-  mono: '\'Cormorant Garamond\', serif',
+  body: "'Helvetica Neue', sans-serif",
+  heading: "'Helvetica Neue', sans-serif",
+  mono: "'Garamond', monospace",
 };
 
 export default fonts;
