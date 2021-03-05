@@ -10,7 +10,7 @@ function CastilloCasa(): ReactElement {
       <Head>
         <title>Casa Castillo: Oaxtepec</title>
       </Head>
-      <Spotlight></Spotlight>
+      <Spotlight />
     </>
   );
 }

@@ -1,6 +1,5 @@
-import { ReactElement, ReactNode } from 'react';
-
 import { Heading, HeadingProps } from '@chakra-ui/react';
+import { ReactElement, ReactNode } from 'react';
 
 export interface Props extends HeadingProps {
   children: ReactNode;
