@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react';
+import Layout from 'components/modules/Layout';
 import Spotlight from 'components/modules/Spotlight';
 import Head from 'next/head';
 
@@ -8,9 +9,11 @@ function CastilloCasa() {
       <Head>
         <title>Casa Castillo: Oaxtepec</title>
       </Head>
-      <Box as="main">
-        <Spotlight bg="base"></Spotlight>
-      </Box>
+      <Layout>
+        <Box as="article" mt="-4rem">
+          <Spotlight as="section" bg="base"></Spotlight>
+        </Box>
+      </Layout>
     </>
   );
 }
