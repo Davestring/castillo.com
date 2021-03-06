@@ -15,7 +15,8 @@
     "lint:fix": "yarn js:lint:fix",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.3.4",
