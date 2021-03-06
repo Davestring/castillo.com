@@ -1,6 +1,6 @@
+import { Box } from '@chakra-ui/react';
+import Spotlight from 'components/modules/Spotlight';
 import Head from 'next/head';
-
-import { Heading } from '@chakra-ui/react';
 
 function CastilloCasa() {
   return (
@@ -8,7 +8,9 @@ function CastilloCasa() {
       <Head>
         <title>Casa Castillo: Oaxtepec</title>
       </Head>
-      <Heading>Castillo Casa</Heading>
+      <Box as="main">
+        <Spotlight bg="base"></Spotlight>
+      </Box>
     </>
   );
 }
