@@ -1,6 +1,6 @@
 const colors = {
   base: '#101d2c',
-  primary: '#c69963',
+  primary: '#f9f7f6',
   white: '#ffffff',
 };
 

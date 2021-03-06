@@ -2,13 +2,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.validate": [
-    "js",
-    "ts",
-    "tsx",
-    "jsx"
-  ],
-  "editor.rulers": [
-    80
-  ]
+  "eslint.validate": ["javascript", "typescript"],
+  "editor.rulers": [80]
 }

@@ -1,14 +1,13 @@
 import { Box } from '@chakra-ui/react';
-
 import styled from '@emotion/styled';
 
-const FloatingBox = styled(Box)`
+const Wrapper = styled(Box)`
   left: 50%;
-  padding: 0 1rem;
+  padding: 0 ${({ theme }) => theme.space[4]};
   position: absolute;
   top: 85%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -50%);
   width: 100%;
 `;
 
-export default FloatingBox;
+export default Wrapper;

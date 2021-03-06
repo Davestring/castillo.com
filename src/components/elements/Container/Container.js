@@ -1,12 +1,8 @@
-import { Box, BoxProps } from '@chakra-ui/react';
-import { ReactElement, ReactNode } from 'react';
+import { Box } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
-export interface Props extends BoxProps {
-  children: ReactNode;
-  isFluid?: boolean;
-}
-
-function Container({ children, isFluid, ...rest }: Props): ReactElement {
+function Container(props) {
+  const { children, isFluid, ...rest } = props;
   return (
     <Box
       {...{
@@ -23,6 +19,11 @@ function Container({ children, isFluid, ...rest }: Props): ReactElement {
     </Box>
   );
 }
+
+Container.propTypes = {
+  children: PropTypes.element,
+  isFluid: PropTypes.bool,
+};
 
 Container.defaultProps = {
   isFluid: false,

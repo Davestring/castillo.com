@@ -1,16 +1,16 @@
-import { ReactElement } from 'react';
-
+import { Box } from '@chakra-ui/react';
+import Spotlight from 'components/modules/Spotlight';
 import Head from 'next/head';
 
-import Spotlight from 'components/modules/Spotlight';
-
-function CastilloCasa(): ReactElement {
+function CastilloCasa() {
   return (
     <>
       <Head>
         <title>Casa Castillo: Oaxtepec</title>
       </Head>
-      <Spotlight />
+      <Box as="main">
+        <Spotlight bg="base"></Spotlight>
+      </Box>
     </>
   );
 }
