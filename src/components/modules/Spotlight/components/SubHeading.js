@@ -5,7 +5,7 @@ const SubHeading = styled(Text)`
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   font-weight: ${({ theme }) => theme.fontWeights.thin};
-  letter-spacing: ${({ theme }) => theme.letterSpacings.widest};
+  letter-spacing: 5px;
   text-align: center;
   width: 100%;
 `;
