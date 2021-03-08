@@ -7,23 +7,23 @@ export const SUMMARY_HELPER =
 
 export const SERVICES_DATA = [
   {
-    alt: 'house-image',
-    image: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/front.jpg`,
+    alt: 'service-mock-image',
+    image: 'https://fakeimg.pl/330x440/',
     caption: CAPTION_HELPER,
     title: TITLE_HELPER,
     summary: SUMMARY_HELPER,
   },
   {
-    alt: 'bar-image',
-    image: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/bar.jpg`,
+    alt: 'service-mock-image',
+    image: 'https://fakeimg.pl/330x440/',
     caption: CAPTION_HELPER,
     title: TITLE_HELPER,
     summary: SUMMARY_HELPER,
     isReverse: true,
   },
   {
-    alt: 'pool-image',
-    image: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/pool.jpg`,
+    alt: 'service-mock-image',
+    image: 'https://fakeimg.pl/330x440/',
     caption: CAPTION_HELPER,
     title: TITLE_HELPER,
     summary: SUMMARY_HELPER,
