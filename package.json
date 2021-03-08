@@ -1,6 +1,6 @@
 {
   "name": "castillo-next-app",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Castillo is a next application for a vacation home rental business",
   "main": "index.js",
   "repository": "https://github.com/Davestring/castillo-next-app.git",
@@ -24,10 +24,12 @@
     "@emotion/styled": "^11.1.5",
     "framer-motion": "^3.10.0",
     "lodash": "^4.17.21",
+    "nanoid": "^3.1.20",
     "next": "^10.0.8",
     "react": "^17.0.1",
     "react-div-100vh": "^0.5.6",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
