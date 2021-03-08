@@ -10,7 +10,7 @@ function Title(props) {
   return (
     <>
       <Text {...rest}>{children}</Text>
-      <Divider bg="black" mb={2}></Divider>
+      <Divider bg="black" mb={4}></Divider>
     </>
   );
 }
