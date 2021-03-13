@@ -1,4 +1,5 @@
-import { Box, Flex, Image } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -17,7 +18,7 @@ function Quote(props) {
       }}
     >
       {image && (
-        <Image alt={alt} h="440px" objectFit="cover" src={image} w="330px" />
+        <Image alt={alt} height={440} layout="fixed" src={image} width={330} />
       )}
 
       <Box my={{ base: 4, md: 0 }} w="330px">
