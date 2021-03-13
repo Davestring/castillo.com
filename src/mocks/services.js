@@ -10,14 +10,14 @@ export const SUMMARY_HELPER =
 export const SERVICES_DATA = [
   {
     alt: 'service-mock-image',
-    image: 'https://fakeimg.pl/330x440/',
+    image: '/images/mocks/330x440.png',
     caption: CAPTION_HELPER,
     title: TITLE_HELPER,
     summary: SUMMARY_HELPER,
   },
   {
     alt: 'service-mock-image',
-    image: 'https://fakeimg.pl/330x440/',
+    image: '/images/mocks/330x440.png',
     caption: CAPTION_HELPER,
     title: TITLE_HELPER,
     summary: SUMMARY_HELPER,
@@ -25,7 +25,7 @@ export const SERVICES_DATA = [
   },
   {
     alt: 'service-mock-image',
-    image: 'https://fakeimg.pl/330x440/',
+    image: '/images/mocks/330x440.png',
     caption: CAPTION_HELPER,
     title: TITLE_HELPER,
     summary: SUMMARY_HELPER,
