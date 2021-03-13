@@ -20,7 +20,7 @@ function GridItem(props) {
 }
 
 GridItem.propTypes = {
-  children: PropTypes.elementType,
+  children: PropTypes.node,
   column: PropTypes.string,
   row: PropTypes.string,
 };
