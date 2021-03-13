@@ -1,3 +1,5 @@
+export const GALLERY_HEADING = 'Neque porro quisquam est qui dolorem ipsum ';
+
 export const GALLERY_DATA = [
   {
     alt: 'gallery-mock-image',
@@ -84,5 +86,3 @@ export const GALLERY_DATA = [
     gridRow: '6 / 8',
   },
 ];
-
-export default GALLERY_DATA;
