@@ -4,14 +4,22 @@ import PropTypes from 'prop-types';
 function H1(props) {
   const { children, ...rest } = props;
   return (
-    <Heading as="h1" fontSize="2xl" mb={4} {...rest}>
+    <Heading
+      as="h1"
+      fontSize="4xl"
+      fontWeight={200}
+      letterSpacing="10px"
+      mb={4}
+      textTransform="uppercase"
+      {...rest}
+    >
       {children}
     </Heading>
   );
 }
 
 H1.propTypes = {
-  children: PropTypes.elementType,
+  children: PropTypes.node,
 };
 
 export default H1;
