@@ -1,14 +1,14 @@
 import Container from 'components/elements/Container';
 import Divider from 'components/elements/Divider';
+import H1 from 'components/elements/H1';
 import PropTypes from 'prop-types';
 import { use100vh } from 'react-div-100vh';
 
-import Heading from './components/Heading';
-import SubHeading from './components/SubHeading';
+import Quote from './components/Quote';
 import Wrapper from './components/Wrapper';
 
 function Spotlight(props) {
-  const { title, subtitle, ...rest } = props;
+  const { title, quote, ...rest } = props;
   const height = use100vh();
 
   return (
@@ -16,18 +16,20 @@ function Spotlight(props) {
       <Wrapper>
         {title && (
           <>
-            <Heading>{title}</Heading>
+            <H1 color="white" align="center">
+              {title}
+            </H1>
             <Divider bg="white" mb={4} />
           </>
         )}
-        {subtitle && <SubHeading>{subtitle}</SubHeading>}
+        {quote && <Quote>{quote}</Quote>}
       </Wrapper>
     </Container>
   );
 }
 
 Spotlight.propTypes = {
-  subtitle: PropTypes.string,
+  quote: PropTypes.string,
   title: PropTypes.string,
 };
 

@@ -1,3 +1,5 @@
+export const SERVICES_HEADING = 'Neque porro quisquam est qui dolorem ipsum';
+
 export const TITLE_HELPER = 'Sed ut perspiciatis unde omnis iste natus';
 
 export const CAPTION_HELPER = 'At vero eos et accusamus et iusto';

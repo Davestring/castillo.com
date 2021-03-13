@@ -16,7 +16,7 @@ function Title(props) {
 }
 
 Title.propTypes = {
-  children: PropTypes.elementType,
+  children: PropTypes.node,
 };
 
 Title.defaultProps = {

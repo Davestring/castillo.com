@@ -24,7 +24,7 @@ function Grid(props) {
 }
 
 Grid.propTypes = {
-  children: PropTypes.elementType,
+  children: PropTypes.node,
   column: PropTypes.string,
   gap: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   templateCols: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

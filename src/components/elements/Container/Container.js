@@ -21,7 +21,7 @@ function Container(props) {
 }
 
 Container.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   isFluid: PropTypes.bool,
 };
 
