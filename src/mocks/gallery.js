@@ -1,4 +1,4 @@
-export const GALLERY_HEADING = 'Neque porro quisquam est qui dolorem ipsum ';
+export const GALLERY_HEADING = 'Neque porro quisquam est qui dolorem ipsum';
 
 export const GALLERY_DATA = [
   {
