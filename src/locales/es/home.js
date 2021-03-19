@@ -1,3 +1,5 @@
+import footer from './footer';
+
 export default {
   '/': {
     // Meta Tags.
@@ -10,5 +12,7 @@ export default {
     'insights.title': '',
     // Gallery.
     'gallery.title': '',
+    // Footer
+    ...footer,
   },
 };
