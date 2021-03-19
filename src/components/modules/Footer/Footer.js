@@ -1,5 +1,6 @@
 import Container from 'components/elements/Container';
 import Divider from 'components/elements/Divider';
+import { useTranslations } from 'locales';
 import PropTypes from 'prop-types';
 
 import Copyright from './components/Copyright';
@@ -9,15 +10,17 @@ import SocialShare from './components/SocialShare';
 
 function Footer(props) {
   const { social, ...rest } = props;
+  const { t } = useTranslations();
+
   return (
     <Container isFluid {...rest}>
       <Divider bg="gray.300" mb={4} minW="100%"></Divider>
       <Container>
         <ResponsiveFlex align="center" justify="space-between" mb={4}>
           <SocialShare social={social} mb={{ base: 4, md: 0 }}></SocialShare>
-          <Notice></Notice>
+          <Notice translations={t}></Notice>
         </ResponsiveFlex>
-        <Copyright></Copyright>
+        <Copyright translations={t}></Copyright>
       </Container>
     </Container>
   );

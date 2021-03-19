@@ -1,21 +1,28 @@
 import { Stack } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 import Redirect from './Redirect';
 
 function Notice(props) {
-  const { ...rest } = props;
+  const { translations: t, ...rest } = props;
+
   return (
     <Stack {...rest}>
-      <Redirect href="/legal">Legal</Redirect>
-      <Redirect href="/privacy">Privacy</Redirect>
-      <Redirect href="/terms">Terms</Redirect>
+      <Redirect href="/about">{t('footer.about')}</Redirect>
+      <Redirect href="/privacy">{t('footer.privacy')}</Redirect>
+      <Redirect href="/terms">{t('footer.terms')}</Redirect>
     </Stack>
   );
 }
 
+Notice.propTypes = {
+  translations: PropTypes.func,
+};
+
 Notice.defaultProps = {
   isInline: true,
   spacing: 4,
+  translations: () => '',
 };
 
 export default Notice;
