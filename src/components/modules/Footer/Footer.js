@@ -1,6 +1,5 @@
 import Container from 'components/elements/Container';
 import Divider from 'components/elements/Divider';
-import { useTranslations } from 'locales';
 import PropTypes from 'prop-types';
 
 import Copyright from './components/Copyright';
@@ -9,8 +8,7 @@ import ResponsiveFlex from './components/ResponsiveFlex';
 import SocialShare from './components/SocialShare';
 
 function Footer(props) {
-  const { social, ...rest } = props;
-  const { t } = useTranslations();
+  const { translations: t, social, ...rest } = props;
 
   return (
     <Container isFluid {...rest}>
@@ -34,10 +32,12 @@ Footer.propTypes = {
       url: PropTypes.string,
     }),
   ),
+  translations: PropTypes.func,
 };
 
 Footer.defaultProps = {
   social: [],
+  translations: () => '',
 };
 
 export default Footer;

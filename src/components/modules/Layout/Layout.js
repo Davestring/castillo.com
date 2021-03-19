@@ -29,17 +29,28 @@ const SOCIAL_SHARE = [
 ];
 
 function Layout(props) {
-  const { children, ...rest } = props;
+  const { children, translations: t, ...rest } = props;
   return (
     <Wrapper {...rest}>
       <ISOContainer as="main">{children}</ISOContainer>
-      <Footer as="footer" social={SOCIAL_SHARE} mb={4} mt={12}></Footer>
+      <Footer
+        as="footer"
+        social={SOCIAL_SHARE}
+        mb={4}
+        mt={12}
+        translations={t}
+      ></Footer>
     </Wrapper>
   );
 }
 
 Layout.propTypes = {
   children: PropTypes.node,
+  translations: PropTypes.func,
+};
+
+Layout.defaultProps = {
+  translations: () => '',
 };
 
 export default Layout;

@@ -11,7 +11,7 @@ function CastilloCasa() {
     <>
       <Head title={t('meta.title')} description={t('meta.description')}></Head>
 
-      <Layout>
+      <Layout translations={t}>
         <Box as="article" mt="-4rem">
           <Spotlight
             as="section"
