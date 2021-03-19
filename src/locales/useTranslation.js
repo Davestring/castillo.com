@@ -4,7 +4,7 @@ function useTranslations() {
   const { formatMessage } = useIntl();
 
   return {
-    t: (id) => formatMessage({ id, defaultMessage: 'missing key or value' }),
+    t: (id) => formatMessage({ id, defaultMessage: 'missing-key-or-value' }),
   };
 }
 
