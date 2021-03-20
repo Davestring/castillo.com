@@ -4,19 +4,19 @@ import _ from 'lodash';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-import FeatureCard from './components/FeatureCard';
+import ServiceCard from './components/ServiceCard';
 
-function Features(props) {
-  const { features, ...rest } = props;
+function Services(props) {
+  const { services, ...rest } = props;
 
-  if (_.isEmpty(features)) return null;
+  if (_.isEmpty(services)) return null;
 
   return (
     <Container isFluid {...rest}>
       <Container py={20}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={12}>
-          {features.map((item) => (
-            <FeatureCard key={nanoid()} {...item}></FeatureCard>
+        <SimpleGrid columns={[{ base: 1, md: 2, lg: 3 }]} spacing={12}>
+          {services.map((item) => (
+            <ServiceCard key={nanoid()} {...item}></ServiceCard>
           ))}
         </SimpleGrid>
       </Container>
@@ -24,8 +24,8 @@ function Features(props) {
   );
 }
 
-Features.propTypes = {
-  features: PropTypes.arrayOf(
+Services.propTypes = {
+  services: PropTypes.arrayOf(
     PropTypes.shape({
       icon: PropTypes.elementType,
       title: PropTypes.string,
@@ -35,8 +35,8 @@ Features.propTypes = {
   ),
 };
 
-Features.defaultProps = {
-  features: [],
+Services.defaultProps = {
+  services: [],
 };
 
-export default Features;
+export default Services;
