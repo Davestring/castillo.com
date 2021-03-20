@@ -1,6 +1,6 @@
 import Container from 'components/elements/Container';
 import H2 from 'components/elements/H2';
-import Quote from 'components/elements/Quote';
+import InsightCard from 'components/elements/InsightCard';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
@@ -8,10 +8,9 @@ import Caption from './components/Caption';
 import Summary from './components/Summary';
 import Title from './components/Title';
 
-function Services(props) {
-  const { services, heading, ...rest } = props;
+function Insights(props) {
+  const { heading, insights, ...rest } = props;
 
-  if (!Array.isArray(services) || services.length === 0) return null;
   return (
     <Container {...rest}>
       {heading && (
@@ -19,8 +18,8 @@ function Services(props) {
           {heading}
         </H2>
       )}
-      {services.map(({ alt, image, isReverse, caption, summary, title }) => (
-        <Quote
+      {insights.map(({ alt, image, isReverse, caption, summary, title }) => (
+        <InsightCard
           alt={alt}
           image={image}
           isReverse={isReverse}
@@ -34,15 +33,15 @@ function Services(props) {
               <Summary>{summary}</Summary>
             </>
           )}
-        </Quote>
+        </InsightCard>
       ))}
     </Container>
   );
 }
 
-Services.propTypes = {
+Insights.propTypes = {
   heading: PropTypes.string,
-  services: PropTypes.arrayOf(
+  insights: PropTypes.arrayOf(
     PropTypes.shape({
       alt: PropTypes.string,
       caption: PropTypes.string,
@@ -54,8 +53,8 @@ Services.propTypes = {
   ),
 };
 
-Services.defaultProps = {
-  services: [],
+Insights.defaultProps = {
+  insights: [],
 };
 
-export default Services;
+export default Insights;
