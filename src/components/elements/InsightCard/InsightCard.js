@@ -3,7 +3,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function Quote(props) {
+function InsightCard(props) {
   const { alt, image, isReverse, children, ...rest } = props;
 
   const renderChildren = children();
@@ -28,15 +28,15 @@ function Quote(props) {
   );
 }
 
-Quote.propTypes = {
+InsightCard.propTypes = {
   alt: PropTypes.string,
   children: PropTypes.func.isRequired,
   image: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   isReverse: PropTypes.bool,
 };
 
-Quote.defaultProps = {
+InsightCard.defaultProps = {
   isReverse: false,
 };
 
-export default Quote;
+export default InsightCard;
