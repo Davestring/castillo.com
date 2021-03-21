@@ -8,16 +8,17 @@ import ResponsiveFlex from './components/ResponsiveFlex';
 import SocialShare from './components/SocialShare';
 
 function Footer(props) {
-  const { social, ...rest } = props;
+  const { translations: t, social, ...rest } = props;
+
   return (
     <Container isFluid {...rest}>
       <Divider bg="gray.300" mb={4} minW="100%"></Divider>
       <Container>
         <ResponsiveFlex align="center" justify="space-between" mb={4}>
           <SocialShare social={social} mb={{ base: 4, md: 0 }}></SocialShare>
-          <Notice></Notice>
+          <Notice translations={t}></Notice>
         </ResponsiveFlex>
-        <Copyright></Copyright>
+        <Copyright translations={t}></Copyright>
       </Container>
     </Container>
   );
@@ -31,10 +32,12 @@ Footer.propTypes = {
       url: PropTypes.string,
     }),
   ),
+  translations: PropTypes.func,
 };
 
 Footer.defaultProps = {
   social: [],
+  translations: () => '',
 };
 
 export default Footer;
