@@ -1,12 +1,8 @@
 import Container from 'components/elements/Container';
 import H2 from 'components/elements/H2';
-import InsightCard from 'components/elements/InsightCard';
+import Insight from 'components/elements/Insight';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
-
-import Caption from './components/Caption';
-import Summary from './components/Summary';
-import Title from './components/Title';
 
 function Insights(props) {
   const { heading, insights, ...rest } = props;
@@ -18,22 +14,18 @@ function Insights(props) {
           {heading}
         </H2>
       )}
-      {insights.map(({ alt, image, isReverse, caption, summary, title }) => (
-        <InsightCard
-          alt={alt}
-          image={image}
-          isReverse={isReverse}
+      {insights.map(({ cover: image, isReverse, caption, summary, title }) => (
+        <Insight
           key={nanoid()}
-          mb={12}
-        >
-          {() => (
-            <>
-              <Caption>{caption}</Caption>
-              <Title mb={2}>{title}</Title>
-              <Summary>{summary}</Summary>
-            </>
-          )}
-        </InsightCard>
+          {...{
+            caption,
+            image,
+            isReverse,
+            mb: 12,
+            summary,
+            title,
+          }}
+        ></Insight>
       ))}
     </Container>
   );
@@ -43,9 +35,8 @@ Insights.propTypes = {
   heading: PropTypes.string,
   insights: PropTypes.arrayOf(
     PropTypes.shape({
-      alt: PropTypes.string,
       caption: PropTypes.string,
-      image: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+      cover: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
       summary: PropTypes.string,
       title: PropTypes.string,
       isReverse: PropTypes.bool,
