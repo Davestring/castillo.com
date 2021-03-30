@@ -18,7 +18,7 @@ function Properties(props) {
       {properties.map(({ id, address, cover, description, title }) => (
         <Property
           key={nanoid()}
-          {...{ id, address, cover, description, title, mb: 4 }}
+          {...{ id, address, cover, description, title }}
         ></Property>
       ))}
     </Container>

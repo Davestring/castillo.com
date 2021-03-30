@@ -37,7 +37,6 @@ function Layout(props) {
         as="footer"
         social={SOCIAL_SHARE}
         mb={4}
-        mt={12}
         translations={t}
       ></Footer>
     </Wrapper>

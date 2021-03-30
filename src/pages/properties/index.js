@@ -8,42 +8,11 @@ import PropTypes from 'prop-types';
 import PropertyResources from 'services/resources/property';
 import formatAddress from 'utils/format-address';
 
-export const getStaticProps = async () => {
-  const COVERS = [
-    `${process.env.NEXT_PUBLIC_AWS_S3_URL}/fake-1.jpg`,
-    `${process.env.NEXT_PUBLIC_AWS_S3_URL}/fake-2.jpg`,
-    `${process.env.NEXT_PUBLIC_AWS_S3_URL}/fake-3.jpg`,
-    `${process.env.NEXT_PUBLIC_AWS_S3_URL}/fake-4.jpg`,
-  ];
-
-  try {
-    const response = await PropertyResources.findAll();
-    const data = response?.data?.map((item, idx) => ({
-      ...item,
-      address: formatAddress(item.address),
-      cover: COVERS[idx],
-    }));
-
-    return {
-      props: {
-        error: false,
-        data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        error: true,
-      },
-    };
-  }
-};
-
 function Properties(props) {
-  const { data: properties, error } = props;
+  const { properties, error } = props;
   const { t } = useTranslations();
 
-  if (error) return <span>Error :(</span>;
+  if (error) return null;
 
   return (
     <>
@@ -54,12 +23,12 @@ function Properties(props) {
           <Spotlight
             as="section"
             bg="base"
-            mb={12}
+            mb={20}
             title={t('spotlight.title')}
             quote={t('spotlight.quote')}
           ></Spotlight>
 
-          <Listing as="section" properties={properties}></Listing>
+          <Listing as="section" mb={20} properties={properties}></Listing>
         </Box>
       </Layout>
     </>
@@ -67,18 +36,44 @@ function Properties(props) {
 }
 
 Properties.propTypes = {
-  data: PropTypes.arrayOf(
+  error: PropTypes.bool,
+  properties: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
+      id: PropTypes.number,
+      address: PropTypes.string,
+      cover: PropTypes.string,
       description: PropTypes.string,
+      title: PropTypes.string,
     }),
   ),
-  error: PropTypes.bool,
 };
 
 Properties.defaultProps = {
-  data: [],
   error: false,
+  properties: [],
+};
+
+export const getStaticProps = async () => {
+  try {
+    const response = await PropertyResources.findAll();
+    const properties = response?.data?.map((item) => ({
+      ...item,
+      address: formatAddress(item.address),
+    }));
+
+    return {
+      props: {
+        error: false,
+        properties,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        error: true,
+      },
+    };
+  }
 };
 
 export default Properties;
