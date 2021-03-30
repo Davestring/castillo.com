@@ -24,6 +24,10 @@ const Card = styled(Box)`
       background: ${({ theme }) => theme.colors.gold};
     }
   }
+
+  :not(:last-child) {
+    margin-bottom: ${({ theme }) => theme.space[12]};
+  }
 `;
 
 function Property(props) {
