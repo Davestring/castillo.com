@@ -1,4 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 
@@ -6,11 +7,17 @@ import Caption from './Caption';
 import Summary from './Summary';
 import Title from './Title';
 
+const Card = styled(Flex)`
+  :not(:last-child) {
+    margin-bottom: ${({ theme }) => theme.space[12]};
+  }
+`;
+
 function Insight(props) {
   const { alt, caption, image, isReverse, summary, title, ...rest } = props;
 
   return (
-    <Flex
+    <Card
       {...{
         align: 'center',
         justify: 'space-evenly',
@@ -19,7 +26,13 @@ function Insight(props) {
       }}
     >
       {image && (
-        <Image alt={alt} height={440} layout="fixed" src={image} width={330} />
+        <Image
+          alt={alt}
+          height={440}
+          objectFit="cover"
+          src={image}
+          width={330}
+        />
       )}
 
       <Box my={{ base: 4, md: 0 }} w="330px">
@@ -27,7 +40,7 @@ function Insight(props) {
         {title && <Title mb={2}>{title}</Title>}
         {summary && <Summary>{summary}</Summary>}
       </Box>
-    </Flex>
+    </Card>
   );
 }
 
