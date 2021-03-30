@@ -16,7 +16,7 @@ function Spotlight(props) {
       <Wrapper>
         {title && (
           <>
-            <H1 color="white" align="center">
+            <H1 align="center" color="white">
               {title}
             </H1>
             <Divider bg="white" mb={4} />
