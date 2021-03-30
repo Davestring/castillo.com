@@ -1,8 +1,9 @@
 import Container from 'components/elements/Container';
 import H2 from 'components/elements/H2';
-import Insight from 'components/elements/Insight';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+
+import Insight from './components/Insight';
 
 function Insights(props) {
   const { heading, insights, ...rest } = props;
@@ -21,7 +22,6 @@ function Insights(props) {
             caption,
             image,
             isReverse,
-            mb: 12,
             summary,
             title,
           }}
