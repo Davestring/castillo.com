@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import Container from 'components/elements/Container';
+import PropTypes from 'prop-types';
 
 import Logo from './components/Logo';
 import Navigation from './components/Navigation';
@@ -9,10 +10,14 @@ const ROUTES = [
     title: 'Properties',
     url: '/properties',
   },
+  {
+    title: 'Contact',
+    url: '/contact',
+  },
 ];
 
 function Header(props) {
-  const { ...rest } = props;
+  const { routes, ...rest } = props;
 
   return (
     <Box {...rest}>
@@ -24,17 +29,27 @@ function Header(props) {
         justifyContent="space-between"
       >
         <Logo></Logo>
-        <Navigation routes={ROUTES}></Navigation>
+        <Navigation routes={routes}></Navigation>
       </Container>
     </Box>
   );
 }
+
+Header.propTypes = {
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+    }),
+  ),
+};
 
 Header.defaultProps = {
   bg: 'white',
   boxShadow: 'md',
   height: 16,
   position: 'fixed',
+  routes: ROUTES,
   width: '100%',
   zIndex: 100,
 };
