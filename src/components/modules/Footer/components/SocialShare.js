@@ -22,7 +22,6 @@ function SocialShare(props) {
 SocialShare.propTypes = {
   social: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       icon: PropTypes.elementTyppe,
       url: PropTypes.string,
     }),
