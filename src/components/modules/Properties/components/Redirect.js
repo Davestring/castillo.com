@@ -13,7 +13,7 @@ const Redirect = (props) => {
   const { id, ...rest } = props;
   return (
     <Link href={`/properties/${id}`} {...rest}>
-      Más Información
+      Ver disponibilidad
     </Link>
   );
 };
