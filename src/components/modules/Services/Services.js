@@ -20,7 +20,7 @@ function Services(props) {
           ))}
         </SimpleGrid>
         <Flex justify="center" mt={12}>
-          <Button bg="gold" color="white" px={8} size="sm">
+          <Button colorScheme="golden" px={8} size="sm">
             Ver todos los servicios
           </Button>
         </Flex>
