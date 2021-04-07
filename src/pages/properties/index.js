@@ -7,7 +7,7 @@ import { useTranslations } from 'locales';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import PropertyResources from 'services/resources/property';
-import formatAddress from 'utils/format-address';
+import { formatAddress } from 'utils/format-utils';
 
 export const getStaticProps = async () => {
   const formatObj = (obj) => ({ ...obj, address: formatAddress(obj?.address) });
