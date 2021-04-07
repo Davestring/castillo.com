@@ -3,14 +3,14 @@ import Calendar from 'components/collections/Calendar';
 import PropTypes from 'prop-types';
 
 import Card from './components/Card';
-import Header from './components/Header';
+import Info from './components/Info';
 
 function Booking(props) {
   const { price, rating, ...rest } = props;
   return (
     <Card d={{ base: 'none', lg: 'flex' }} {...rest}>
       <Box>
-        <Header price={price} rating={rating}></Header>
+        <Info price={price} rating={rating}></Info>
         <Calendar></Calendar>
       </Box>
       <Button colorScheme="golden">Reserva</Button>

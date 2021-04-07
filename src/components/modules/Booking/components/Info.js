@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FaStar } from 'react-icons/fa';
 import { formatPrice } from 'utils/format-utils';
 
-function Header(props) {
+function Info(props) {
   const { price, rating } = props;
   return (
     <Stack isInline align="center" justify="space-between" mb={4}>
@@ -20,14 +20,14 @@ function Header(props) {
   );
 }
 
-Header.propTypes = {
+Info.propTypes = {
   price: PropTypes.number,
   rating: PropTypes.number,
 };
 
-Header.defaultProps = {
+Info.defaultProps = {
   price: 0,
   rating: 0,
 };
 
-export default Header;
+export default Info;
