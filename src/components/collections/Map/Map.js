@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 
 import Marker from './components/Marker';
+import Navigation from './components/Navigation';
 
 function Map(props) {
   const { latitude, longitude, mapH, mapW, style, zoom, ...rest } = props;
@@ -21,10 +22,13 @@ function Map(props) {
       <ReactMapGL
         mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         mapStyle={style}
+        cont
         onViewportChange={(vp) => setViewport(vp)}
+        scrollZoom={false}
         {...viewport}
       >
         <Marker latitude={latitude} longitude={longitude}></Marker>
+        <Navigation></Navigation>
       </ReactMapGL>
     </Box>
   );
@@ -43,7 +47,7 @@ Map.defaultProps = {
   mapH: '512px',
   mapW: '100%',
   style: 'mapbox://styles/mapbox/light-v10',
-  zoom: 16,
+  zoom: 18,
 };
 
 export default Map;
