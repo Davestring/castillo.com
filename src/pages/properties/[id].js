@@ -5,13 +5,14 @@ import Container from 'components/elements/Container';
 import H1 from 'components/elements/H1';
 import H2 from 'components/elements/H2';
 import Stats from 'components/elements/Stats';
-import Booking from 'components/modules/Booking';
+import { BookingBanner, BookingCard } from 'components/modules/Booking';
 import Layout from 'components/modules/Layout';
 import Reviews from 'components/modules/Reviews';
 import Services from 'components/modules/Services';
 import { useTranslations } from 'locales';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
 import PropertyResources from 'services/resources/property';
 
 export const getStaticProps = async ({ params }) => {
@@ -39,6 +40,10 @@ export const getStaticPaths = async () => {
 function Property(props) {
   const { comments, property, services } = props;
   const { t } = useTranslations();
+  const [ref, inView] = useInView({
+    root: null,
+    threshold: 0,
+  });
 
   return (
     <>
@@ -47,26 +52,29 @@ function Property(props) {
         description={property?.description}
       ></Head>
 
-      <Layout translations={t}>
-        <Container as="article" d="flex" mb={12} mt={4}>
-          <Box as="section" flex={2}>
-            <H1>{property?.title}</H1>
-            <Stats mb={12}></Stats>
+      <Layout translations={t} position="relative">
+        <div ref={ref} id="content">
+          <Container as="article" d="flex" mb={12} mt={4}>
+            <Box as="section" flex={2}>
+              <H1>{property?.title}</H1>
+              <Stats mb={12}></Stats>
 
-            <H2>acerca de esta propiedad</H2>
-            <Text align="justify" fontSize="sm" mb={12}>
-              {property?.description}
-            </Text>
+              <H2>acerca de esta propiedad</H2>
+              <Text align="justify" fontSize="sm" mb={12}>
+                {property?.description}
+              </Text>
 
-            <H2>Ubicación</H2>
-            <Map></Map>
-          </Box>
-          <Booking as="aside" flex={1}></Booking>
-        </Container>
+              <H2 id="location">Ubicación</H2>
+              <Map></Map>
+            </Box>
+            <BookingCard as="aside" flex={1}></BookingCard>
+          </Container>
+        </div>
 
         <Services
           as="section"
           bg="primary"
+          id="services"
           mb={12}
           services={services}
         ></Services>
@@ -74,9 +82,19 @@ function Property(props) {
         <Reviews
           as="section"
           comments={comments}
+          id="reviews"
           mb={12}
           title="Reseñas"
         ></Reviews>
+
+        <Container as="section" mb={12}>
+          <H2>reglas</H2>
+        </Container>
+
+        <BookingBanner
+          display={!inView ? 'block' : 'none'}
+          inView={!inView}
+        ></BookingBanner>
       </Layout>
     </>
   );
