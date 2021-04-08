@@ -9,7 +9,6 @@ import { BookingBanner, BookingCard } from 'components/modules/Booking';
 import Layout from 'components/modules/Layout';
 import Reviews from 'components/modules/Reviews';
 import Services from 'components/modules/Services';
-import { useTranslations } from 'locales';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
@@ -39,7 +38,6 @@ export const getStaticPaths = async () => {
 
 function Property(props) {
   const { comments, property, services } = props;
-  const { t } = useTranslations();
   const [ref, inView] = useInView({
     root: null,
     threshold: 0,
@@ -52,7 +50,7 @@ function Property(props) {
         description={property?.description}
       ></Head>
 
-      <Layout translations={t} position="relative">
+      <Layout position="relative">
         <div ref={ref} id="content">
           <Container as="article" d="flex" mb={12} mt={4}>
             <Box as="section" flex={2}>
@@ -64,7 +62,7 @@ function Property(props) {
                 {property?.description}
               </Text>
 
-              <H2 id="location">Ubicación</H2>
+              <H2 id="location">ubicación</H2>
               <Map></Map>
             </Box>
             <BookingCard as="aside" flex={1}></BookingCard>

@@ -3,12 +3,13 @@ import { Head } from 'components/behaviours/Shareability';
 import Insights from 'components/modules/Insights';
 import Layout from 'components/modules/Layout';
 import Spotlight from 'components/modules/Spotlight';
-import { useTranslations } from 'locales';
 import _ from 'lodash';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PropTypes from 'prop-types';
 import InsightResources from 'services/resources/insight';
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ locale }) => {
   const includeReverse = (obj, idx) => ({ ...obj, isReverse: idx % 2 !== 0 });
 
   const response = await InsightResources.findAll();
@@ -18,18 +19,23 @@ export const getStaticProps = async () => {
     (arr) => _.map(arr, (obj) => _.omit(obj, ['id', 'created', 'updated'])),
   )(response);
 
-  return { props: { insights } };
+  return {
+    props: {
+      insights,
+      ...(await serverSideTranslations(locale, ['home', 'footer'])),
+    },
+  };
 };
 
 function Index(props) {
   const { insights } = props;
-  const { t } = useTranslations();
+  const { t } = useTranslation('home');
 
   return (
     <>
       <Head title={t('meta.title')} description={t('meta.description')}></Head>
 
-      <Layout translations={t}>
+      <Layout>
         <Box as="article" mt="-4rem">
           <Spotlight
             as="section"

@@ -3,13 +3,14 @@ import { Head } from 'components/behaviours/Shareability';
 import Layout from 'components/modules/Layout';
 import Listing from 'components/modules/Properties';
 import Spotlight from 'components/modules/Spotlight';
-import { useTranslations } from 'locales';
 import _ from 'lodash';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PropTypes from 'prop-types';
 import PropertyResources from 'services/resources/property';
 import { formatAddress } from 'utils/format-utils';
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ locale }) => {
   const formatObj = (obj) => ({ ...obj, address: formatAddress(obj?.address) });
 
   const response = await PropertyResources.findAll();
@@ -19,18 +20,23 @@ export const getStaticProps = async () => {
     (arr) => _.map(arr, (obj) => _.omit(obj, ['active', 'created', 'updated'])),
   )(response);
 
-  return { props: { properties } };
+  return {
+    props: {
+      properties,
+      ...(await serverSideTranslations(locale, ['properties', 'footer'])),
+    },
+  };
 };
 
 function Properties(props) {
   const { properties } = props;
-  const { t } = useTranslations();
+  const { t } = useTranslation('properties');
 
   return (
     <>
       <Head title={t('meta.title')} description={t('meta.description')}></Head>
 
-      <Layout translations={t}>
+      <Layout>
         <Box as="article" mt="-4rem">
           <Spotlight
             as="section"
