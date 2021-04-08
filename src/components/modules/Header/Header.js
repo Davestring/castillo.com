@@ -51,7 +51,7 @@ Header.defaultProps = {
   position: 'fixed',
   routes: ROUTES,
   width: '100%',
-  zIndex: 100,
+  zIndex: 'banner',
 };
 
 export default Header;
