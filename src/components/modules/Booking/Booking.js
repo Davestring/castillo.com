@@ -1,11 +1,69 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Stack } from '@chakra-ui/react';
 import Calendar from 'components/collections/Calendar';
+import Container from 'components/elements/Container';
+import NavLink from 'components/elements/NavLink';
+import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
+import Banner from './components/Banner';
 import Card from './components/Card';
 import Info from './components/Info';
 
-function Booking(props) {
+const ROUTES = [
+  {
+    title: 'Content',
+    url: '#content',
+  },
+  {
+    title: 'Location',
+    url: '#location',
+  },
+  {
+    title: 'Services',
+    url: '#services',
+  },
+  {
+    title: 'Reviews',
+    url: '#reviews',
+  },
+];
+
+export function BookingBanner(props) {
+  const { inView, routes, ...rest } = props;
+
+  return (
+    <Banner opacity={inView ? 1 : 0} {...rest}>
+      <Container d="flex" h="100%" justifyContent="space-between">
+        <Stack isInline align="center" h="100%">
+          {routes.map((item) => (
+            <NavLink key={nanoid()} h="100%" {...item}></NavLink>
+          ))}
+        </Stack>
+        <Stack isInline align="center">
+          <Calendar></Calendar>
+          <Button colorScheme="golden">Reserva</Button>
+        </Stack>
+      </Container>
+    </Banner>
+  );
+}
+
+BookingBanner.propTypes = {
+  inView: PropTypes.bool,
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+    }),
+  ),
+};
+
+BookingBanner.defaultProps = {
+  inView: false,
+  routes: ROUTES,
+};
+
+export function BookingCard(props) {
   const { price, rating, ...rest } = props;
   return (
     <Card d={{ base: 'none', lg: 'flex' }} {...rest}>
@@ -18,14 +76,12 @@ function Booking(props) {
   );
 }
 
-Booking.propTypes = {
+BookingCard.propTypes = {
   price: PropTypes.number,
   rating: PropTypes.number,
 };
 
-Booking.defaultProps = {
+BookingCard.defaultProps = {
   price: 0,
   rating: 0,
 };
-
-export default Booking;
