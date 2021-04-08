@@ -5,6 +5,8 @@ import H2 from 'components/elements/H2';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
+import { GALLERY_DATA } from './__mocks__';
+
 function Gallery(props) {
   const { content, heading, ...rest } = props;
   return (
@@ -38,7 +40,7 @@ Gallery.propTypes = {
 };
 
 Gallery.defaultProps = {
-  content: [],
+  content: GALLERY_DATA,
 };
 
 export default Gallery;

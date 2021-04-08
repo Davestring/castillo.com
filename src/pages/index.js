@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { Head } from 'components/behaviours/Shareability';
+import Gallery from 'components/modules/Gallery';
 import Insights from 'components/modules/Insights';
 import Layout from 'components/modules/Layout';
 import Spotlight from 'components/modules/Spotlight';
@@ -46,10 +47,12 @@ function Index(props) {
           ></Spotlight>
           <Insights
             as="section"
+            heading={t('insights.title')}
             insights={insights}
             maxWidth="900px"
             mb={20}
           ></Insights>
+          <Gallery as="section" heading={t('gallery.title')} mb={20}></Gallery>
         </Box>
       </Layout>
     </>
