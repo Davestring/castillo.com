@@ -92,7 +92,7 @@ function Property(props) {
         </Container>
 
         <BookingBanner
-          display={!inView ? 'block' : 'none'}
+          display={!inView ? { base: 'none', lg: 'block' } : 'none'}
           inView={!inView}
         ></BookingBanner>
       </Layout>
