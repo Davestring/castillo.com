@@ -10,7 +10,7 @@ function Stat(props) {
       <Text as="span" fontSize="sm">
         {stat}
       </Text>
-      <Icon as={icon} h={4} w={4}></Icon>
+      <Icon as={icon} h={4} w={4} transform="translateY(10%)"></Icon>
     </Stack>
   );
 }

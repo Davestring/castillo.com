@@ -5,10 +5,10 @@ import { FaBath, FaBed, FaUserFriends } from 'react-icons/fa';
 import Stat from './components/Stat';
 
 function Stats(props) {
-  const { bathrooms, beds, people, ...rest } = props;
+  const { bathrooms, beds, guests, ...rest } = props;
   return (
     <Stack {...rest}>
-      <Stat icon={FaUserFriends} stat={people}></Stat>
+      <Stat icon={FaUserFriends} stat={guests}></Stat>
       <Stat icon={FaBed} stat={beds}></Stat>
       <Stat icon={FaBath} stat={bathrooms}></Stat>
     </Stack>
@@ -18,7 +18,7 @@ function Stats(props) {
 Stats.propTypes = {
   bathrooms: PropTypes.number,
   beds: PropTypes.number,
-  people: PropTypes.number,
+  guests: PropTypes.number,
 };
 
 Stats.defaultProps = {
@@ -26,7 +26,7 @@ Stats.defaultProps = {
   bathrooms: 0,
   beds: 0,
   isInline: true,
-  people: 0,
+  guests: 0,
   spacing: 1,
 };
 
