@@ -52,7 +52,13 @@ function Index(props) {
             maxWidth="900px"
             mb={20}
           ></Insights>
-          <Gallery as="section" heading={t('gallery.title')} mb={20}></Gallery>
+          <Gallery
+            as="section"
+            cols="repeat(8, 1fr)"
+            heading={t('gallery.title')}
+            mb={20}
+            rows="repeat(7, 5vw)"
+          ></Gallery>
         </Box>
       </Layout>
     </>
