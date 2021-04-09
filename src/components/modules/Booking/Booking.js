@@ -32,7 +32,7 @@ export function BookingBanner(props) {
   const { inView, routes, ...rest } = props;
 
   return (
-    <Banner mt={inView ? 0 : '-4rem'} {...rest}>
+    <Banner as="nav" mt={inView ? 0 : '-4rem'} {...rest}>
       <Container d="flex" h="100%" justifyContent="space-between">
         <Stack isInline align="center" h="100%">
           {routes.map((item) => (
