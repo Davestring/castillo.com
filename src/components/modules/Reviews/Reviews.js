@@ -1,6 +1,7 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import Container from 'components/elements/Container';
 import H2 from 'components/elements/H2';
+import _ from 'lodash';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
@@ -9,6 +10,9 @@ import Review from './components/Review';
 
 function Reviews(props) {
   const { comments, title, ...rest } = props;
+
+  if (_.isEmpty(comments)) return null;
+
   return (
     <Container {...rest}>
       {title && <H2>{title}</H2>}
