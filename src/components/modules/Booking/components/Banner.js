@@ -7,11 +7,11 @@ const Banner = styled(Box)`
   height: ${({ theme }) => theme.space[16]};
   position: fixed;
   top: 0;
-  transition: opacity 600ms, visibility 600ms;
+  transition: margin-top 0.6s;
   width: 100%;
   z-index: ${({ theme }) => theme.zIndices.overlay};
 
-  -webkit-transition: opacity 600ms, visibility 600ms;
+  -webkit-transition: margin-top 0.6s;
 `;
 
 export default Banner;
