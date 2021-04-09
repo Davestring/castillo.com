@@ -22,7 +22,6 @@ function Map(props) {
       <ReactMapGL
         mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         mapStyle={style}
-        cont
         onViewportChange={(vp) => setViewport(vp)}
         scrollZoom={false}
         {...viewport}
@@ -47,7 +46,7 @@ Map.defaultProps = {
   mapH: '512px',
   mapW: '100%',
   style: 'mapbox://styles/mapbox/light-v10',
-  zoom: 18,
+  zoom: 14,
 };
 
 export default Map;
