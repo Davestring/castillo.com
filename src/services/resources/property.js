@@ -8,6 +8,9 @@ const resource = {
   findPropertyComments: (id) =>
     instance.get(`/house/${id}/comments/`).then((res) => res.data),
 
+  findPropertyGallery: (id) =>
+    instance.get(`/house/${id}/gallery/`).then((res) => res.data),
+
   findPropertyNetworks: (id) =>
     instance.get(`/house/${id}/networks/`).then((res) => res.data),
 
