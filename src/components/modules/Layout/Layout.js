@@ -6,23 +6,20 @@ import ISOContainer from './components/ISOContainer';
 import Wrapper from './components/Wrapper';
 
 function Layout(props) {
-  const { children, translations: t, ...rest } = props;
+  const { children, ...rest } = props;
   return (
     <Wrapper {...rest}>
       <Header as="header"></Header>
       <ISOContainer as="main">{children}</ISOContainer>
-      <Footer as="footer" mb={4} translations={t}></Footer>
+      <Footer as="footer" mb={4}></Footer>
     </Wrapper>
   );
 }
 
 Layout.propTypes = {
   children: PropTypes.node,
-  translations: PropTypes.func,
 };
 
-Layout.defaultProps = {
-  translations: () => '',
-};
+Layout.defaultProps = {};
 
 export default Layout;

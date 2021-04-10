@@ -9,7 +9,7 @@ import ResponsiveFlex from './components/ResponsiveFlex';
 import SocialShare from './components/SocialShare';
 
 function Footer(props) {
-  const { translations: t, social, ...rest } = props;
+  const { social, ...rest } = props;
 
   return (
     <Container isFluid {...rest}>
@@ -17,9 +17,9 @@ function Footer(props) {
       <Container>
         <ResponsiveFlex align="center" justify="space-between" mb={4}>
           <SocialShare social={social} mb={{ base: 4, md: 0 }}></SocialShare>
-          <Notice translations={t}></Notice>
+          <Notice></Notice>
         </ResponsiveFlex>
-        <Copyright translations={t}></Copyright>
+        <Copyright></Copyright>
       </Container>
     </Container>
   );
@@ -32,7 +32,6 @@ Footer.propTypes = {
       url: PropTypes.string,
     }),
   ),
-  translations: PropTypes.func,
 };
 
 Footer.defaultProps = {
@@ -46,7 +45,6 @@ Footer.defaultProps = {
       icon: FaYoutube,
     },
   ],
-  translations: () => '',
 };
 
 export default Footer;

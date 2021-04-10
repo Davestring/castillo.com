@@ -11,7 +11,7 @@ function Service(props) {
       <Text fontWeight="700" textAlign="center">
         {title}
       </Text>
-      <Text fontFamily="mono" fontSize="sm" textAlign="justify">
+      <Text fontFamily="mono" fontSize="md" textAlign="justify">
         {description}
       </Text>
     </Stack>

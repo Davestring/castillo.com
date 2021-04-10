@@ -1,24 +1,8 @@
-import { Flex as ChakraFlex, Link, Stack, Text } from '@chakra-ui/react';
-import styled from '@emotion/styled';
+import { Stack } from '@chakra-ui/react';
+import NavLink from 'components/elements/NavLink';
 import isEmpty from 'lodash/isEmpty';
 import { nanoid } from 'nanoid';
-import { Link as ReachLink } from 'next/link';
 import PropTypes from 'prop-types';
-
-const ItemWrapper = styled(ChakraFlex)`
-  align-items: center;
-  color: ${({ theme }) => theme.colors.base};
-  display: flex;
-  height: 100%;
-  padding: 0 ${({ theme }) => theme.space[2]};
-  transition: 0.5s ease;
-
-  &:hover {
-    border-bottom-width: 2px;
-    border-color: ${({ theme }) => theme.colors.base};
-    transition: border-color 1s ease;
-  }
-`;
 
 function Navigation(props) {
   const { routes, ...rest } = props;
@@ -28,11 +12,7 @@ function Navigation(props) {
   return (
     <Stack {...rest}>
       {routes.map((item) => (
-        <Link as={ReachLink} href={item.url} key={nanoid()}>
-          <ItemWrapper>
-            <Text fontSize="sm">{item.title}</Text>
-          </ItemWrapper>
-        </Link>
+        <NavLink key={nanoid()} {...item}></NavLink>
       ))}
     </Stack>
   );

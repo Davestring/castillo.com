@@ -1,10 +1,11 @@
 import { Stack } from '@chakra-ui/react';
-import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
 
 import Redirect from './Redirect';
 
 function Notice(props) {
-  const { translations: t, ...rest } = props;
+  const { ...rest } = props;
+  const { t } = useTranslation('footer');
 
   return (
     <Stack {...rest}>
@@ -15,14 +16,11 @@ function Notice(props) {
   );
 }
 
-Notice.propTypes = {
-  translations: PropTypes.func,
-};
+Notice.propTypes = {};
 
 Notice.defaultProps = {
   isInline: true,
   spacing: 4,
-  translations: () => '',
 };
 
 export default Notice;
