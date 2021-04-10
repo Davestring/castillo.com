@@ -20,8 +20,8 @@ export const formatAddressMin = (address) => {
   return `${municipality}, ${state}, ${country}`;
 };
 
-export const formatPrice = (price, badge = 'MXN') => {
+export const formatPrice = (price) => {
   const aux = typeof price === 'string' ? parseFloat(price) : price;
 
-  return `$${aux.toLocaleString('en-US')} ${badge}`;
+  return aux.toLocaleString('en-US');
 };
