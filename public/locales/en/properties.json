@@ -1,8 +1,14 @@
 {
   "meta.title": "Casa Castillo - Properties",
   "meta.description": "",
-  "spotlight.title": "Our Properties",
-  "spotlight.quote": "Tailored stays in the world's most inspiring homes",
+  "properties.spotlight.title": "Our Properties",
+  "properties.spotlight.quote": "Tailored stays in the world's most inspiring homes",
   "properties.card.title": "Casa Castillo",
-  "properties.card.availability": "See availability"
+  "properties.card.availability": "See availability",
+  "properties.description": "about this property",
+  "properties.location": "location",
+  "properties.rules": "rules",
+  "properties.price": "${{price}} MXN",
+  "properties.services.load": "See all the services",
+  "properties.reviews.load": "See all the reviews"
 }
