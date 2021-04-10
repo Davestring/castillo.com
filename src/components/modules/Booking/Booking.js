@@ -3,6 +3,7 @@ import Calendar from 'components/collections/Calendar';
 import Container from 'components/elements/Container';
 import NavLink from 'components/elements/NavLink';
 import { nanoid } from 'nanoid';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 
 import Banner from './components/Banner';
@@ -30,6 +31,7 @@ const ROUTES = [
 
 export function BookingBanner(props) {
   const { inView, routes, ...rest } = props;
+  const { t } = useTranslation('booking');
 
   return (
     <Banner as="nav" mt={inView ? 0 : '-4rem'} {...rest}>
@@ -41,7 +43,9 @@ export function BookingBanner(props) {
         </Stack>
         <Stack isInline align="center">
           <Calendar></Calendar>
-          <Button colorScheme="golden">Reserva</Button>
+          <Button colorScheme="golden" size="sm">
+            {t('booking.button')}
+          </Button>
         </Stack>
       </Container>
     </Banner>
@@ -65,13 +69,17 @@ BookingBanner.defaultProps = {
 
 export function BookingCard(props) {
   const { price, rating, ...rest } = props;
+  const { t } = useTranslation('booking');
+
   return (
     <Card d={{ base: 'none', lg: 'flex' }} {...rest}>
       <Box>
         <Info price={price} rating={rating}></Info>
         <Calendar></Calendar>
       </Box>
-      <Button colorScheme="golden">Reserva</Button>
+      <Button colorScheme="golden" size="sm">
+        {t('booking.button')}
+      </Button>
     </Card>
   );
 }
