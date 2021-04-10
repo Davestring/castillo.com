@@ -1,6 +1,6 @@
 {
   "name": "castillo-next-app",
-  "version": "0.5.0",
+  "version": "0.8.0",
   "description": "Castillo is a next application for a vacation home rental business",
   "main": "index.js",
   "repository": "https://github.com/Davestring/castillo-next-app.git",
