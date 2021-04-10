@@ -1,14 +1,17 @@
 import { Icon, Stack, Text } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 import { FaStar } from 'react-icons/fa';
 import { formatPrice } from 'utils/format-utils';
 
 function Info(props) {
   const { price, rating } = props;
+  const { t } = useTranslation('properties');
+
   return (
     <Stack isInline align="center" justify="space-between" mb={4}>
       <Text fontSize="lg" fontWeight={700}>
-        {formatPrice(price)}
+        {t('properties.price', { price: formatPrice(price) })}
       </Text>
       <Stack isInline align="center" spacing={1}>
         <Icon as={FaStar} color="gold" h={4} mt="-4px" w={4}></Icon>
