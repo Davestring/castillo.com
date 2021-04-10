@@ -42,8 +42,8 @@ function Properties(props) {
             as="section"
             bg="base"
             mb={20}
-            title={t('spotlight.title')}
-            quote={t('spotlight.quote')}
+            title={t('properties.spotlight.title')}
+            quote={t('properties.spotlight.quote')}
           ></Spotlight>
 
           <Listing as="section" mb={20} properties={properties}></Listing>
