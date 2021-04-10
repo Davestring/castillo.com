@@ -1,9 +1,10 @@
 import { Box, Icon, Text } from '@chakra-ui/react';
-import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
 import { FaCopyright } from 'react-icons/fa';
 
 function Copyright(props) {
-  const { translations: t, ...rest } = props;
+  const { ...rest } = props;
+  const { t } = useTranslation('footer');
 
   return (
     <Box {...rest}>
@@ -15,13 +16,10 @@ function Copyright(props) {
   );
 }
 
-Copyright.propTypes = {
-  translations: PropTypes.func,
-};
+Copyright.propTypes = {};
 
 Copyright.defaultProps = {
   textAlign: { base: 'center', md: 'start' },
-  translations: () => '',
 };
 
 export default Copyright;

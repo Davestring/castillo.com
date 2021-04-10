@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
-import { isNil } from 'components/lib/children';
 import PropTypes from 'prop-types';
+import { isNil } from 'utils/children-utils';
 
 import GridItem from './GridItem';
 

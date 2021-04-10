@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import ClampText from 'components/elements/ClampText';
 import H1 from 'components/elements/H1';
 import H2 from 'components/elements/H2';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 
 import Info from './Info';
@@ -32,6 +33,7 @@ const Card = styled(Box)`
 
 function Property(props) {
   const { id, address, alt, cover, description, title, ...rest } = props;
+  const { t } = useTranslation('properties');
 
   return (
     <Card {...rest}>
@@ -42,7 +44,7 @@ function Property(props) {
       )}
       <Box maxW="40%" pt={20} px={8}>
         <H1 fontWeight={400} letterSpacing="7.5px" mb={0}>
-          Casa Castillo
+          {t('properties.card.title')}
         </H1>
         <H2 mb={2}>{title}</H2>
         <Redirect id={id}></Redirect>

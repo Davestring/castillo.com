@@ -1,6 +1,7 @@
 import Container from 'components/elements/Container';
 import Divider from 'components/elements/Divider';
 import PropTypes from 'prop-types';
+import { FaFacebookF, FaYoutube } from 'react-icons/fa';
 
 import Copyright from './components/Copyright';
 import Notice from './components/Notice';
@@ -8,7 +9,7 @@ import ResponsiveFlex from './components/ResponsiveFlex';
 import SocialShare from './components/SocialShare';
 
 function Footer(props) {
-  const { translations: t, social, ...rest } = props;
+  const { social, ...rest } = props;
 
   return (
     <Container isFluid {...rest}>
@@ -16,9 +17,9 @@ function Footer(props) {
       <Container>
         <ResponsiveFlex align="center" justify="space-between" mb={4}>
           <SocialShare social={social} mb={{ base: 4, md: 0 }}></SocialShare>
-          <Notice translations={t}></Notice>
+          <Notice></Notice>
         </ResponsiveFlex>
-        <Copyright translations={t}></Copyright>
+        <Copyright></Copyright>
       </Container>
     </Container>
   );
@@ -27,17 +28,23 @@ function Footer(props) {
 Footer.propTypes = {
   social: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       icon: PropTypes.elementTyppe,
       url: PropTypes.string,
     }),
   ),
-  translations: PropTypes.func,
 };
 
 Footer.defaultProps = {
-  social: [],
-  translations: () => '',
+  social: [
+    {
+      url: 'https://facebook.com/Casa-Castillo-Oaxtepec-101933198569474/',
+      icon: FaFacebookF,
+    },
+    {
+      url: 'https://youtube.com/channel/UCt3raKd0mjAfguhVV-ui-LQ/',
+      icon: FaYoutube,
+    },
+  ],
 };
 
 export default Footer;

@@ -1,24 +1,31 @@
-import { SimpleGrid } from '@chakra-ui/layout';
+import { Button, Flex, SimpleGrid } from '@chakra-ui/react';
 import Container from 'components/elements/Container';
 import _ from 'lodash';
 import { nanoid } from 'nanoid';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 
-import ServiceCard from './components/ServiceCard';
+import Service from './components/Service';
 
 function Services(props) {
   const { services, ...rest } = props;
+  const { t } = useTranslation('properties');
 
   if (_.isEmpty(services)) return null;
 
   return (
     <Container isFluid {...rest}>
       <Container py={20}>
-        <SimpleGrid columns={[{ base: 1, md: 2, lg: 3 }]} spacing={12}>
+        <SimpleGrid columns={[1, 1, 2, 3]} spacing={12}>
           {services.map((item) => (
-            <ServiceCard key={nanoid()} {...item}></ServiceCard>
+            <Service key={nanoid()} {...item}></Service>
           ))}
         </SimpleGrid>
+        <Flex justify="center" mt={12}>
+          <Button colorScheme="golden" px={8} size="sm">
+            {t('properties.services.load')}
+          </Button>
+        </Flex>
       </Container>
     </Container>
   );
@@ -30,7 +37,6 @@ Services.propTypes = {
       icon: PropTypes.elementType,
       title: PropTypes.string,
       description: PropTypes.string,
-      iconColor: PropTypes.string,
     }),
   ),
 };

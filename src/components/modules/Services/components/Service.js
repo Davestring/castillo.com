@@ -1,31 +1,35 @@
 import { Icon, Stack, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import { SiNextDotJs } from 'react-icons/si';
 
-function ServiceCard(props) {
+function Service(props) {
   const { icon, iconColor, title, description, ...rest } = props;
 
   return (
-    <Stack align="center" justify="center" {...rest}>
-      <Icon as={icon} color={iconColor} h={20} w={20}></Icon>
+    <Stack {...rest}>
+      <Icon as={icon} color={iconColor} h={16} w={16}></Icon>
       <Text fontWeight="700" textAlign="center">
         {title}
       </Text>
-      <Text fontFamily="mono" textAlign="justify">
+      <Text fontFamily="mono" fontSize="md" textAlign="justify">
         {description}
       </Text>
     </Stack>
   );
 }
 
-ServiceCard.propTypes = {
+Service.propTypes = {
   icon: PropTypes.elementType,
   iconColor: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
 };
 
-ServiceCard.defaultProps = {
+Service.defaultProps = {
+  align: 'center',
+  justify: 'center',
+  icon: SiNextDotJs,
   iconColor: 'gold',
 };
 
-export default ServiceCard;
+export default Service;

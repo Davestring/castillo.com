@@ -1,23 +1,42 @@
 import { Box } from '@chakra-ui/react';
 import { Head } from 'components/behaviours/Shareability';
+import Gallery from 'components/modules/Gallery';
 import Insights from 'components/modules/Insights';
 import Layout from 'components/modules/Layout';
 import Spotlight from 'components/modules/Spotlight';
-import { useTranslations } from 'locales';
+import _ from 'lodash';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PropTypes from 'prop-types';
 import InsightResources from 'services/resources/insight';
 
-function Index(props) {
-  const { insights, error } = props;
-  const { t } = useTranslations();
+export const getStaticProps = async ({ locale }) => {
+  const includeReverse = (obj, idx) => ({ ...obj, isReverse: idx % 2 !== 0 });
 
-  if (error) return null;
+  const response = await InsightResources.findAll();
+  const insights = _.flow(
+    (obj) => _.get(obj, 'data'),
+    (arr) => _.map(arr, (obj, idx) => includeReverse(obj, idx)),
+    (arr) => _.map(arr, (obj) => _.omit(obj, ['id', 'created', 'updated'])),
+  )(response);
+
+  return {
+    props: {
+      insights,
+      ...(await serverSideTranslations(locale, ['home', 'footer'])),
+    },
+  };
+};
+
+function Index(props) {
+  const { insights } = props;
+  const { t } = useTranslation('home');
 
   return (
     <>
       <Head title={t('meta.title')} description={t('meta.description')}></Head>
 
-      <Layout translations={t}>
+      <Layout>
         <Box as="article" mt="-4rem">
           <Spotlight
             as="section"
@@ -28,10 +47,18 @@ function Index(props) {
           ></Spotlight>
           <Insights
             as="section"
+            heading={t('insights.title')}
             insights={insights}
             maxWidth="900px"
             mb={20}
           ></Insights>
+          <Gallery
+            as="section"
+            cols="repeat(8, 1fr)"
+            heading={t('gallery.title')}
+            mb={20}
+            rows="repeat(7, 5vw)"
+          ></Gallery>
         </Box>
       </Layout>
     </>
@@ -39,44 +66,19 @@ function Index(props) {
 }
 
 Index.propTypes = {
-  error: PropTypes.bool,
   insights: PropTypes.arrayOf(
     PropTypes.shape({
       caption: PropTypes.string,
-      cover: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
       summary: PropTypes.string,
       title: PropTypes.string,
+      cover: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
       isReverse: PropTypes.bool,
     }),
   ),
 };
 
 Index.defaultProps = {
-  error: false,
   insights: [],
-};
-
-export const getStaticProps = async () => {
-  try {
-    const response = await InsightResources.findAll();
-    const insights = response?.data?.map((item, idx) => ({
-      ...item,
-      isReverse: idx % 2 !== 0,
-    }));
-
-    return {
-      props: {
-        error: false,
-        insights,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        error: true,
-      },
-    };
-  }
 };
 
 export default Index;

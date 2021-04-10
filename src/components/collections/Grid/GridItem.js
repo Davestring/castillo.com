@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import { isNil } from 'components/lib/children';
 import PropTypes from 'prop-types';
+import { isNil } from 'utils/children-utils';
 
 const Item = styled(Box)`
   grid-column: ${({ column }) => column};

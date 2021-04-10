@@ -1,19 +1,15 @@
-import { Link as ChakraLink } from '@chakra-ui/react';
-import styled from '@emotion/styled';
+import { Link } from '@chakra-ui/react';
 import { Link as ReachLink } from 'next/link';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
-
-const Link = styled(ChakraLink)`
-  &:hover {
-    color: ${({ theme }) => theme.colors.base};
-  }
-`;
 
 const Redirect = (props) => {
   const { id, ...rest } = props;
+  const { t } = useTranslation('properties');
+
   return (
     <Link href={`/properties/${id}`} {...rest}>
-      Más Información
+      {t('properties.card.availability')}
     </Link>
   );
 };
@@ -26,6 +22,11 @@ Redirect.defaultProps = {
   as: ReachLink,
   color: 'gold',
   fontSize: 'xs',
+  sx: {
+    '&:hover': {
+      color: 'base',
+    },
+  },
 };
 
 export default Redirect;

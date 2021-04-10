@@ -1,27 +1,19 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { Global } from '@emotion/react';
-import { locales } from 'locales';
-import { useRouter } from 'next/router';
+import { appWithTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 import { StrictMode } from 'react';
-import { IntlProvider } from 'react-intl';
-import fonts from 'styles/font-face';
+import global from 'styles/global';
 import theme from 'styles/theme';
 
 function App({ Component, pageProps }) {
-  const router = useRouter();
-  const { defaultLocale, locale, pathname } = router;
-  const messages = locales[locale][pathname];
-
   return (
-    <IntlProvider {...{ defaultLocale, locale, messages }}>
-      <ChakraProvider resetCSS theme={theme}>
-        <StrictMode>
-          <Global styles={fonts} />
-          <Component {...pageProps} />
-        </StrictMode>
-      </ChakraProvider>
-    </IntlProvider>
+    <ChakraProvider resetCSS theme={theme}>
+      <StrictMode>
+        <Global styles={global} />
+        <Component {...pageProps} />
+      </StrictMode>
+    </ChakraProvider>
   );
 }
 
@@ -30,4 +22,4 @@ App.propTypes = {
   pageProps: PropTypes.shape({}),
 };
 
-export default App;
+export default appWithTranslation(App);

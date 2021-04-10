@@ -1,0 +1,14 @@
+{
+  "meta.title": "Casa Castillo - Propiedades",
+  "meta.description": "",
+  "properties.spotlight.title": "Nuestras Propiedades",
+  "properties.spotlight.quote": "Estancias a la medida en los hogares más inspiradores del mundo",
+  "properties.card.title": "Casa Castillo",
+  "properties.card.availability": "Ver disponibilidad",
+  "properties.description": "acerca de esta propiedad",
+  "properties.location": "ubicación",
+  "properties.rules": "reglas",
+  "properties.price": "${{price}} MXN",
+  "properties.services.load": "Ver todos los servicios",
+  "properties.reviews.load": "Ver todas las reseñas"
+}
