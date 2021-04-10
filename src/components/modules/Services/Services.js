@@ -2,12 +2,14 @@ import { Button, Flex, SimpleGrid } from '@chakra-ui/react';
 import Container from 'components/elements/Container';
 import _ from 'lodash';
 import { nanoid } from 'nanoid';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 
 import Service from './components/Service';
 
 function Services(props) {
   const { services, ...rest } = props;
+  const { t } = useTranslation('properties');
 
   if (_.isEmpty(services)) return null;
 
@@ -21,7 +23,7 @@ function Services(props) {
         </SimpleGrid>
         <Flex justify="center" mt={12}>
           <Button colorScheme="golden" px={8} size="sm">
-            Ver todos los servicios
+            {t('properties.services.load')}
           </Button>
         </Flex>
       </Container>
