@@ -27,7 +27,7 @@ Stats.defaultProps = {
   beds: 0,
   isInline: true,
   guests: 0,
-  spacing: 1,
+  spacing: 4,
 };
 
 export default Stats;
