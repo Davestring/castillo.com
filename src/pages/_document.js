@@ -4,11 +4,6 @@ class AppDocument extends Document {
   render() {
     return (
       <Html lang="es">
-        <style jsx global>{`
-          html {
-            scroll-behavior: smooth;
-          }
-        `}</style>
         <Head>
           <link
             href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
