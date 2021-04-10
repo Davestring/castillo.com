@@ -1,31 +1,51 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Stack, Text } from '@chakra-ui/react';
 import { Head } from 'components/behaviours/Shareability';
 import Map from 'components/collections/Map';
 import Container from 'components/elements/Container';
 import H1 from 'components/elements/H1';
 import H2 from 'components/elements/H2';
+import Share from 'components/elements/Share';
 import Stats from 'components/elements/Stats';
 import { BookingBanner, BookingCard } from 'components/modules/Booking';
+import Gallery from 'components/modules/Gallery';
 import Layout from 'components/modules/Layout';
 import Reviews from 'components/modules/Reviews';
 import Services from 'components/modules/Services';
 import _ from 'lodash';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 import PropertyResources from 'services/resources/property';
+import { spotlight } from 'utils/spotlight-grid';
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ locale, params }) => {
   let property = await PropertyResources.findByID(params.id);
   let services = await PropertyResources.findPropertyServices(params.id);
   let comments = await PropertyResources.findPropertyComments(params.id);
+  let gallery = await PropertyResources.findPropertyGallery(params.id);
 
   property = _.omit(property, 'id', 'active', 'created', 'updated');
   services = _.map(services, (item) => _.pick(item, ['title', 'description']));
   comments = _.map(comments, (item) =>
     _.pick(item, ['name', 'lastname', 'comment', 'created']),
   );
+  gallery = _.map(gallery, (item) => _.pick(item, ['image']));
 
-  return { props: { comments, property, services } };
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'booking',
+        'common',
+        'footer',
+        'properties',
+      ])),
+      comments,
+      gallery,
+      property,
+      services,
+    },
+  };
 };
 
 export const getStaticPaths = async () => {
@@ -37,37 +57,49 @@ export const getStaticPaths = async () => {
 };
 
 function Property(props) {
-  const { comments, property, services } = props;
-  const [ref, inView] = useInView({
-    root: null,
-    threshold: 0,
-  });
+  const { comments, gallery, property, services } = props;
+  const { t } = useTranslation('properties');
+
+  const [ref, inView] = useInView({ threshold: 0 });
 
   return (
     <>
-      <Head
-        title={`Casa Castillo - ${property?.title}`}
-        description={property?.description}
-      ></Head>
+      <Head {..._.pick(property, ['title', 'description'])}></Head>
 
-      <Layout position="relative">
-        <div ref={ref} id="content">
-          <Container as="article" d="flex" mb={12} mt={4}>
-            <Box as="section" flex={2}>
-              <H1>{property?.title}</H1>
-              <Stats mb={12}></Stats>
+      <Layout>
+        <BookingBanner d={{ base: 'none', lg: 'block' }} inView={!inView} />
 
-              <H2>acerca de esta propiedad</H2>
+        <section id="content" ref={ref}>
+          <Container my={12}>
+            <H1>{property?.title}</H1>
+
+            <Stack isInline justify="space-between" mb={4}>
+              <Stats {..._.pick(property, ['bathrooms', 'beds', 'guests'])} />
+              <Share></Share>
+            </Stack>
+
+            <Gallery
+              cols="repeat(6, 1fr)"
+              content={spotlight(gallery)}
+              gridH="420px"
+              isFluid
+              rows="repeat(4, 1fr)"
+            ></Gallery>
+          </Container>
+
+          <Container display="flex" mb={12}>
+            <Stack>
+              <H2>{t('properties.description')}</H2>
               <Text align="justify" fontSize="sm" mb={12}>
                 {property?.description}
               </Text>
+              <H2 id="location">{t('properties.location')}</H2>
+              <Map {..._.pick(property, ['latitude', 'longitude'])}></Map>
+            </Stack>
 
-              <H2 id="location">ubicación</H2>
-              <Map></Map>
-            </Box>
-            <BookingCard as="aside" flex={1}></BookingCard>
+            <BookingCard {..._.pick(property, ['price', 'routing'])} />
           </Container>
-        </div>
+        </section>
 
         <Services
           as="section"
@@ -86,13 +118,8 @@ function Property(props) {
         ></Reviews>
 
         <Container as="section" mb={12}>
-          <H2>reglas</H2>
+          <H2>{t('properties.rules')}</H2>
         </Container>
-
-        <BookingBanner
-          display={!inView ? { base: 'none', lg: 'block' } : 'none'}
-          inView={!inView}
-        ></BookingBanner>
       </Layout>
     </>
   );
@@ -107,11 +134,23 @@ Property.propTypes = {
       created: PropTypes.string,
     }),
   ),
+  gallery: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+    }),
+  ),
   property: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
     cover: PropTypes.string,
     rating: PropTypes.number,
+    price: PropTypes.number,
+    beds: PropTypes.number,
+    bathrooms: PropTypes.number,
+    rooms: PropTypes.number,
+    guests: PropTypes.number,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
     address: PropTypes.shape({
       id: PropTypes.number,
       street: PropTypes.string,
@@ -136,6 +175,7 @@ Property.propTypes = {
 
 Property.defaultProps = {
   comments: [],
+  gallery: [],
   property: {},
   services: [],
 };
