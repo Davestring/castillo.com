@@ -9,12 +9,12 @@ import { GALLERY_DATA } from './__mocks__';
 import Default from './components/Default';
 
 function Gallery(props) {
-  const { cols, content, gridH, heading, isFluid, rows, ...rest } = props;
+  const { cols, content, gridH, heading, rows, ...rest } = props;
 
   if (_.isEmpty(content)) return null;
 
   return (
-    <Container isFluid={isFluid} {...rest}>
+    <Container {...rest}>
       {heading && (
         <H2 align="center" mb={12}>
           {heading}
@@ -41,16 +41,14 @@ Gallery.propTypes = {
       gridRow: PropTypes.string,
     }),
   ),
-  gridH: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+  gridH: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   heading: PropTypes.string,
-  isFluid: PropTypes.boolean,
   rows: PropTypes.string,
 };
 
 Gallery.defaultProps = {
   content: GALLERY_DATA,
   gridH: '100%',
-  isFluid: false,
 };
 
 export default Gallery;
