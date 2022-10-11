@@ -3,11 +3,13 @@
   "version": "2.0.0",
   "scripts": {
     "build:app": "react-scripts build",
+    "build:sb": "build-storybook -s public",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "eslint --fix --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "precommit": "tsc && npx lint-staged",
     "prepare": "husky install",
-    "start:app": "react-scripts start"
+    "start:app": "react-scripts start",
+    "start:sb": "start-storybook -p 6006 -s public"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -16,9 +18,20 @@
     "typescript": "^4.8.4"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/node-logger": "^6.5.12",
+    "@storybook/preset-create-react-app": "^4.1.2",
+    "@storybook/react": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
     "@types/node": "^18.8.4",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -33,7 +46,9 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "prop-types": "^15.8.1",
+    "webpack": "^5.74.0"
   },
   "browserslist": {
     "production": [
