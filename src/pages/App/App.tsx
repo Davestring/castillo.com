@@ -1,7 +1,10 @@
-import { useTranslation } from 'react-i18next';
+import { HomePage } from 'pages/Home';
+import { NotFoundPage } from 'pages/NotFound';
+import { Route, Routes } from 'react-router-dom';
 
-export const App = (): JSX.Element => {
-  const { t } = useTranslation('page:home');
-
-  return <h1>{t('heading')}</h1>;
-};
+export const App = (): JSX.Element => (
+  <Routes>
+    <Route element={<HomePage />} path="/" />
+    <Route element={<NotFoundPage />} path="*" />
+  </Routes>
+);
