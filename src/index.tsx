@@ -8,7 +8,7 @@ const MOUNT_NODE = ReactDOM.createRoot(
 
 const CasaCastillo: React.FC = (): JSX.Element => (
   <React.StrictMode>
-      <App />
+    <App />
   </React.StrictMode>
 );
 
