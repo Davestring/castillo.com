@@ -45,6 +45,7 @@
         "minKeys": 2
       }
     ],
+    "no-underscore-dangle": "off",
     "react/function-component-definition": "off",
     "import/no-import-module-exports": "off",
     "react/no-danger": "off",
@@ -79,11 +80,13 @@
     "@typescript-eslint/no-use-before-define": [
       "error"
     ],
+    "react/default-props-match-prop-types": 0,
     "react/react-in-jsx-scope": 0,
     "import/no-extraneous-dependencies": [
       "error",
       {
         "devDependencies": [
+          "**/*.mocks.ts",
           "**/*.stories.tsx",
           "**/*.test.tsx",
           "jest.setup.ts"
@@ -111,6 +114,13 @@
   },
   "settings": {
     "import/resolver": {
+      "eslint-import-resolver-custom-alias": {
+        "alias": {},
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      },
       "node": {
         "moduleDirectory": [
           "node_modules",

@@ -2,7 +2,7 @@
   "name": "@castillo/core",
   "version": "2.0.0",
   "scripts": {
-    "build:app": "react-scripts build",
+    "build:app": "NODE_ENV=production react-scripts build",
     "build:sb": "build-storybook -s public",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "eslint --fix --ignore-path .gitignore --ext .js,.ts,.tsx .",
@@ -40,6 +40,8 @@
     "@types/node": "^18.8.4",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
