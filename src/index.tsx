@@ -1,3 +1,4 @@
+import { ChakraProvider } from '@chakra-ui/react';
 import { App } from 'pages/App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -8,7 +9,9 @@ const MOUNT_NODE = ReactDOM.createRoot(
 
 const CasaCastillo: React.FC = (): JSX.Element => (
   <React.StrictMode>
-    <App />
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>
 );
 
