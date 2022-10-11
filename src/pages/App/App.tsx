@@ -1,1 +1,7 @@
-export const App = (): JSX.Element => <h1>Casa Castillo!</h1>;
+import { useTranslation } from 'react-i18next';
+
+export const App = (): JSX.Element => {
+  const { t } = useTranslation('page:home');
+
+  return <h1>{t('heading')}</h1>;
+};
