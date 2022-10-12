@@ -45,6 +45,7 @@ Container.defaultProps = {
   is100vh: false,
   isFluid: false,
   mx: 'auto',
+  overflowX: 'hidden',
   position: 'relative',
   px: 4,
   w: '100%',
