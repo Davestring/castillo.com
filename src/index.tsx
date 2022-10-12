@@ -3,6 +3,7 @@ import { i18n } from 'locales';
 import { App } from 'pages/App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -13,11 +14,13 @@ const MOUNT_NODE = ReactDOM.createRoot(
 const CasaCastillo: React.FC = (): JSX.Element => (
   <React.StrictMode>
     <I18nextProvider i18n={i18n} />
-    <ChakraProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ChakraProvider>
+    <HelmetProvider>
+      <ChakraProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ChakraProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 
