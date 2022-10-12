@@ -1,5 +1,7 @@
 import { Box, BoxProps } from '@chakra-ui/react';
+import fp from 'lodash/fp';
 import { forwardRef } from 'react';
+import { use100vh } from 'react-div-100vh';
 import { __DEV__ } from 'utils';
 
 export interface IContainerProps extends BoxProps {
@@ -8,16 +10,25 @@ export interface IContainerProps extends BoxProps {
    * otherwise its max-width will be 1200px.
    */
   isFluid?: boolean;
+  /**
+   * If `true`, the container will take all the available height.
+   */
+  is100vh?: boolean;
 }
 
 export const Container = forwardRef<HTMLDivElement, IContainerProps>(
-  (props, ref): JSX.Element => {
-    const { children, isFluid, ...rest } = props;
+  (props, ref): JSX.Element | null => {
+    const { children, isFluid, is100vh, ...rest } = props;
+
+    const height = use100vh();
+
+    if (fp.isNil(height)) return null;
 
     return (
       <Box
         ref={ref}
-        {...(isFluid ? { maxW: '100%', px: 2 } : { maxW: '1200px', px: 4 })}
+        {...(isFluid ? { maxW: '100%' } : { maxW: '1200px' })}
+        {...(is100vh ? { h: height } : {})}
         {...rest}
       >
         {children}
@@ -31,8 +42,10 @@ if (__DEV__) {
 }
 
 Container.defaultProps = {
+  is100vh: false,
   isFluid: false,
   mx: 'auto',
   position: 'relative',
+  px: 4,
   w: '100%',
 };
