@@ -1,0 +1,5 @@
+{
+  "form.generic.email": "Add a valid email account.",
+  "form.generic.min-length": "Enter at least 8 characters.",
+  "form.generic.required": "This field is required."
+}

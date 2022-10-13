@@ -1,0 +1,5 @@
+{
+  "form.generic.email": "Ingresa una cuenta de correo electrónico válida.",
+  "form.generic.min-length": "El mínimo de caracteres permitidos es 8.",
+  "form.generic.required": "Este campo es obligatorio."
+}

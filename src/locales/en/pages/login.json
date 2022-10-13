@@ -1,0 +1,7 @@
+{
+  "helmet": "Casa Castillo | Login",
+  "form.email.placeholder": "Email",
+  "form.password.placeholder": "Password",
+  "notice": "<0>You can only log in if you are an administrator of Casa Castillo, to make a reservation click</0> <1>here</1>",
+  "title": "Login into your account"
+}

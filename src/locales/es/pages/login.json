@@ -1,0 +1,7 @@
+{
+  "helmet": "Casa Castillo | Inicia sesión",
+  "form.email.placeholder": "Correo electrónico",
+  "form.password.placeholder": "Contraseña",
+  "notice": "<0>Solo podrás iniciar sesión si eres administrador de Casa Castillo, para realizar una reservación da clic</0> <1>aquí</1>",
+  "title": "Inicia sesión en tu cuenta"
+}

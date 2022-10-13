@@ -3,7 +3,8 @@ import Bar from 'assets/img/spotlight/bar.jpg';
 import Facade from 'assets/img/spotlight/facade.jpg';
 import Pool from 'assets/img/spotlight/pool.jpg';
 import Color from 'color';
-import { Divider, ITapestryIconProps, TapestryIcon } from 'components/elements';
+import { Divider } from 'components/elements';
+import { ITapestryIconProps, TapestryIcon } from 'components/icons';
 import { Container, IContainerProps } from 'components/layout';
 import { H1, H2 } from 'components/typography';
 import { nanoid } from 'nanoid';
@@ -82,7 +83,7 @@ export const Spotlight: React.FC<ISpotlightProps> = (props): JSX.Element => {
         <Divider bg="white" mb={4} />
 
         <H2 color="white" textAlign="center">
-          {t('spotlight.subtitle')}
+          {t('slogan', { ns: 'common' })}
         </H2>
       </Box>
     </Container>
