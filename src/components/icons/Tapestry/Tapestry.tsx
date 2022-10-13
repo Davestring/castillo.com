@@ -1,8 +1,8 @@
 import { Box, BoxProps } from '@chakra-ui/react';
 
-export type ITapestryIconProps = BoxProps;
+export type ITapestryProps = BoxProps;
 
-export const TapestryIcon: React.FC<ITapestryIconProps> = (props) => (
+export const Tapestry: React.FC<ITapestryProps> = (props) => (
   <Box
     as="svg"
     fill="none"

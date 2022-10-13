@@ -4,7 +4,7 @@ import { ITapestryIconProps, TapestryIcon } from '..';
 
 export default {
   component: TapestryIcon,
-  title: 'Elements/TapestryIcon',
+  title: 'Icons/TapestryIcon',
 } as Meta;
 
 const Template: Story<ITapestryIconProps> = (args) => (
@@ -13,6 +13,7 @@ const Template: Story<ITapestryIconProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  color: 'blue.700',
   height: 304,
   width: 304,
 };
