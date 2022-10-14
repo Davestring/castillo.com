@@ -1,3 +1,7 @@
+env:
+  REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+  REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+
 on:
   push:
     branches:
@@ -7,9 +11,6 @@ on:
 
 jobs:
   build:
-    env:
-      REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-      REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
