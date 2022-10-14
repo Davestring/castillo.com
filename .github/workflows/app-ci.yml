@@ -30,6 +30,12 @@ jobs:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
         run: yarn build:app
 
+      - name: Netlify Settings
+        uses: canastro/copy-file-action@master
+        with:
+          source: 'netlify.toml'
+          target: 'build/netlify.toml'
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
