@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    environment:
+      name: prod
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -22,15 +24,10 @@ jobs:
       - name: Install
         run: yarn install
 
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-          envkey_REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-          directory: './'
-          file_name: '.env'
-
       - name: Build
+        env:
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
         run: yarn build:app
 
       - name: Upload artifacts
