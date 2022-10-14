@@ -41,7 +41,7 @@ export const Spotlight: React.FC<ISpotlightProps> = (props): JSX.Element => {
   const { t } = useTranslation('page:home');
 
   return (
-    <Container as="section" {...props}>
+    <Container as="section" role="main" {...props}>
       {TAPESTRIES?.map((item) => (
         <TapestryIcon
           key={nanoid()}
