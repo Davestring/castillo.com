@@ -3,6 +3,7 @@ import { InputField } from 'components/inputs';
 import { Form as ReachForm, Formik, FormikHelpers } from 'formik';
 import { Trans, useTranslation } from 'react-i18next';
 import { Link as ReachLink } from 'react-router-dom';
+import { IBaseAuthentication } from 'services/resources';
 import * as Yup from 'yup';
 
 const INITIAL_VALUES = { email: '', password: '' };
@@ -21,14 +22,14 @@ export interface IFormProps extends Omit<StackProps, 'onSubmit'> {
   /**
    * Form initial values, a IBaseAuthentication object.
    */
-  initialValues?: { email: string; password: string };
+  initialValues?: IBaseAuthentication;
   /**
    * Action that will be triggered when the user submits the form.
    */
   onSubmit: (
-    v: { email: string; password: string },
-    helpers?: FormikHelpers<{ email: string; password: string }>,
-  ) => void;
+    v: IBaseAuthentication,
+    h?: FormikHelpers<IBaseAuthentication>,
+  ) => Promise<void>;
 }
 
 export const Form: React.FC<IFormProps> = (props): JSX.Element => {
@@ -42,42 +43,50 @@ export const Form: React.FC<IFormProps> = (props): JSX.Element => {
       onSubmit={onSubmit}
       validationSchema={VALIDATION_SCHEMA}
     >
-      <Stack as={ReachForm} {...rest}>
-        <InputField
-          name="email"
-          placeholder={t('form.email.placeholder')}
-          size="md"
-        />
+      {({ isValid, isSubmitting }) => (
+        <Stack as={ReachForm} {...rest}>
+          <InputField
+            name="email"
+            placeholder={t('form.email.placeholder')}
+            size="md"
+          />
 
-        <InputField
-          name="password"
-          placeholder={t('form.password.placeholder')}
-          size="md"
-        />
+          <InputField
+            name="password"
+            placeholder={t('form.password.placeholder')}
+            size="md"
+          />
 
-        <Button colorScheme="facebook" size="md" type="submit">
-          {t('button.continue', { ns: 'common' })}
-        </Button>
+          <Button
+            colorScheme="facebook"
+            isDisabled={isSubmitting || !isValid}
+            isLoading={isSubmitting}
+            size="md"
+            type="submit"
+          >
+            {t('button.continue', { ns: 'common' })}
+          </Button>
 
-        <Text align="center">
-          <Trans i18nKey="notice" ns="page:login">
-            <Text
-              as="span"
-              color="blackAlpha.500"
-              fontSize="xs"
-              fontWeight="medium"
-            />
-            <Link
-              as={ReachLink}
-              color="blue.700"
-              fontSize="xs"
-              fontWeight="bold"
-              mt={0}
-              to="/booking"
-            />
-          </Trans>
-        </Text>
-      </Stack>
+          <Text align="center">
+            <Trans i18nKey="notice" ns="page:login">
+              <Text
+                as="span"
+                color="blackAlpha.500"
+                fontSize="xs"
+                fontWeight="medium"
+              />
+              <Link
+                as={ReachLink}
+                color="blue.700"
+                fontSize="xs"
+                fontWeight="bold"
+                mt={0}
+                to="/booking"
+              />
+            </Trans>
+          </Text>
+        </Stack>
+      )}
     </Formik>
   );
 };

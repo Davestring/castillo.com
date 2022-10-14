@@ -2,10 +2,13 @@ import { Text } from '@chakra-ui/react';
 import Color from 'color';
 import { AnalyticsIcon } from 'components/icons';
 import { Container } from 'components/layout';
-import { useCallback } from 'react';
+import { AuthContext } from 'contexts';
+import fp from 'lodash/fp';
+import { useContext } from 'react';
 import { use100vh } from 'react-div-100vh';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import { Navigate } from 'react-router-dom';
 
 import { Card } from './components/Card';
 import { Footer } from './components/Footer';
@@ -13,11 +16,13 @@ import { Form } from './components/Form';
 import { Header } from './components/Header';
 
 export const Login = (): JSX.Element => {
+  const { access, authFn } = useContext(AuthContext);
+
   const { t } = useTranslation('page:login');
 
   const height = use100vh();
 
-  const handleOnSubmit = useCallback(() => {}, []);
+  if (!fp.isNil(access)) return <Navigate to="/dashboard" />;
 
   return (
     <>
@@ -44,7 +49,7 @@ export const Login = (): JSX.Element => {
             {t('title')}
           </Text>
 
-          <Form onSubmit={handleOnSubmit} />
+          <Form onSubmit={authFn} />
         </Card>
 
         <Footer />
