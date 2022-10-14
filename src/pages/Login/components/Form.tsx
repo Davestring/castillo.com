@@ -55,6 +55,7 @@ export const Form: React.FC<IFormProps> = (props): JSX.Element => {
             name="password"
             placeholder={t('form.password.placeholder')}
             size="md"
+            type="password"
           />
 
           <Button
