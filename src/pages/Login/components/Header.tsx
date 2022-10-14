@@ -1,4 +1,4 @@
-import { Flex, FlexProps, Image, Text } from '@chakra-ui/react';
+import { Flex, FlexProps, Image } from '@chakra-ui/react';
 import Logo from 'assets/img/logo.dark.png';
 
 export type IHeaderProps = FlexProps;
