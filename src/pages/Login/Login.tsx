@@ -1,5 +1,4 @@
 import { Text } from '@chakra-ui/react';
-import Color from 'color';
 import { AnalyticsIcon } from 'components/icons';
 import { Container } from 'components/layout';
 import { AuthContext } from 'contexts';
@@ -31,7 +30,7 @@ export const Login = (): JSX.Element => {
       </Helmet>
 
       <Container
-        bg={{ base: 'white', md: Color('#101D2C').lighten(7).hex() }}
+        bg={{ base: 'white', md: '#F6F7FA' }}
         isFluid
         minH={height || 0}
         py={12}
