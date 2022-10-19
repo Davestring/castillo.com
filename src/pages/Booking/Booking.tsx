@@ -1,9 +1,13 @@
 import { Container, Header } from 'components/layout';
+import { AuthContext } from 'contexts';
+import { useContext } from 'react';
 import { use100vh } from 'react-div-100vh';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
 export const Booking = (): JSX.Element => {
+  const { access } = useContext(AuthContext);
+
   const { t } = useTranslation('page:booking');
 
   const height = use100vh();
@@ -14,9 +18,9 @@ export const Booking = (): JSX.Element => {
         <title>{t('helmet')}</title>
       </Helmet>
 
-      <Header position="fixed" />
+      <Header isAuthenticated={!!access} position="fixed" />
 
-      <Container bg="#F6F7FA" isFluid minHeight={height || 0} pt={16} />
+      <Container bg="bg" isFluid minHeight={height || 0} pt={16} />
     </>
   );
 };
