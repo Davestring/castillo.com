@@ -1,3 +1,3 @@
-import { H1 } from 'components/typography';
+import { PageHeadline } from 'components/elements';
 
-export const Dashboard = (): JSX.Element => <H1>Dashboard!</H1>;
+export const Dashboard = (): JSX.Element => <PageHeadline title="Dashboard" />;
