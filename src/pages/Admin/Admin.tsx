@@ -1,6 +1,4 @@
-import 'react-toastify/dist/ReactToastify.css';
-
-import { Box, Flex, Stack } from '@chakra-ui/react';
+import { Flex, Stack } from '@chakra-ui/react';
 import {
   clearAllBodyScrollLocks,
   disableBodyScroll,
@@ -13,8 +11,6 @@ import { useSidebar, useToggle } from 'hooks';
 import fp from 'lodash/fp';
 import { useContext, useEffect, useRef } from 'react';
 import { use100vh } from 'react-div-100vh';
-import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
 import {
   FaCalendarAlt,
   FaChartBar,
@@ -55,8 +51,6 @@ const SIDE_NAVIGATION = [
 export const Admin = (): JSX.Element | null => {
   const { access, isLoading } = useContext(AuthContext);
 
-  const { t } = useTranslation('page:admin');
-
   const [isOpen, toggle] = useToggle(false);
 
   const contentRef = useRef<HTMLDivElement>(null);
@@ -82,41 +76,35 @@ export const Admin = (): JSX.Element | null => {
   if (fp.isNil(access)) return <Navigate replace to="/login" />;
 
   return (
-    <>
-      <Helmet>
-        <title>{t('helmet')}</title>
-      </Helmet>
+    <Flex
+      ref={contentRef}
+      as="main"
+      bg="bg"
+      h={height || 0}
+      overflowX="hidden"
+      position="relative"
+    >
+      <Sidebar
+        ref={sidebarRef}
+        isOpen={isOpen}
+        navigation={SIDE_NAVIGATION}
+        top={0}
+      />
 
-      <Flex
-        ref={contentRef}
-        as="main"
-        bg="bg"
-        h={height || 0}
-        overflowX="hidden"
-        position="relative"
-      >
-        <Sidebar
-          ref={sidebarRef}
-          isOpen={isOpen}
-          navigation={SIDE_NAVIGATION}
+      <Overlay isVisible={isOpen} />
+
+      <Stack flex={1}>
+        <Header
+          isAuthenticated
+          onClick={() => toggle()}
+          position="sticky"
           top={0}
         />
 
-        <Overlay isVisible={isOpen} />
-
-        <Stack flex={1}>
-          <Header
-            isAuthenticated
-            onClick={() => toggle()}
-            position="sticky"
-            top={0}
-          />
-
-          <Box as="section" flex={1} mt="0 !important" overflowY="scroll" p={8}>
-            <Outlet />
-          </Box>
+        <Stack as="section" flex={1} mt="0 !important" overflowY="scroll" p={8}>
+          <Outlet />
         </Stack>
-      </Flex>
-    </>
+      </Stack>
+    </Flex>
   );
 };

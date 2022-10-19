@@ -1,3 +1,6 @@
 {
-  "helmet": "Casa Castillo | Dashboard"
+  "dashboard.helmet": "Casa Castillo | Dashboard",
+  "reservations.helmet": "Casa Castillo | Reservations",
+  "reservations.quote": "On this page you can manage the reservations that users have made within the site.",
+  "reservations.title": "Reservations"
 }
