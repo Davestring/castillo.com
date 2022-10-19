@@ -88,7 +88,8 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
             color="primary.700"
             display={{ base: 'none', lg: 'inherit' }}
             onClick={() => navigate('/login')}
-            p={4}
+            px={6}
+            py={4}
             rounded="full"
             size="xs"
           >
