@@ -44,7 +44,7 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
   const navigate = useNavigate();
 
   return (
-    <Box as="header" bg={isDark ? 'primary.600' : 'white'} {...rest}>
+    <Box as="header" bg={isDark ? 'primary.700' : 'white'} {...rest}>
       <Container
         alignItems="center"
         as="nav"
@@ -85,7 +85,7 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
         {!isAuthenticated ? (
           <Button
             bg="bg"
-            color="primary.600"
+            color="primary.700"
             display={{ base: 'none', lg: 'inherit' }}
             onClick={() => navigate('/login')}
             p={4}
@@ -99,7 +99,7 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
             _hover={{ transform: 'scale(1.05)' }}
             aria-label="logout"
             display={{ base: 'none', lg: 'inherit' }}
-            icon={<FiLogOut color={isDark ? 'white' : 'primary.700'} />}
+            icon={<FiLogOut color={isDark ? 'white' : '#101D2C'} />}
             onClick={logoutFn}
             size="lg"
             variant="link"

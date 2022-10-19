@@ -15,7 +15,42 @@ import { useContext, useEffect, useRef } from 'react';
 import { use100vh } from 'react-div-100vh';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import {
+  FaCalendarAlt,
+  FaChartBar,
+  FaCreditCard,
+  FaTv,
+  FaUsers,
+} from 'react-icons/fa';
 import { Navigate, Outlet } from 'react-router-dom';
+
+const SIDE_NAVIGATION = [
+  {
+    icon: FaChartBar,
+    label: 'sidebar.dashboard',
+    to: '/dashboard',
+  },
+  {
+    icon: FaCalendarAlt,
+    label: 'sidebar.reservations',
+    to: '/reservations',
+  },
+  {
+    icon: FaCreditCard,
+    label: 'sidebar.payments',
+    to: '/payments',
+  },
+  {
+    icon: FaTv,
+    label: 'sidebar.services',
+    to: '/services',
+  },
+  {
+    icon: FaUsers,
+    label: 'sidebar.users',
+    to: '/users',
+  },
+];
 
 export const Admin = (): JSX.Element | null => {
   const { access, isLoading } = useContext(AuthContext);
@@ -60,11 +95,16 @@ export const Admin = (): JSX.Element | null => {
         overflowX="hidden"
         position="relative"
       >
-        <Sidebar ref={sidebarRef} isOpen={isOpen} top={0} />
+        <Sidebar
+          ref={sidebarRef}
+          isOpen={isOpen}
+          navigation={SIDE_NAVIGATION}
+          top={0}
+        />
 
         <Overlay isVisible={isOpen} />
 
-        <Stack flex={1} h="100%">
+        <Stack flex={1}>
           <Header
             isAuthenticated
             onClick={() => toggle()}

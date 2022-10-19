@@ -1,4 +1,11 @@
-import { AdminPage, DashboardPage } from 'pages/Admin';
+import {
+  AdminPage,
+  DashboardPage,
+  PaymentsPage,
+  ReservationsPage,
+  ServicesPage,
+  UsersPage,
+} from 'pages/Admin';
 import { BookingPage } from 'pages/Booking';
 import { HomePage } from 'pages/Home';
 import { LoginPage } from 'pages/Login';
@@ -15,6 +22,10 @@ export const App = (): JSX.Element => (
 
     <Route element={<AdminPage />}>
       <Route element={<DashboardPage />} path="/dashboard" />
+      <Route element={<ReservationsPage />} path="/reservations" />
+      <Route element={<PaymentsPage />} path="/payments" />
+      <Route element={<ServicesPage />} path="/services" />
+      <Route element={<UsersPage />} path="/users" />
     </Route>
 
     <Route element={<NotFoundPage />} path="*" />

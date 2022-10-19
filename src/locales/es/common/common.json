@@ -4,6 +4,11 @@
   "button.login": "Inicia Sesión",
   "casa-castillo": "Casa Castillo",
   "privacy": "Aviso de privacidad",
+  "sidebar.dashboard": "Dashboard",
+  "sidebar.payments": "Pagos",
+  "sidebar.reservations": "Reservaciones",
+  "sidebar.services": "Servicios",
+  "sidebar.users": "Usuarios",
   "slogan": "Estancias a la medida en uno de los hogares más inspiradores del mundo",
   "terms": "Términos y condiciones",
   "version": "v{{value}}"

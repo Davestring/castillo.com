@@ -4,6 +4,11 @@
   "button.login": "Login",
   "casa-castillo": "Casa Castillo",
   "privacy": "Privacy notice",
+  "sidebar.dashboard": "Dashboard",
+  "sidebar.payments": "Payments",
+  "sidebar.reservations": "Reservations",
+  "sidebar.services": "Services",
+  "sidebar.users": "Users",
   "slogan": "Tailored stays in one of the world's most inspiring homes",
   "terms": "Terms and conditions",
   "version": "v{{value}}"
