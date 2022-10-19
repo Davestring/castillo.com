@@ -2,7 +2,9 @@
   "button.booking": "Booking",
   "button.continue": "Continue",
   "button.login": "Login",
+  "casa-castillo": "Casa Castillo",
   "privacy": "Privacy notice",
   "slogan": "Tailored stays in one of the world's most inspiring homes",
-  "terms": "Terms and conditions"
+  "terms": "Terms and conditions",
+  "version": "v{{value}}"
 }
