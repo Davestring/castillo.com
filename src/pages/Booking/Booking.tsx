@@ -18,7 +18,7 @@ export const Booking = (): JSX.Element => {
         <title>{t('helmet')}</title>
       </Helmet>
 
-      <Header isAuthenticated={!!access} position="fixed" />
+      <Header isAuthenticated={!!access} isDark position="fixed" withLogo />
 
       <Container bg="bg" isFluid minHeight={height || 0} pt={16} />
     </>

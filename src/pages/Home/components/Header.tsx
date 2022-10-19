@@ -23,7 +23,8 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
       <Divider bg="white" h={10} orientation="vertical" w="0.125rem" />
 
       <Button
-        colorScheme="gray"
+        bg="bg"
+        color="primary.600"
         onClick={() => navigate('/booking')}
         px={8}
         size="sm"
