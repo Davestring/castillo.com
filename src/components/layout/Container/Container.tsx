@@ -27,7 +27,7 @@ export const Container = forwardRef<HTMLDivElement, IContainerProps>(
     return (
       <Box
         ref={ref}
-        {...(isFluid ? { maxW: '100%' } : { maxW: '1200px' })}
+        {...(isFluid ? { maxW: '100%' } : { maxW: '1440px' })}
         {...(is100vh ? { h: height } : {})}
         {...rest}
       >
@@ -47,6 +47,6 @@ Container.defaultProps = {
   mx: 'auto',
   overflowX: 'hidden',
   position: 'relative',
-  px: 4,
+  px: 8,
   w: '100%',
 };

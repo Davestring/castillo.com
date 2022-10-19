@@ -9,6 +9,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { theme } from 'utils';
 
 export const GLOBAL_CSS = `
   scroll-behavior: smooth;
@@ -23,11 +24,11 @@ const MOUNT_NODE = ReactDOM.createRoot(
 );
 
 const CasaCastillo: React.FC = (): JSX.Element => (
-  <>
+  <React.StrictMode>
     <I18nextProvider i18n={i18n} />
     <ToastContainer theme="colored" />
     <HelmetProvider>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Global styles={GLOBAL_CSS} />
         <BrowserRouter>
           <AuthProvider>
@@ -36,7 +37,7 @@ const CasaCastillo: React.FC = (): JSX.Element => (
         </BrowserRouter>
       </ChakraProvider>
     </HelmetProvider>
-  </>
+  </React.StrictMode>
 );
 
 MOUNT_NODE.render(<CasaCastillo />);

@@ -15,7 +15,7 @@ export const useLogout = (dispatch: Dispatch<IAction>): IUseLogoutFn => {
   const fn = useCallback(async () => {
     localStorage.removeItem('access');
 
-    navigate('/login');
+    navigate('/login', { replace: true });
 
     dispatch({ type: Action.LOGOUT });
   }, []);

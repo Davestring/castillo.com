@@ -21,7 +21,7 @@ export const Login = (): JSX.Element => {
 
   const height = use100vh();
 
-  if (!fp.isNil(access)) return <Navigate to="/dashboard" />;
+  if (!fp.isNil(access)) return <Navigate replace to="/dashboard" />;
 
   return (
     <>
@@ -30,7 +30,7 @@ export const Login = (): JSX.Element => {
       </Helmet>
 
       <Container
-        bg={{ base: 'white', md: '#F6F7FA' }}
+        bg={{ base: 'white', md: 'bg' }}
         isFluid
         minH={height || 0}
         py={12}
@@ -40,7 +40,7 @@ export const Login = (): JSX.Element => {
         <Card>
           <Text
             align="center"
-            color="blue.700"
+            color="primary.600"
             fontSize="lg"
             fontWeight="bold"
             mb={8}
@@ -56,7 +56,7 @@ export const Login = (): JSX.Element => {
 
       <AnalyticsIcon
         bottom={8}
-        color="blue.700"
+        color="primary.500"
         display={{ base: 'none', lg: 'block' }}
         height={226}
         position="fixed"

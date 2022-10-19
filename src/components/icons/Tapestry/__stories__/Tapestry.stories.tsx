@@ -13,7 +13,7 @@ const Template: Story<ITapestryIconProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  color: 'blue.700',
+  color: 'primary.700',
   height: 304,
   width: 304,
 };

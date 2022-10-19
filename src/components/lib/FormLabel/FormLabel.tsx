@@ -18,6 +18,6 @@ export const FormLabel: React.FC<IFormLabelProps> = (
 };
 
 FormLabel.defaultProps = {
-  color: '#101D2C',
+  color: 'primary.700',
   fontWeight: 'medium',
 };

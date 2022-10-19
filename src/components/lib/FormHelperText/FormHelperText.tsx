@@ -20,7 +20,7 @@ export const FormHelperText: React.FC<IFormHelperTextProps> = (
   return (
     <FHT {...rest}>
       <Stack align="start" isInline justify="center">
-        <Icon as={FaInfoCircle} boxSize={4} color="blue.100" />
+        <Icon as={FaInfoCircle} boxSize={4} color="primary.100" />
         <Text align="start" as="span">
           {children}
         </Text>

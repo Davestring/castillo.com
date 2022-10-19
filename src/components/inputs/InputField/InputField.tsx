@@ -89,7 +89,7 @@ if (__DEV__) {
 
 InputField.defaultProps = {
   helper: undefined,
-  inputProps: { bg: '#F6F7FA' },
+  inputProps: { bg: 'bg' },
   label: undefined,
   labelProps: {},
   placeholder: undefined,

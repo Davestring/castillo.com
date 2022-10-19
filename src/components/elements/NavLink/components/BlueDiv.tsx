@@ -7,7 +7,7 @@ export const BlueDiv: React.FC<IBlueDivProps> = (props): JSX.Element => (
 );
 
 BlueDiv.defaultProps = {
-  bg: 'blue.600',
+  bg: 'primary.600',
   bottom: 0,
   h: 0,
   position: 'absolute',

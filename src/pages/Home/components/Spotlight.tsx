@@ -2,15 +2,12 @@ import { Box, Image, ImageProps } from '@chakra-ui/react';
 import Bar from 'assets/img/spotlight/bar.jpg';
 import Facade from 'assets/img/spotlight/facade.jpg';
 import Pool from 'assets/img/spotlight/pool.jpg';
-import Color from 'color';
 import { Divider } from 'components/elements';
 import { ITapestryIconProps, TapestryIcon } from 'components/icons';
 import { Container, IContainerProps } from 'components/layout';
 import { H1, H2 } from 'components/typography';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-
-const BG_COLOR = '#101D2C';
 
 const TAPESTRIES: ITapestryIconProps[] = [{ right: '-50%' }, { right: '50%' }];
 
@@ -45,7 +42,7 @@ export const Spotlight: React.FC<ISpotlightProps> = (props): JSX.Element => {
       {TAPESTRIES?.map((item) => (
         <TapestryIcon
           key={nanoid()}
-          color={Color(BG_COLOR).darken(0.2).hex()}
+          color="primary.900"
           height="100%"
           position="absolute"
           top={0}
@@ -91,7 +88,7 @@ export const Spotlight: React.FC<ISpotlightProps> = (props): JSX.Element => {
 };
 
 Spotlight.defaultProps = {
-  bg: BG_COLOR,
+  bg: 'primary.700',
   is100vh: true,
   isFluid: true,
 };

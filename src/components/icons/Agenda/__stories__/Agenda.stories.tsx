@@ -11,7 +11,7 @@ const Template: Story<IAgendaIconProps> = (args) => <AgendaIcon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  color: 'blue.700',
+  color: 'primary.700',
   height: 150,
   width: 154,
 };

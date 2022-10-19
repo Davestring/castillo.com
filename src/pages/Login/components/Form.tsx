@@ -59,7 +59,7 @@ export const Form: React.FC<IFormProps> = (props): JSX.Element => {
           />
 
           <Button
-            colorScheme="facebook"
+            colorScheme="primary"
             isDisabled={isSubmitting || !isValid}
             isLoading={isSubmitting}
             size="md"
@@ -78,7 +78,7 @@ export const Form: React.FC<IFormProps> = (props): JSX.Element => {
               />
               <Link
                 as={ReachLink}
-                color="blue.700"
+                color="primary.600"
                 fontSize="xs"
                 fontWeight="bold"
                 mt={0}

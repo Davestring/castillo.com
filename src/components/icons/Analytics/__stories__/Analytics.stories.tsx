@@ -13,7 +13,7 @@ const Template: Story<IAnalyticsIconProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  color: 'blue.700',
+  color: 'primary.700',
   height: 226,
   width: 341,
 };
