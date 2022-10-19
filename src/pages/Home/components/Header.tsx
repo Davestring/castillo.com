@@ -27,6 +27,7 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
         color="primary.600"
         onClick={() => navigate('/booking')}
         px={8}
+        rounded="full"
         size="sm"
       >
         {t('button.booking')}
