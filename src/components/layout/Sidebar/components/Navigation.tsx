@@ -1,4 +1,5 @@
 import { Icon, Link, LinkProps, Text } from '@chakra-ui/react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as ReachLink, useLocation } from 'react-router-dom';
 
@@ -13,10 +14,14 @@ export const Navigation: React.FC<INavigationProps> = (props): JSX.Element => {
 
   const location = useLocation();
 
+  const isSelected = useMemo(() => location?.pathname === to, [location, to]);
+
   return (
     <Link
       as={ReachLink}
-      bg={location?.pathname === to ? 'bg' : 'white'}
+      bg={isSelected ? 'bg' : 'white'}
+      borderColor="primary.700"
+      borderRight={isSelected ? '4px' : '0px'}
       to={to}
       {...rest}
     >
