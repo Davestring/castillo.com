@@ -3,6 +3,7 @@
   "button.continue": "Continuar",
   "button.login": "Inicia Sesión",
   "casa-castillo": "Casa Castillo",
+  "empty-search": "No se han encontrado resultados para tu busqueda.",
   "privacy": "Aviso de privacidad",
   "sidebar.dashboard": "Dashboard",
   "sidebar.payments": "Pagos",
@@ -10,6 +11,13 @@
   "sidebar.services": "Servicios",
   "sidebar.users": "Usuarios",
   "slogan": "Estancias a la medida en uno de los hogares más inspiradores del mundo",
+  "table.header.created": "fecha de creación",
+  "table.header.description": "descripción",
+  "table.header.id": "id",
+  "table.header.is-admin": "es administrador",
+  "table.header.email": "correo electrónico",
+  "table.header.name": "nombre",
+  "table.header.updated": "fecha de actualización",
   "terms": "Términos y condiciones",
   "version": "v{{value}}"
 }

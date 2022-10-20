@@ -3,6 +3,7 @@
   "button.continue": "Continue",
   "button.login": "Login",
   "casa-castillo": "Casa Castillo",
+  "empty-search": "There're no results on your search.",
   "privacy": "Privacy notice",
   "sidebar.dashboard": "Dashboard",
   "sidebar.payments": "Payments",
@@ -10,6 +11,13 @@
   "sidebar.services": "Services",
   "sidebar.users": "Users",
   "slogan": "Tailored stays in one of the world's most inspiring homes",
+  "table.header.created": "created date",
+  "table.header.description": "description",
+  "table.header.id": "id",
+  "table.header.is-admin": "is admin",
+  "table.header.email": "email",
+  "table.header.name": "name",
+  "table.header.updated": "updated date",
   "terms": "Terms and conditions",
   "version": "v{{value}}"
 }

@@ -18,3 +18,35 @@ export const theme = extendTheme({
     },
   },
 });
+
+export const GLOBAL_CSS = `
+  scroll-behavior: smooth;
+
+  a {
+    text-decoration: none !important;
+  }
+
+  .fc .fc-button-primary {
+    background: #101D2C;
+  }
+
+  .fc .fc-button-primary:not(:disabled):active:focus, .fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+    box-shadow: none;
+    background: ${Color('#101D2C').lighten(1).hex()};
+  }
+
+  .fc-toolbar {
+    color: #101D2C;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .fc .fc-scrollgrid-liquid {
+    background: white;
+    border-radius: 4px;
+  }
+
+  .fc {
+    font-size: 14px;
+  }
+`;

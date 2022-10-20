@@ -1,6 +1,17 @@
 {
   "dashboard.helmet": "Casa Castillo | Dashboard",
+  "dashboard.quote": "",
+  "dashboard.title": "Dashboard",
+  "payments.helmet": "Casa Castillo | Pagos",
+  "payments.quote": "",
+  "payments.title": "Pagos",
   "reservations.helmet": "Casa Castillo | Reservaciones",
   "reservations.quote": "En esta página podrás administrar las reservaciones que los usuarios han realizado dentro del sitio.",
-  "reservations.title": "Reservaciones"
+  "reservations.title": "Reservaciones",
+  "services.helmet": "Casa Castillo | Servicios",
+  "services.quote": "En esta página podrás administrar los servicios que ofrece Casa Castillo y que los usuarios visualizarán dentro del sitio.",
+  "services.title": "Servicios",
+  "users.helmet": "Casa Castillo | Usuarios",
+  "users.quote": "En esta página podrás administrar a los usuarios que tendrán cuenta dentro del sitio de administración de Casa Castillo.",
+  "users.title": "Usuarios"
 }

@@ -77,6 +77,7 @@ Sidebar.defaultProps = {
   position: { base: 'fixed', lg: 'sticky' },
   top: 0,
   transition: 'margin .5s ease',
-  w: 280,
+  maxW: 280,
+  minW: 280,
   zIndex: 'popover',
 };

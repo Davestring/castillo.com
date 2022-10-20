@@ -114,9 +114,10 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
 Header.defaultProps = {
   borderBottom: '2px',
   borderColor: 'blackAlpha.100',
-  h: 16,
   isAuthenticated: false,
   isDark: false,
+  maxH: 16,
+  minH: 16,
   w: '100%',
   withLogo: false,
   zIndex: 'banner',

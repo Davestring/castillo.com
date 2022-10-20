@@ -20,7 +20,12 @@ export const Reservations = (): JSX.Element => {
         title={t('reservations.title')}
       />
 
-      <Flex flex={1} overflowY="scroll" sx={{ '&>div': { flex: 1 } }}>
+      <Flex
+        flex={1}
+        mt="0 !important"
+        overflowY="scroll"
+        sx={{ '&>div': { flex: 1 } }}
+      >
         <Calendar />
       </Flex>
     </>

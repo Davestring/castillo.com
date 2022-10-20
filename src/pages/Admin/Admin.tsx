@@ -11,42 +11,9 @@ import { useSidebar, useToggle } from 'hooks';
 import fp from 'lodash/fp';
 import { useContext, useEffect, useRef } from 'react';
 import { use100vh } from 'react-div-100vh';
-import {
-  FaCalendarAlt,
-  FaChartBar,
-  FaCreditCard,
-  FaTv,
-  FaUsers,
-} from 'react-icons/fa';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const SIDE_NAVIGATION = [
-  {
-    icon: FaChartBar,
-    label: 'sidebar.dashboard',
-    to: '/dashboard',
-  },
-  {
-    icon: FaCalendarAlt,
-    label: 'sidebar.reservations',
-    to: '/reservations',
-  },
-  {
-    icon: FaCreditCard,
-    label: 'sidebar.payments',
-    to: '/payments',
-  },
-  {
-    icon: FaTv,
-    label: 'sidebar.services',
-    to: '/services',
-  },
-  {
-    icon: FaUsers,
-    label: 'sidebar.users',
-    to: '/users',
-  },
-];
+import { SIDE_NAVIGATION } from './helpers';
 
 export const Admin = (): JSX.Element | null => {
   const { access, isLoading } = useContext(AuthContext);
@@ -81,7 +48,7 @@ export const Admin = (): JSX.Element | null => {
       as="main"
       bg="bg"
       h={height || 0}
-      overflowX="hidden"
+      overflow="hidden"
       position="relative"
     >
       <Sidebar
@@ -93,15 +60,10 @@ export const Admin = (): JSX.Element | null => {
 
       <Overlay isVisible={isOpen} />
 
-      <Stack flex={1}>
-        <Header
-          isAuthenticated
-          onClick={() => toggle()}
-          position="sticky"
-          top={0}
-        />
+      <Stack flex={1} overflow="hidden">
+        <Header isAuthenticated onClick={() => toggle()} />
 
-        <Stack as="section" flex={1} mt="0 !important" overflowY="scroll" p={8}>
+        <Stack as="section" flex={1} mt="0 !important" overflow="hidden" p={8}>
           <Outlet />
         </Stack>
       </Stack>
