@@ -63,7 +63,13 @@ export const Admin = (): JSX.Element | null => {
       <Stack flex={1} overflow="hidden">
         <Header isAuthenticated onClick={() => toggle()} />
 
-        <Stack as="section" flex={1} mt="0 !important" overflow="hidden" p={8}>
+        <Stack
+          as="section"
+          flex={1}
+          mt="0 !important"
+          overflow="hidden"
+          p={{ base: 4, md: 8 }}
+        >
           <Outlet />
         </Stack>
       </Stack>

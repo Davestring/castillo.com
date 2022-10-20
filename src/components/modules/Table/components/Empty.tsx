@@ -20,7 +20,7 @@ export const Empty: React.FC<IEmptyProps> = (props): JSX.Element | null => {
   return (
     <Flex {...rest}>
       <EmptySearchIcon color="primary.500" height={200} width={268} />
-      <Text as="strong" fontSize="xl">
+      <Text align="center" as="strong" fontSize="xl">
         {t('empty-search')}
       </Text>
     </Flex>
@@ -32,4 +32,5 @@ Empty.defaultProps = {
   direction: 'column',
   gap: 4,
   justify: 'center',
+  whiteSpace: 'normal',
 };

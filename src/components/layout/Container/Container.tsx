@@ -47,6 +47,6 @@ Container.defaultProps = {
   mx: 'auto',
   overflowX: 'hidden',
   position: 'relative',
-  px: 8,
+  px: { base: 4, lg: 8 },
   w: '100%',
 };
