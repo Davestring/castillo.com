@@ -48,20 +48,22 @@ export const Table: React.FC<ITableProps> = (props): JSX.Element => {
         overflowX={isEmpty ? 'hidden' : 'auto'}
         {...rest}
       >
-        <T position="relative" variant="simple">
-          <Thead>
-            <Tr>
-              {headers.map((header) => (
-                <Th key={nanoid()} color="primary.700" py={4}>
-                  {t(header)}
-                </Th>
-              ))}
-            </Tr>
-          </Thead>
-          <Tbody sx={{ '&>tr': { '&:nth-child(odd)': { bg: 'bg' } } }}>
-            {children}
-          </Tbody>
-        </T>
+        {!isEmpty ? (
+          <T position="relative" variant="simple">
+            <Thead>
+              <Tr>
+                {headers.map((header) => (
+                  <Th key={nanoid()} color="primary.700" py={4}>
+                    {t(header)}
+                  </Th>
+                ))}
+              </Tr>
+            </Thead>
+            <Tbody sx={{ '&>tr': { '&:nth-child(odd)': { bg: 'bg' } } }}>
+              {children}
+            </Tbody>
+          </T>
+        ) : null}
 
         <Empty flex={1} isVisible={isEmpty && !isLoading} mx={8} />
       </Flex>
