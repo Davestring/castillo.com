@@ -32,7 +32,18 @@ export const GLOBAL_CSS = `
   }
 
   .fc-toolbar {
+    color: #101D2C;
+    font-weight: 600;
     text-transform: capitalize;
+  }
+
+  .fc .fc-scrollgrid-liquid {
+    background: white;
+    border-radius: 4px;
+  }
+
+  .fc {
+    font-size: 14px;
   }
 `;
 
