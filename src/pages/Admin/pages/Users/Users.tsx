@@ -13,7 +13,7 @@ export const Users = (): JSX.Element => {
         <title>{t('users.helmet')}</title>
       </Helmet>
 
-      <PageHeadline mb={4} quote={t('users.quote')} title={t('users.title')} />
+      <PageHeadline mb={6} quote={t('users.quote')} title={t('users.title')} />
 
       <Table flex={1} headers={USERS_TABLE_HEADERS} isEmpty />
     </>

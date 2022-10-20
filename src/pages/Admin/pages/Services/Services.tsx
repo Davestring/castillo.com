@@ -16,7 +16,7 @@ export const Services = (): JSX.Element => {
       </Helmet>
 
       <PageHeadline
-        mb={4}
+        mb={6}
         quote={t('services.quote')}
         title={t('services.title')}
       />

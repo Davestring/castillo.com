@@ -15,7 +15,7 @@ export const Reservations = (): JSX.Element => {
       </Helmet>
 
       <PageHeadline
-        mb={4}
+        mb={6}
         quote={t('reservations.quote')}
         title={t('reservations.title')}
       />

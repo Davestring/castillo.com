@@ -68,7 +68,7 @@ export const Admin = (): JSX.Element | null => {
           flex={1}
           mt="0 !important"
           overflow="hidden"
-          p={{ base: 4, md: 8 }}
+          p={{ base: 4, md: 6 }}
         >
           <Outlet />
         </Stack>

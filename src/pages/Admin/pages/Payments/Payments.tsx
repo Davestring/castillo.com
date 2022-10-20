@@ -13,7 +13,7 @@ export const Payments = (): JSX.Element => {
       </Helmet>
 
       <PageHeadline
-        mb={4}
+        mb={6}
         quote={t('payments.quote')}
         title={t('payments.title')}
       />
