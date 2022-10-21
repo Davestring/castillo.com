@@ -43,12 +43,8 @@ export const Table: React.FC<ITableProps> = (props): JSX.Element => {
 
   return (
     <>
-      <Flex
-        as={TableContainer}
-        overflowX={isEmpty ? 'hidden' : 'auto'}
-        {...rest}
-      >
-        {!isEmpty ? (
+      {!isEmpty ? (
+        <TableContainer overflowX={isEmpty ? 'hidden' : 'auto'} {...rest}>
           <T position="relative" variant="simple">
             <Thead>
               <Tr>
@@ -63,11 +59,10 @@ export const Table: React.FC<ITableProps> = (props): JSX.Element => {
               {children}
             </Tbody>
           </T>
-        ) : null}
+        </TableContainer>
+      ) : null}
 
-        <Empty flex={1} isVisible={isEmpty && !isLoading} mx={8} />
-      </Flex>
-
+      <Empty isVisible={isEmpty && !isLoading} {...rest} />
       <Loading isLoading={isLoading} />
     </>
   );
@@ -77,7 +72,6 @@ Table.defaultProps = {
   bg: 'white',
   border: '2px',
   borderColor: 'blackAlpha.100',
-  direction: 'column',
   flex: 1,
   mt: '0 !important',
   overflowY: 'scroll',
