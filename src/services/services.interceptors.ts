@@ -29,18 +29,13 @@ export const setupInterceptors = (logoutFn: () => void): void => {
     const isMissingPermissions = ({ status }) => status === 403;
     const isServerError = ({ status }) => status === 500;
 
-    const TOKEN = localStorage.getItem('token');
+    const TOKEN = localStorage.getItem('access');
 
     if (isTokenExpired(error?.response) && !_.isNil(TOKEN)) {
-      try {
-        // TODO: handle refresh token.
-        throw Error;
-      } catch {
-        _.unset(instance, TOKEN_PATH);
-        const MESSAGE = i18n.t('api.default.status-code.401', { ns: 'errors' });
-        toast.error(MESSAGE);
-        logoutFn();
-      }
+      _.unset(instance, TOKEN_PATH);
+      const MESSAGE = i18n.t('api.default.status-code.401', { ns: 'errors' });
+      toast.error(MESSAGE);
+      logoutFn();
     }
 
     if (isMissingPermissions(error?.response)) {
