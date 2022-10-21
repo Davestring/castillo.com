@@ -6,7 +6,7 @@ export interface IServiceResource extends IBaseResource {
    */
   description: string;
   /**
-   * Service name, max length is 128 and should be unique.
+   * Service name, max length is 128 characters and should be unique.
    */
   name: string;
 }

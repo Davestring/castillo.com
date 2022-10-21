@@ -11,13 +11,13 @@ export interface IAuthTokens {
 
 export interface IBaseAuthentication {
   /**
-   * User password.
-   */
-  password: string;
-  /**
    * User email.
    */
   email: string;
+  /**
+   * User password.
+   */
+  password: string;
 }
 
 export interface IRefreshPayload {
