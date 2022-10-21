@@ -8,13 +8,13 @@ export const Headline: React.FC<IHeadlineProps> = (props): JSX.Element => {
 
   return (
     <Stack {...props}>
-      <Avatar bg="primary.600" name="David Martinez" size="lg" />
+      <Avatar bg="bg" color="primary.700" name="David Martinez" size="lg" />
 
       <Box>
-        <Text align="center" fontSize="sm" fontWeight="bold">
+        <Text align="center" color="bg" fontSize="sm" fontWeight="bold">
           David Martinez
         </Text>
-        <Text align="center" color="blackAlpha.500" fontSize="xs">
+        <Text align="center" color="bg" fontSize="xs">
           {t('casa-castillo')}
         </Text>
       </Box>
@@ -25,7 +25,7 @@ export const Headline: React.FC<IHeadlineProps> = (props): JSX.Element => {
 Headline.defaultProps = {
   align: 'center',
   borderBottom: '2px',
-  borderColor: 'blackAlpha.100',
+  borderColor: 'primary.900',
   h: 154,
   justify: 'center',
   px: 4,

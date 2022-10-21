@@ -49,8 +49,8 @@ export const Sidebar = forwardRef<HTMLDivElement, ISidebarProps>(
         <Text
           align="center"
           borderTop="2px"
-          borderColor="blackAlpha.100"
-          color="primary.700"
+          borderColor="primary.900"
+          color="bg"
           fontSize="xs"
           fontWeight="bold"
           py={4}
@@ -67,9 +67,9 @@ if (__DEV__) {
 }
 
 Sidebar.defaultProps = {
-  bg: 'white',
+  bg: 'primary.700',
   borderRight: '2px',
-  borderColor: 'blackAlpha.100',
+  borderColor: 'primary.900',
   flexDir: 'column',
   h: '100%',
   isOpen: false,
@@ -77,6 +77,7 @@ Sidebar.defaultProps = {
   position: { base: 'fixed', lg: 'sticky' },
   top: 0,
   transition: 'margin .5s ease',
+  shadow: 'md',
   maxW: 280,
   minW: 280,
   zIndex: 'popover',

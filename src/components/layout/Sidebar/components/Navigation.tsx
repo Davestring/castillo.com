@@ -19,14 +19,13 @@ export const Navigation: React.FC<INavigationProps> = (props): JSX.Element => {
   return (
     <Link
       as={ReachLink}
-      bg={isSelected ? 'bg' : 'white'}
-      borderColor="primary.700"
+      bg={isSelected ? 'primary.600' : 'primary.700'}
       borderRight={isSelected ? '4px' : '0px'}
       to={to}
       {...rest}
     >
-      <Icon as={icon} boxSize={4} color="primary.700" />
-      <Text color="primary.700" fontSize="sm" fontWeight="semibold">
+      <Icon as={icon} boxSize={4} color="bg" />
+      <Text color="bg" fontSize="sm" fontWeight="semibold">
         {t(label)}
       </Text>
     </Link>
@@ -34,8 +33,9 @@ export const Navigation: React.FC<INavigationProps> = (props): JSX.Element => {
 };
 
 Navigation.defaultProps = {
-  _hover: { bg: 'bg', transition: 'background .5s ease' },
+  _hover: { bg: 'primary.600', transition: 'background .5s ease' },
   alignItems: 'center',
+  borderColor: 'bg',
   display: 'flex',
   gap: 2,
   px: 6,
