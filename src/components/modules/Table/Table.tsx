@@ -1,5 +1,4 @@
 import {
-  Flex,
   FlexProps,
   Table as T,
   TableContainer,
