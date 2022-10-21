@@ -114,6 +114,7 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
 Header.defaultProps = {
   borderBottom: '2px',
   borderColor: 'blackAlpha.100',
+  h: '100%',
   isAuthenticated: false,
   isDark: false,
   maxH: 16,
