@@ -44,7 +44,11 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
   const navigate = useNavigate();
 
   return (
-    <Box as="header" bg={isDark ? 'primary.700' : 'white'} {...rest}>
+    <Box
+      as="header"
+      bg={isDark ? 'primary.700' : { base: 'primary.700', lg: 'white' }}
+      {...rest}
+    >
       <Container
         alignItems="center"
         as="nav"
@@ -77,7 +81,7 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
         ) : null}
 
         <BurgerButton
-          color={isDark ? 'white' : 'primary.700'}
+          color={isDark ? 'white' : { base: 'white', lg: 'primary.700' }}
           display={{ base: 'block', lg: 'none' }}
           onClick={onClick}
         />
