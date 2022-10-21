@@ -1,5 +1,7 @@
 import { IBaseResource } from 'services/services.types';
 
+import { IGuestPayload } from '../guests';
+
 export interface IReservationResource extends IBaseResource {
   /**
    * Date when the guests will arrive to the facilities.
@@ -12,7 +14,7 @@ export interface IReservationResource extends IBaseResource {
   /**
    * Guest related to this booking.
    */
-  guest: number;
+  guest: IGuestPayload;
 }
 
 export type IReservationPayload = Partial<IReservationResource>;

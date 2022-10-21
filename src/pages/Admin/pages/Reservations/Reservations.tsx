@@ -1,12 +1,31 @@
 import { Flex } from '@chakra-ui/react';
 import { PageHeadline } from 'components/elements';
+import { useFetch } from 'hooks';
+import { useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import { IReservationResource, ReservationResources } from 'services/resources';
+import StringMask from 'string-mask';
 
 import { Calendar } from './components/Calendar';
 
-export const Reservations = (): JSX.Element => {
+export const Reservations = (): JSX.Element | null => {
+  const { data, isLoading } =
+    useFetch<IReservationResource>(ReservationResources);
+
   const { t } = useTranslation('page:admin');
+
+  const events = useMemo(() => {
+    const formatter = new StringMask('(##) ####-####');
+
+    return data?.results?.map((item) => ({
+      end: item?.check_out,
+      start: item?.check_in,
+      title: `${item?.guest?.name} - ${formatter.apply(item?.guest?.phone)}`,
+    }));
+  }, [data]);
+
+  if (isLoading) return null;
 
   return (
     <>
@@ -26,7 +45,7 @@ export const Reservations = (): JSX.Element => {
         overflowY="scroll"
         sx={{ '&>div': { flex: 1 } }}
       >
-        <Calendar />
+        <Calendar events={events} />
       </Flex>
     </>
   );

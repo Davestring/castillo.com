@@ -59,7 +59,7 @@ export const Table: React.FC<ITableProps> = (props): JSX.Element => {
                 ))}
               </Tr>
             </Thead>
-            <Tbody sx={{ '&>tr': { '&:nth-child(odd)': { bg: 'bg' } } }}>
+            <Tbody sx={{ '&>tr': { '&:nth-of-type(odd)': { bg: 'bg' } } }}>
               {children}
             </Tbody>
           </T>
