@@ -7,6 +7,7 @@
   "api.default.status-code.404": "The resource you are trying to access doesn't exist.",
   "api.default.status-code.500": "An unexpected error occurred, please try again later or contact our support team.",
   "form.generic.email": "Add a valid email account.",
+  "form.generic.max-length": "You have reach the maximum characters allowed.",
   "form.generic.min-length": "Enter at least 8 characters.",
   "form.generic.required": "This field is required."
 }

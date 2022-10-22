@@ -1,9 +1,12 @@
 {
   "button.booking": "Reserva",
+  "button.cancel": "Cancel",
   "button.continue": "Continuar",
   "button.login": "Inicia Sesión",
+  "button.submit": "Enviar",
   "casa-castillo": "Casa Castillo",
   "empty-search": "No se han encontrado resultados para tu busqueda.",
+  "modal.add-registry": "Añadir nuevo registro",
   "privacy": "Aviso de privacidad",
   "sidebar.dashboard": "Dashboard",
   "sidebar.payments": "Pagos",

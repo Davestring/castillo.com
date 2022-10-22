@@ -7,6 +7,7 @@
   "api.default.status-code.404": "El recurso al que intentas acceder no existe.",
   "api.default.status-code.500": "Ocurrio un error inesperado, intentalo de nuevo más tarde o comunícate con nuestro equipo de soporte.",
   "form.generic.email": "Ingresa una cuenta de correo electrónico válida.",
+  "form.generic.max-length": "Has alcanzado el máximo de caracteres permitidos.",
   "form.generic.min-length": "El mínimo de caracteres permitidos es 8.",
   "form.generic.required": "Este campo es obligatorio."
 }

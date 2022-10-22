@@ -1,9 +1,12 @@
 {
   "button.booking": "Booking",
+  "button.cancel": "Cancel",
   "button.continue": "Continue",
   "button.login": "Login",
+  "button.submit": "Submit",
   "casa-castillo": "Casa Castillo",
   "empty-search": "There're no results on your search.",
+  "modal.add-registry": "Add new registry",
   "privacy": "Privacy notice",
   "sidebar.dashboard": "Dashboard",
   "sidebar.payments": "Payments",
