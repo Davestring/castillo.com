@@ -9,7 +9,7 @@ export const TABLE_HEADERS = {
   description: 'table.header.description',
   email: 'table.header.email',
   id: 'table.header.id',
-  isAdmin: 'table.header.is-admin',
+  isStaff: 'table.header.is-staff',
   name: 'table.header.name',
   updated: 'table.header.updated',
 };
@@ -29,5 +29,5 @@ export const SERVICES_TABLE_HEADERS: string[] = fp.compose(
  */
 export const USERS_TABLE_HEADERS: string[] = fp.compose(
   fp.values,
-  fp.pick(['id', 'email', 'isAdmin', 'updated', 'created']),
+  fp.pick(['id', 'email', 'name', 'updated', 'created']),
 )(TABLE_HEADERS);

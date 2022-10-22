@@ -14,7 +14,7 @@
   "table.header.created": "created date",
   "table.header.description": "description",
   "table.header.id": "id",
-  "table.header.is-admin": "is admin",
+  "table.header.is-staff": "is staff",
   "table.header.email": "email",
   "table.header.name": "name",
   "table.header.updated": "updated date",

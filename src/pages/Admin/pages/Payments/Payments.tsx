@@ -18,7 +18,7 @@ export const Payments = (): JSX.Element => {
         title={t('payments.title')}
       />
 
-      <Table flex={1} headers={[]} isLoading overflow="scroll" />
+      <Table flex={1} headers={[]} isEmpty overflow="scroll" />
     </>
   );
 };
