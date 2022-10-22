@@ -14,8 +14,8 @@ export const Card: React.FC<ICardProps> = (props): JSX.Element => {
 
 Card.defaultProps = {
   bg: 'white',
-  border: '2px',
-  borderColor: 'blackAlpha.100',
+  border: { base: '0px', md: '2px' },
+  borderColor: { md: 'blackAlpha.100' },
   mx: 'auto',
   p: { base: 0, md: 8 },
   rounded: { base: undefined, md: 'lg' },
