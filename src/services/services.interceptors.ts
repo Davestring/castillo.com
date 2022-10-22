@@ -8,7 +8,7 @@ const API_KEY_PATH = ['headers', 'X-Api-Key'];
 
 const TOKEN_PATH = ['headers', 'Authorization'];
 
-export const setupInterceptors = (logoutFn: () => void): void => {
+export const setupInterceptors = (logoutFn: VoidFunction): void => {
   instance.interceptors.request.use(
     (config) => {
       _.set(config, API_KEY_PATH, process.env.REACT_APP_API_KEY);

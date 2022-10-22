@@ -105,6 +105,7 @@ export const Header: React.FC<IHeaderProps> = (props): JSX.Element => {
             aria-label="logout"
             display={{ base: 'none', lg: 'inherit' }}
             icon={<FiLogOut color={isDark ? 'white' : '#101D2C'} />}
+            minW="18px"
             onClick={logoutFn}
             size="lg"
             variant="link"
