@@ -6,21 +6,23 @@ import {
 } from './reservations.types';
 
 export const ReservationResources = {
-  create: (params: IReservationPayload): IResponse<IReservationResource> =>
+  create: (
+    params: IReservationPayload,
+  ): Promise<IResponse<IReservationResource>> =>
     instance.post('/booking/', params),
 
   delete: (id: number): Promise<IResponse<unknown>> =>
     instance.delete(`/booking/${id}/`),
 
-  findAll: (p: IQueryParams): IFetchResponse<IReservationResource> =>
+  findAll: (p: IQueryParams): Promise<IFetchResponse<IReservationResource>> =>
     instance.get('/booking/', { params: p }),
 
-  findByID: (id: number): IResponse<IReservationResource> =>
+  findByID: (id: number): Promise<IResponse<IReservationResource>> =>
     instance.get(`/booking/${id}`),
 
   update: (
     id: number,
     params: IReservationPayload,
-  ): IResponse<IReservationResource> =>
+  ): Promise<IResponse<IReservationResource>> =>
     instance.patch(`/booking/${id}/`, params),
 };

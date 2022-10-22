@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 /**
  * Generic axios response object.
  */
-export type IResponse<T> = Promise<AxiosResponse<T>>;
+export type IResponse<T> = AxiosResponse<T>;
 
 export interface IPagination<T> {
   /**

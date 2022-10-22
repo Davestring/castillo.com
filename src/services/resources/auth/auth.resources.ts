@@ -7,9 +7,9 @@ import {
 } from './auth.types';
 
 export const AuthResources = {
-  auth: (p: IBaseAuthentication): IResponse<IAuthTokens> =>
+  auth: (p: IBaseAuthentication): Promise<IResponse<IAuthTokens>> =>
     instance.post('/jwt/create', p),
 
-  refresh: (p: IRefreshPayload): IResponse<IAuthTokens> =>
+  refresh: (p: IRefreshPayload): Promise<IResponse<IAuthTokens>> =>
     instance.post('/jwt/refresh', p),
 };

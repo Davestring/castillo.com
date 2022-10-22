@@ -9,7 +9,7 @@ export interface IResource<T> {
    *
    * @returns {IFetchResponse<T>}
    */
-  findAll: (p: IQueryParams) => IFetchResponse<T>;
+  findAll: (p: IQueryParams) => Promise<IFetchResponse<T>>;
 }
 
 export type IRes<T> = UseQueryResult<IPagination<T>, unknown>;

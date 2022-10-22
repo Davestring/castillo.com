@@ -3,20 +3,23 @@ import { IFetchResponse, instance, IQueryParams, IResponse } from 'services';
 import { IUserPayload, IUserResource } from './users.types';
 
 export const UserResources = {
-  create: (params: IUserPayload): IResponse<IUserResource> =>
+  create: (params: IUserPayload): Promise<IResponse<IUserResource>> =>
     instance.post('/user/', params),
 
   delete: (id: number): Promise<IResponse<unknown>> =>
     instance.delete(`/user/${id}/`),
 
-  findAll: (p: IQueryParams): IFetchResponse<IUserResource> =>
+  findAll: (p: IQueryParams): Promise<IFetchResponse<IUserResource>> =>
     instance.get('/user/', { params: p }),
 
-  findByID: (id: number): IResponse<IUserResource> =>
+  findByID: (id: number): Promise<IResponse<IUserResource>> =>
     instance.get(`/user/${id}`),
 
-  me: (): IResponse<IUserResource> => instance.get('/user/me'),
+  me: (): Promise<IResponse<IUserResource>> => instance.get('/user/me'),
 
-  update: (id: number, params: IUserPayload): IResponse<IUserResource> =>
+  update: (
+    id: number,
+    params: IUserPayload,
+  ): Promise<IResponse<IUserResource>> =>
     instance.patch(`/user/${id}/`, params),
 };
