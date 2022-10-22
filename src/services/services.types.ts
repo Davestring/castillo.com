@@ -89,3 +89,20 @@ export interface IBaseResource {
  * object.
  */
 export type IFetchResponse<T> = IResponse<IPagination<T>>;
+
+export interface IResourcesObject<T> {
+  /**
+   * Makes an HTTP POST request for the given resource.
+   * @params {Partial<T>} p - resource payload.
+   *
+   * @returns {IResponse<T>}
+   */
+  create: (p: Partial<T>) => Promise<IResponse<T>>;
+  /**
+   * Makes an HTTP GET request for the given resource.
+   * @params {IQueryParams} p - query params for filter and order the results.
+   *
+   * @returns {IFetchResponse<T>}
+   */
+  findAll: (p: IQueryParams) => Promise<IFetchResponse<T>>;
+}

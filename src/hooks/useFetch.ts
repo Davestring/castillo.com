@@ -1,20 +1,13 @@
 import { useQuery, UseQueryResult } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import { IFetchResponse, IPagination, IQueryParams } from 'services';
+import { IPagination, IQueryParams, IResourcesObject } from 'services';
 
-export interface IResource<T> {
-  /**
-   * Makes an HTTP GET request for the given resource.
-   * @params {IQueryParams} p - query params for filter and order the results.
-   *
-   * @returns {IFetchResponse<T>}
-   */
-  findAll: (p: IQueryParams) => Promise<IFetchResponse<T>>;
-}
+type IQuery<T> = UseQueryResult<IPagination<T>, unknown>;
 
-export type IRes<T> = UseQueryResult<IPagination<T>, unknown>;
-
-export const useFetch = <T>(r: IResource<T>, p: IQueryParams = {}): IRes<T> => {
+export const useFetch = <T>(
+  r: IResourcesObject<T>,
+  p: IQueryParams = {},
+): IQuery<T> => {
   const { pathname } = useLocation();
 
   const query = useQuery(['fetch-all', pathname], async () => {
