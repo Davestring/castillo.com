@@ -22,5 +22,6 @@
   "table.header.name": "nombre",
   "table.header.updated": "fecha de actualización",
   "terms": "Términos y condiciones",
-  "version": "v{{value}}"
+  "version": "v{{value}}",
+  "work-in-progress": "Mantenimiento en curso"
 }

@@ -1,4 +1,4 @@
-import { Container, Header } from 'components/layout';
+import { Container, Header, WorkInProgress } from 'components/layout';
 import { AuthContext } from 'contexts';
 import { useContext } from 'react';
 import { use100vh } from 'react-div-100vh';
@@ -20,7 +20,27 @@ export const Booking = (): JSX.Element => {
 
       <Header isAuthenticated={!!access} isDark position="fixed" withLogo />
 
-      <Container bg="bg" isFluid minHeight={height || 0} pt={16} />
+      <Container
+        as="article"
+        bg="bg"
+        display="flex"
+        flexDir="column"
+        h={height || 0}
+        isFluid
+        pt={16}
+      >
+        <Container
+          as="section"
+          display="flex"
+          flex={1}
+          flexDir="column"
+          overflowX="hidden"
+          px={0}
+          py={4}
+        >
+          <WorkInProgress flex={1} />
+        </Container>
+      </Container>
     </>
   );
 };
