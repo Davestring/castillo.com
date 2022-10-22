@@ -49,4 +49,12 @@ export const GLOBAL_CSS = `
   .fc {
     font-size: 14px;
   }
+
+  .chakra-modal__content-container {
+    z-index: 20000 !important;
+  }
+
+  .chakra-modal__overlay {
+    z-index: 10000 !important;
+  }
 `;

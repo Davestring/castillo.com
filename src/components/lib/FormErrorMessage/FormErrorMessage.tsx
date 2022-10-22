@@ -33,7 +33,7 @@ export const FormErrorMessage: React.FC<IFormErrorMessageProps> = (
 };
 
 FormErrorMessage.defaultProps = {
-  color: 'blackAlpha.500',
+  color: 'blackAlpha.600',
   fontSize: 'xs',
   fontWeight: 'semibold',
 };

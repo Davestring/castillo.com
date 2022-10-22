@@ -23,7 +23,7 @@ export interface IPageHeadlineProps extends FlexProps {
 export const PageHeadline: React.FC<IPageHeadlineProps> = (
   props,
 ): JSX.Element => {
-  const { onClick = () => {}, quote, title, ...rest } = props;
+  const { onClick, quote, title, ...rest } = props;
 
   return (
     <Flex {...rest}>
@@ -38,14 +38,16 @@ export const PageHeadline: React.FC<IPageHeadlineProps> = (
         ) : null}
       </Box>
 
-      <IconButton
-        aria-label="add-resource"
-        bg="primary.700"
-        colorScheme="primary"
-        icon={<FaPlus color="white" />}
-        onClick={onClick}
-        size="sm"
-      />
+      {!fp.isNil(onClick) ? (
+        <IconButton
+          aria-label="add-resource"
+          bg="primary.700"
+          colorScheme="primary"
+          icon={<FaPlus color="white" />}
+          onClick={onClick}
+          size="sm"
+        />
+      ) : null}
     </Flex>
   );
 };
