@@ -11,7 +11,7 @@ export const Footer: React.FC<IFooterProps> = (props): JSX.Element => {
     <Stack as="footer" {...props}>
       <Link
         as={ReachLink}
-        color="primary.600"
+        color="primary.700"
         fontSize="xs"
         fontWeight="semibold"
         to="/privacy"
@@ -19,11 +19,11 @@ export const Footer: React.FC<IFooterProps> = (props): JSX.Element => {
         {t('privacy')}
       </Link>
 
-      <Divider bg="primary.600" h={4} orientation="vertical" w="0.125rem" />
+      <Divider bg="primary.700" h={4} orientation="vertical" w="0.125rem" />
 
       <Link
         as={ReachLink}
-        color="primary.600"
+        color="primary.700"
         fontSize="xs"
         fontWeight="semibold"
         to="/terms"

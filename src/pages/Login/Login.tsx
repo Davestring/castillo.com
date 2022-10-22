@@ -40,7 +40,7 @@ export const Login = (): JSX.Element => {
         <Card>
           <Text
             align="center"
-            color="primary.600"
+            color="primary.700"
             fontSize="lg"
             fontWeight="bold"
             mb={8}
@@ -56,7 +56,7 @@ export const Login = (): JSX.Element => {
 
       <AnalyticsIcon
         bottom={8}
-        color="primary.500"
+        color="primary.600"
         display={{ base: 'none', lg: 'block' }}
         height={226}
         position="fixed"
