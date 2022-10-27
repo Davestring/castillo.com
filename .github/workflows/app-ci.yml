@@ -14,7 +14,7 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
         with:
-          ref: feature/v2
+          ref: main
 
       - name: Node.js v16
         uses: actions/setup-node@v1
