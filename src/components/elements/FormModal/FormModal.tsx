@@ -6,11 +6,20 @@ import {
   ModalOverlay,
   ModalProps,
 } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import { FormikHelpers, FormikProvider, useFormik } from 'formik';
+import { useCallback } from 'react';
 import { AnyObjectSchema } from 'yup';
 
 import { ModalFooter } from './components/ModalFooter';
 import { ModalHeader } from './components/ModalHeader';
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+`;
 
 export interface IFormModalProps<T> extends ModalProps {
   /**
@@ -48,24 +57,29 @@ export const FormModal = <T,>(props: IFormModalProps<T>): JSX.Element => {
     validationSchema,
   });
 
+  const handleOnClose = useCallback(() => {
+    formik?.resetForm();
+    onClose();
+  }, [formik, onClose]);
+
   return (
-    <Modal onClose={onClose} {...rest}>
+    <Modal onClose={handleOnClose} {...rest}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader />
-        <ModalCloseButton />
-        <ModalBody bg="bg">
+        <ModalCloseButton top={4} />
+        <ModalBody bg="bg" display="flex" flexDir="column" p={6}>
           <FormikProvider value={{ handleReset, handleSubmit, ...formik }}>
-            <form id={formId} onReset={handleReset} onSubmit={handleSubmit}>
+            <Form id={formId} onReset={handleReset} onSubmit={handleSubmit}>
               {children}
-            </form>
+            </Form>
           </FormikProvider>
         </ModalBody>
         <ModalFooter
           formId={formId}
           isDisabled={!formik.isValid || formik.isSubmitting}
           isSubmitting={formik.isSubmitting}
-          onClose={onClose}
+          onClose={handleOnClose}
         />
       </ModalContent>
     </Modal>
@@ -75,5 +89,5 @@ export const FormModal = <T,>(props: IFormModalProps<T>): JSX.Element => {
 FormModal.defaultProps = {
   formId: 'modal-form',
   isCentered: true,
-  size: { base: 'xs', lg: 'lg', md: 'md', sm: 'sm' },
+  size: { base: 'full', md: 'xl' },
 };

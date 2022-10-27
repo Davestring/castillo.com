@@ -66,6 +66,7 @@ export const TextField = forwardRef<HTMLTextAreaElement, ITextFieldProps>(
         <Textarea
           ref={ref}
           placeholder={placeholder}
+          resize="none"
           size={size}
           {...textareaProps}
           {...field}

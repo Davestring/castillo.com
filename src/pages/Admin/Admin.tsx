@@ -16,7 +16,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { SIDE_NAVIGATION } from './helpers';
 
 export const Admin = (): JSX.Element | null => {
-  const { access, isLoading } = useContext(AuthContext);
+  const { access, isLoading, logoutFn } = useContext(AuthContext);
 
   const [isOpen, toggle] = useToggle(false);
 
@@ -55,6 +55,7 @@ export const Admin = (): JSX.Element | null => {
         ref={sidebarRef}
         isOpen={isOpen}
         navigation={SIDE_NAVIGATION}
+        onLogout={logoutFn}
         top={0}
       />
 

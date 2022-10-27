@@ -69,7 +69,7 @@ export const Spotlight: React.FC<ISpotlightProps> = (props): JSX.Element => {
         left="50%"
         position="absolute"
         px={4}
-        top="85%"
+        top={{ base: '82%', md: '85%' }}
         transform="translate(-50%, -50%)"
         w="100%"
       >

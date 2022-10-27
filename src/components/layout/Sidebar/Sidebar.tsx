@@ -9,6 +9,7 @@ import { __DEV__ } from 'utils';
 
 import packageJSON from '../../../../package.json';
 import { Headline } from './components/Headline';
+import { Logout } from './components/Logout';
 import { Navigation } from './components/Navigation';
 import { INavigationItem } from './Sidebar.types';
 
@@ -21,11 +22,15 @@ export interface ISidebarProps extends FlexProps {
    * Sidebar navigation items.
    */
   navigation: INavigationItem[];
+  /**
+   * Action that will be triggered on logout events.
+   */
+  onLogout?: VoidFunction;
 }
 
 export const Sidebar = forwardRef<HTMLDivElement, ISidebarProps>(
   (props, ref) => {
-    const { isOpen, navigation, ...rest } = props;
+    const { isOpen, navigation, onLogout, ...rest } = props;
 
     const { t } = useTranslation('common');
 
@@ -44,6 +49,9 @@ export const Sidebar = forwardRef<HTMLDivElement, ISidebarProps>(
               <Navigation {...item} />
             </ListItem>
           ))}
+          <ListItem display={{ lg: 'none' }}>
+            <Logout onClick={onLogout} />
+          </ListItem>
         </List>
 
         <Text
@@ -73,6 +81,7 @@ Sidebar.defaultProps = {
   flexDir: 'column',
   h: '100%',
   isOpen: false,
+  onLogout: () => {},
   overflowY: 'scroll',
   position: { base: 'fixed', lg: 'sticky' },
   top: 0,
