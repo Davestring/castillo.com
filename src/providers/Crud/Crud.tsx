@@ -34,7 +34,7 @@ export const Crud = <T extends IBaseResource>(
 
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  const [resource, setResource] = useState<Partial<T> | null>(null);
+  const [resource, setResource] = useState<Partial<T>>(defaultValues);
 
   const [type, setType] = useState<'delete' | 'patch' | 'post' | null>(null);
 
@@ -46,7 +46,6 @@ export const Crud = <T extends IBaseResource>(
   }, []);
 
   const preparePost = useCallback(() => {
-    setResource(defaultValues);
     setType('post');
     onOpen();
   }, []);
@@ -58,7 +57,7 @@ export const Crud = <T extends IBaseResource>(
       onClose();
       await refetch();
       h?.resetForm();
-      setResource(null);
+      setResource(defaultValues);
       setType(null);
     },
     [],
@@ -70,7 +69,7 @@ export const Crud = <T extends IBaseResource>(
       onClose();
       await refetch();
       h?.resetForm();
-      setResource(null);
+      setResource(defaultValues);
       setType(null);
     },
     [],

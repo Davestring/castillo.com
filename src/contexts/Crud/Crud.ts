@@ -44,7 +44,7 @@ export interface ICrudProps<T = IBaseResource> {
    * This value will be set from `null` to `Partial<T>` when the provider
    * prepares a [PATCH] or [POST] request.
    */
-  resource: Partial<T> | null;
+  resource: Partial<T>;
   /**
    * Current HTTP action.
    */
