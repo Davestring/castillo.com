@@ -33,7 +33,7 @@ export interface IFormModalProps<T> extends ModalProps {
   /**
    * On submit action handler.
    */
-  onSubmit: (v: Partial<T>, h?: FormikHelpers<Partial<T>>) => Promise<void>;
+  onSubmit: (v: Partial<T>, h?: FormikHelpers<Partial<T>>) => void;
   /**
    * Form validation schema.
    */
@@ -52,6 +52,7 @@ export const FormModal = <T,>(props: IFormModalProps<T>): JSX.Element => {
   } = props;
 
   const { handleReset, handleSubmit, ...formik } = useFormik<Partial<T>>({
+    enableReinitialize: true,
     initialValues,
     onSubmit,
     validationSchema,

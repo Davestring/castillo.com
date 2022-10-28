@@ -105,4 +105,12 @@ export interface IResourcesObject<T> {
    * @returns {IFetchResponse<T>}
    */
   findAll: (p: IQueryParams) => Promise<IFetchResponse<T>>;
+  /**
+   * Makes an HTTP PATCH request for the given resource.
+   * @params {number} id - resource unique identifier.
+   * @params {Partial<T>} p - resource payload.
+   *
+   * @returns {IResponse<T>}
+   */
+  update: (id: number, p: Partial<T>) => Promise<IResponse<T>>;
 }
