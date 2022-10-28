@@ -4,3 +4,4 @@ export * from './FormModal';
 export * from './NavLink';
 export * from './Overlay';
 export * from './PageHeadline';
+export * from './TdEvents';
