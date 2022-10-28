@@ -35,6 +35,10 @@ export interface IFormModalProps<T> extends ModalProps {
    */
   onSubmit: (v: Partial<T>, h?: FormikHelpers<Partial<T>>) => void;
   /**
+   * Headline title.
+   */
+  title: string;
+  /**
    * Form validation schema.
    */
   validationSchema: AnyObjectSchema;
@@ -47,6 +51,7 @@ export const FormModal = <T,>(props: IFormModalProps<T>): JSX.Element => {
     initialValues,
     onClose,
     onSubmit,
+    title,
     validationSchema,
     ...rest
   } = props;
@@ -67,7 +72,7 @@ export const FormModal = <T,>(props: IFormModalProps<T>): JSX.Element => {
     <Modal onClose={handleOnClose} {...rest}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader />
+        <ModalHeader title={title} />
         <ModalCloseButton top={4} />
         <ModalBody bg="bg" display="flex" flexDir="column" p={6}>
           <FormikProvider value={{ handleReset, handleSubmit, ...formik }}>

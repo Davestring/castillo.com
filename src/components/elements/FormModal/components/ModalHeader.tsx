@@ -1,14 +1,18 @@
 import { ModalHeader as Base, ModalHeaderProps } from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
 
-export type IModalHeaderProps = ModalHeaderProps;
+export interface IModalHeaderProps extends ModalHeaderProps {
+  /**
+   * Headline title.
+   */
+  title: string;
+}
 
 export const ModalHeader: React.FC<IModalHeaderProps> = (
   props,
 ): JSX.Element => {
-  const { t } = useTranslation('common');
+  const { title, ...rest } = props;
 
-  return <Base {...props}>{t('modal.add-registry')}</Base>;
+  return <Base {...rest}>{title}</Base>;
 };
 
 ModalHeader.defaultProps = {

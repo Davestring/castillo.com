@@ -9,6 +9,8 @@
   "payments.helmet": "Casa Castillo | Payments",
   "payments.quote": "",
   "payments.title": "Payments",
+  "services.add-new": "Add new service",
+  "services.edit": "Edit service",
   "services.helmet": "Casa Castillo | Services",
   "services.quote": "On this page you can manage the Casa Castillo services that users will see on the site.",
   "services.title": "Services",

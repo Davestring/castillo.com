@@ -12,6 +12,8 @@
   "reservations.helmet": "Casa Castillo | Reservaciones",
   "reservations.quote": "En esta página podrás administrar las reservaciones que los usuarios han realizado dentro del sitio.",
   "reservations.title": "Reservaciones",
+  "services.add-new": "Añadir nuevo servicio",
+  "services.edit": "Editar servicio",
   "services.helmet": "Casa Castillo | Servicios",
   "services.quote": "En esta página podrás administrar los servicios que ofrece Casa Castillo y que los usuarios visualizarán dentro del sitio.",
   "services.title": "Servicios",
