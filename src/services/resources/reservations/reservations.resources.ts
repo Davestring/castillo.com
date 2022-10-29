@@ -1,28 +1,31 @@
-import { IFetchResponse, instance, IQueryParams, IResponse } from 'services';
+import {
+  IFetchResponse,
+  instance,
+  IQueryParams,
+  IResourcesObject,
+  IResponse,
+} from 'services';
 
 import {
   IReservationPayload,
   IReservationResource,
 } from './reservations.types';
 
-export const ReservationResources = {
-  create: (
-    params: IReservationPayload,
-  ): Promise<IResponse<IReservationResource>> =>
-    instance.post('/booking/', params),
-
+export const ReservationResources: IResourcesObject<IReservationResource> = {
   delete: (id: number): Promise<IResponse<unknown>> =>
     instance.delete(`/booking/${id}/`),
 
-  findAll: (p: IQueryParams): Promise<IFetchResponse<IReservationResource>> =>
+  fetch: (p: IQueryParams): Promise<IFetchResponse<IReservationResource>> =>
     instance.get('/booking/', { params: p }),
 
-  findByID: (id: number): Promise<IResponse<IReservationResource>> =>
-    instance.get(`/booking/${id}`),
-
-  update: (
+  patch: (
     id: number,
     params: IReservationPayload,
   ): Promise<IResponse<IReservationResource>> =>
     instance.patch(`/booking/${id}/`, params),
+
+  post: (
+    params: IReservationPayload,
+  ): Promise<IResponse<IReservationResource>> =>
+    instance.post('/booking/', params),
 };

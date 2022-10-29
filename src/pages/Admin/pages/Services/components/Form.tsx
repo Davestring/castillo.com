@@ -13,14 +13,14 @@ const ValidationSchema = Yup.object().shape({
 });
 
 export const Form: React.FC = (): JSX.Element => {
-  const { isOpen, onClose, onPatch, onPost, resource, type } =
+  const { isOpen, onClose, onPatch, onPost, registry, type } =
     useCrudContext<IServiceResource>();
 
   const { t } = useTranslation('page:admin');
 
   return (
     <FormModal
-      initialValues={resource as IServicePayload}
+      initialValues={registry as IServicePayload}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={type === 'post' ? onPost : onPatch}

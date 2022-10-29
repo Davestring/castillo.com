@@ -11,7 +11,7 @@ export const useFetch = <T>(
   const { pathname } = useLocation();
 
   const query = useQuery(['fetch-all', pathname], async () => {
-    const response = await r.findAll(p);
+    const response = await r.fetch(p);
     return response?.data;
   });
 

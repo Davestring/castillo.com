@@ -65,8 +65,10 @@ const ModalFooter: React.FC<IModalFooterProps> = (props): JSX.Element => {
 
 export type IDeleteModalProps = ModalBodyProps;
 
-export const DeleteModal: React.FC = (props): JSX.Element => {
-  const { isOpen, onClose, resource, type } = useCrudContext<IBaseResource>();
+export const DeleteModal: React.FC<IDeleteModalProps> = (
+  props,
+): JSX.Element => {
+  const { isOpen, onClose, registry, type } = useCrudContext<IBaseResource>();
 
   const { t } = useTranslation('common');
 
@@ -84,7 +86,7 @@ export const DeleteModal: React.FC = (props): JSX.Element => {
         <ModalBody {...props}>
           <Icon as={VscWarning} boxSize={24} color="red.700" />
           <Text align="center" fontSize="sm" fontWeight="bold">
-            {t('delete.quote', { value: resource?.id || 0 })}
+            {t('delete.quote', { value: registry?.id || 0 })}
           </Text>
           <Text
             align="center"

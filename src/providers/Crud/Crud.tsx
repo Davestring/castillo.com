@@ -38,36 +38,36 @@ export const Crud = <T extends IBaseResource>(
 
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  const [resource, setResource] = useState<Partial<T>>(defaultValues);
+  const [registry, setRegistry] = useState<Partial<T>>(defaultValues);
 
   const [type, setType] = useState<'delete' | 'patch' | 'post' | null>(null);
 
   const prepareDelete = useCallback((v: T) => {
-    setResource(v);
+    setRegistry(v);
     setType('delete');
     onOpen();
   }, []);
 
   const preparePatch = useCallback((v: T) => {
     const payload = fp.omit(['created', 'updated'])(v);
-    setResource(payload);
+    setRegistry(payload);
     setType('patch');
     onOpen();
   }, []);
 
   const preparePost = useCallback(() => {
-    setResource(defaultValues);
+    setRegistry(defaultValues);
     setType('post');
     onOpen();
   }, []);
 
   const onDelete = useCallback(async () => {
-    await mutateAsyncDelete(resource?.id as number);
+    await mutateAsyncDelete(registry?.id as number);
     onClose();
     await refetch();
-    setResource(defaultValues);
+    setRegistry(defaultValues);
     setType(null);
-  }, [resource]);
+  }, [registry]);
 
   const onPatch = useCallback(
     async (payload: Partial<T>, h?: FormikHelpers<Partial<T>>) => {
@@ -76,7 +76,7 @@ export const Crud = <T extends IBaseResource>(
       onClose();
       await refetch();
       h?.resetForm();
-      setResource(defaultValues);
+      setRegistry(defaultValues);
       setType(null);
     },
     [],
@@ -88,7 +88,7 @@ export const Crud = <T extends IBaseResource>(
       onClose();
       await refetch();
       h?.resetForm();
-      setResource(defaultValues);
+      setRegistry(defaultValues);
       setType(null);
     },
     [],
@@ -107,7 +107,7 @@ export const Crud = <T extends IBaseResource>(
       prepareDelete,
       preparePatch,
       preparePost,
-      resource,
+      registry,
       type,
     }),
     [data, isFetching, isLoading, isOpen, isRefetching, type],

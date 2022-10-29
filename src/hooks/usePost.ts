@@ -14,7 +14,7 @@ export const usePost = <T>(r: IResourcesObject<T>): IMutation<T> => {
   const { pathname } = useLocation();
 
   const fn = useCallback(async (p: Partial<T>) => {
-    const response = await r.create(p);
+    const response = await r.post(p);
     return response;
   }, []);
 

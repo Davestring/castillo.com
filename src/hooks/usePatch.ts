@@ -16,7 +16,7 @@ export const usePatch = <T>(r: IResourcesObject<T>): IMutation<T> => {
   const { pathname } = useLocation();
 
   const fn = useCallback(async ({ id, payload }: IMutationFnParams<T>) => {
-    const response = await r.update(id, payload);
+    const response = await r.patch(id, payload);
     return response;
   }, []);
 

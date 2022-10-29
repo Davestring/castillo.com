@@ -97,7 +97,7 @@ export interface IResourcesObject<T> {
    *
    * @returns {IResponse<T>}
    */
-  create: (p: Partial<T>) => Promise<IResponse<T>>;
+  post: (p: Partial<T>) => Promise<IResponse<T>>;
   /**
    * Makes an HTTP DELETE request for the given resource.
    * @params {number} id - resource unique identifier.
@@ -111,7 +111,7 @@ export interface IResourcesObject<T> {
    *
    * @returns {IFetchResponse<T>}
    */
-  findAll: (p: IQueryParams) => Promise<IFetchResponse<T>>;
+  fetch: (p: IQueryParams) => Promise<IFetchResponse<T>>;
   /**
    * Makes an HTTP PATCH request for the given resource.
    * @params {number} id - resource unique identifier.
@@ -119,5 +119,5 @@ export interface IResourcesObject<T> {
    *
    * @returns {IResponse<T>}
    */
-  update: (id: number, p: Partial<T>) => Promise<IResponse<T>>;
+  patch: (id: number, p: Partial<T>) => Promise<IResponse<T>>;
 }
