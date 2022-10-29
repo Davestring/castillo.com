@@ -23,7 +23,7 @@ export const usePost = <T>(r: IResourcesObject<T>): IMutation<T> => {
   useEffect(() => {
     // TODO: handle errors on [POST] requests.
     // eslint-disable-next-line no-console
-    console.error(mutation?.error);
+    if (mutation?.isError) console.error(mutation?.error);
   }, [mutation?.isError]);
 
   return mutation;

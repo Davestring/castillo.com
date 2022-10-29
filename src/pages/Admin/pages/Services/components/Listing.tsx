@@ -12,7 +12,8 @@ import { formatDate, SERVICES_TABLE_HEADERS } from 'utils';
 export type IListingProps = FlexProps;
 
 export const Listing: React.FC<IListingProps> = (props): JSX.Element => {
-  const { data, isFetching, preparePatch } = useCrudContext<IServiceResource>();
+  const { data, isFetching, prepareDelete, preparePatch } =
+    useCrudContext<IServiceResource>();
 
   const isEmpty = useMemo(
     () => fp.compose(fp.isEmpty, fp.get('results'))(data),
@@ -33,7 +34,10 @@ export const Listing: React.FC<IListingProps> = (props): JSX.Element => {
           <Td>{item?.description || '-'}</Td>
           <Td>{fp.compose(formatDate, fp.get('updated'))(item)}</Td>
           <Td>{fp.compose(formatDate, fp.get('created'))(item)}</Td>
-          <TdEvents onDelete={() => {}} onPatch={() => preparePatch(item)} />
+          <TdEvents
+            onDelete={() => prepareDelete(item)}
+            onPatch={() => preparePatch(item)}
+          />
         </Tr>
       ))}
     </Table>

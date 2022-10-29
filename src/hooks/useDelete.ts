@@ -23,7 +23,7 @@ export const useDelete = <T>(r: IResourcesObject<T>): IMutation => {
   useEffect(() => {
     // TODO: handle errors on [DELETE] requests.
     // eslint-disable-next-line no-console
-    console.error(mutation?.error);
+    if (mutation?.isError) console.error(mutation?.error);
   }, [mutation?.isError]);
 
   return mutation;

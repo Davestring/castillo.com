@@ -6,6 +6,8 @@ import fp from 'lodash/fp';
 import { ReactNode, useCallback, useMemo, useState } from 'react';
 import { IBaseResource, IResourcesObject } from 'services';
 
+import { DeleteModal } from './components/DeleteModal';
+
 export interface ICrudProps<T = IBaseResource> {
   /**
    * Children opaque data structure.
@@ -54,6 +56,7 @@ export const Crud = <T extends IBaseResource>(
   }, []);
 
   const preparePost = useCallback(() => {
+    setResource(defaultValues);
     setType('post');
     onOpen();
   }, []);
@@ -113,6 +116,10 @@ export const Crud = <T extends IBaseResource>(
   const CrudContext = useMemo(() => getCrudContext<T>(), [getCrudContext]);
 
   return (
-    <CrudContext.Provider value={context}>{children}</CrudContext.Provider>
+    <CrudContext.Provider value={context}>
+      {children}
+
+      <DeleteModal />
+    </CrudContext.Provider>
   );
 };

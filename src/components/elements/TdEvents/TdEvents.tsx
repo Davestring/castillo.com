@@ -31,7 +31,6 @@ export const TdEvents: React.FC<ITdEventsProps> = (props): JSX.Element => {
         bg="red.700"
         colorScheme="red"
         icon={<FaTrash color="white" />}
-        isDisabled
         onClick={onDelete}
         size="sm"
       />
