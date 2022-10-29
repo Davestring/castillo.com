@@ -1,18 +1,31 @@
 import { Avatar, Box, Stack, StackProps, Text } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { IUserResource } from 'services/resources';
 
-export type IHeadlineProps = StackProps;
+export interface IHeadlineProps extends StackProps {
+  /**
+   * Authenticated user.
+   */
+  user?: IUserResource | null;
+}
 
 export const Headline: React.FC<IHeadlineProps> = (props): JSX.Element => {
+  const { user, ...rest } = props;
+
   const { t } = useTranslation('common');
 
   return (
-    <Stack {...props}>
-      <Avatar bg="bg" color="primary.700" name="David Martinez" size="lg" />
+    <Stack {...rest}>
+      <Avatar
+        bg="bg"
+        color="primary.700"
+        name={`${user?.name} ${user?.first_surname}`}
+        size="lg"
+      />
 
       <Box>
         <Text align="center" color="bg" fontSize="sm" fontWeight="bold">
-          David Martinez
+          {`${user?.name} ${user?.first_surname}`}
         </Text>
         <Text align="center" color="bg" fontSize="xs">
           {t('casa-castillo')}

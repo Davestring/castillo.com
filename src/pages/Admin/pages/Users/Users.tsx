@@ -1,5 +1,6 @@
-import { Td, Tr } from '@chakra-ui/react';
+import { Tr } from '@chakra-ui/react';
 import { PageHeadline } from 'components/elements';
+import { Td } from 'components/lib';
 import { Table } from 'components/modules';
 import { useFetch } from 'hooks';
 import fp from 'lodash/fp';
@@ -38,21 +39,13 @@ export const Users = (): JSX.Element => {
       >
         {data?.results?.map((item) => (
           <Tr key={nanoid()} position="relative">
-            <Td fontSize="sm" fontWeight="medium">
-              {item?.id}
-            </Td>
-            <Td fontSize="sm" fontWeight="medium">
-              {item?.email}
-            </Td>
-            <Td fontSize="sm" fontWeight="medium">
-              {item?.first_name}
-            </Td>
-            <Td fontSize="sm" fontWeight="medium">
-              {fp.compose(formatDate, fp.get('updated'))(item)}
-            </Td>
-            <Td fontSize="sm" fontWeight="medium">
-              {fp.compose(formatDate, fp.get('created'))(item)}
-            </Td>
+            <Td>{item?.id}</Td>
+            <Td>{item?.email}</Td>
+            <Td>{item?.name || '-'}</Td>
+            <Td>{item?.first_surname || '-'}</Td>
+            <Td>{item?.last_surname || '-'}</Td>
+            <Td>{fp.compose(formatDate, fp.get('updated'))(item)}</Td>
+            <Td>{fp.compose(formatDate, fp.get('created'))(item)}</Td>
           </Tr>
         ))}
       </Table>

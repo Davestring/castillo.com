@@ -16,7 +16,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { SIDE_NAVIGATION } from './helpers';
 
 export const Admin = (): JSX.Element | null => {
-  const { access, isLoading, logoutFn } = useContext(AuthContext);
+  const { access, isLoading, logoutFn, me } = useContext(AuthContext);
 
   const [isOpen, toggle] = useToggle(false);
 
@@ -57,6 +57,7 @@ export const Admin = (): JSX.Element | null => {
         navigation={SIDE_NAVIGATION}
         onLogout={logoutFn}
         top={0}
+        user={me}
       />
 
       <Overlay isVisible={isOpen} />

@@ -3,7 +3,11 @@ import { Dispatch, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AuthResources, IBaseAuthentication } from 'services/resources';
+import {
+  AuthResources,
+  IBaseAuthentication,
+  UserResources,
+} from 'services/resources';
 
 import { Action, IAction } from '../helpers';
 
@@ -28,7 +32,9 @@ export const useAuth = <T extends IBaseAuthentication>(
 
       localStorage.setItem('access', data?.access);
 
-      dispatch({ access: data?.access, type: Action.AUTH_SUCCESS });
+      const { data: me } = await UserResources.me();
+
+      dispatch({ access: data?.access, me, type: Action.AUTH_SUCCESS });
 
       navigate('/dashboard');
     } catch (err) {

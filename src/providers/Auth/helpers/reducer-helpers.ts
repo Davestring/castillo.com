@@ -19,7 +19,7 @@ export enum Action {
 
 export type IState = Pick<
   IAuthContextProps,
-  'access' | 'isError' | 'isLoading'
+  'access' | 'isError' | 'isLoading' | 'me'
 >;
 
 export interface IAction extends IState {
@@ -40,6 +40,7 @@ export const INITIAL_STATE: IState = {
   access: null,
   isError: false,
   isLoading: true,
+  me: null,
 };
 
 export const BASE_INIT = { isError: false, isLoading: true };

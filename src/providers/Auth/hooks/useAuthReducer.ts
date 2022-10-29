@@ -19,7 +19,7 @@ export const useAuthReducer = (): [IState, Dispatch<IAction>] => {
       case Action.AUTH_FAILURE:
         return { ...ps, ...BASE_FAILURE };
       case Action.AUTH_SUCCESS:
-        return { ...ps, ...BASE_SUCCESS, access: a?.access };
+        return { ...ps, ...BASE_SUCCESS, access: a?.access, me: a?.me };
 
       case Action.LOGOUT:
         return { ...ps, ...INITIAL_STATE };
@@ -29,7 +29,7 @@ export const useAuthReducer = (): [IState, Dispatch<IAction>] => {
       case Action.RESTORE_SESSION_FAILURE:
         return { ...ps, ...BASE_FAILURE };
       case Action.RESTORE_SESSION_SUCCESS:
-        return { ...ps, ...BASE_SUCCESS, access: a?.access };
+        return { ...ps, ...BASE_SUCCESS, access: a?.access, me: a?.me };
 
       default:
         throw new Error(`Unknow action type: ${a?.type}`);

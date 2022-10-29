@@ -8,8 +8,10 @@ export const TABLE_HEADERS = {
   created: 'table.header.created',
   description: 'table.header.description',
   email: 'table.header.email',
+  firstSurname: 'table.header.first-surname',
   id: 'table.header.id',
   isStaff: 'table.header.is-staff',
+  lastSurname: 'table.header.last-surname',
   name: 'table.header.name',
   updated: 'table.header.updated',
 };
@@ -29,5 +31,13 @@ export const SERVICES_TABLE_HEADERS: string[] = fp.compose(
  */
 export const USERS_TABLE_HEADERS: string[] = fp.compose(
   fp.values,
-  fp.pick(['id', 'email', 'name', 'updated', 'created']),
+  fp.pick([
+    'id',
+    'email',
+    'name',
+    'firstSurname',
+    'lastSurname',
+    'updated',
+    'created',
+  ]),
 )(TABLE_HEADERS);

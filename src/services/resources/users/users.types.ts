@@ -6,9 +6,9 @@ export interface IUserResource extends IBaseResource {
    */
   email: string;
   /**
-   * User's first name, max length is 150 characters.
+   * User's first surname, max length is 150 characters.
    */
-  first_name: string;
+  first_surname: string;
   /**
    * Designates whether this user should be treated as active. Unselect this
    * instead of deleting accounts.
@@ -24,9 +24,13 @@ export interface IUserResource extends IBaseResource {
    */
   is_superuser: boolean;
   /**
-   * User's last name, max length is 150 characters.
+   * User's last surname, max length is 150 characters.
    */
-  last_name: string;
+  last_surname: string;
+  /**
+   * User's name, max length is 150 characters.
+   */
+  name: string;
 }
 
 export type IUserPayload = Partial<IUserResource>;

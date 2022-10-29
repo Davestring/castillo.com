@@ -5,6 +5,7 @@ import { Flex, FlexProps, List, ListItem, Text } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { IUserResource } from 'services/resources';
 import { __DEV__ } from 'utils';
 
 import packageJSON from '../../../../package.json';
@@ -26,11 +27,15 @@ export interface ISidebarProps extends FlexProps {
    * Action that will be triggered on logout events.
    */
   onLogout?: VoidFunction;
+  /**
+   * Authenticated user.
+   */
+  user?: IUserResource | null;
 }
 
 export const Sidebar = forwardRef<HTMLDivElement, ISidebarProps>(
   (props, ref) => {
-    const { isOpen, navigation, onLogout, ...rest } = props;
+    const { isOpen, navigation, onLogout, user, ...rest } = props;
 
     const { t } = useTranslation('common');
 
@@ -41,7 +46,7 @@ export const Sidebar = forwardRef<HTMLDivElement, ISidebarProps>(
         ml={{ base: isOpen ? 0 : '-280px', lg: 0 }}
         {...rest}
       >
-        <Headline />
+        <Headline user={user} />
 
         <List flex={1} overflowY="scroll">
           {navigation?.map((item) => (
@@ -81,13 +86,14 @@ Sidebar.defaultProps = {
   flexDir: 'column',
   h: '100%',
   isOpen: false,
+  maxW: 280,
+  minW: 280,
   onLogout: () => {},
   overflowY: 'scroll',
   position: { base: 'fixed', lg: 'sticky' },
+  shadow: 'md',
   top: 0,
   transition: 'margin .5s ease',
-  shadow: 'md',
-  maxW: 280,
-  minW: 280,
+  user: null,
   zIndex: 'popover',
 };
