@@ -1,7 +1,7 @@
 import { useDisclosure } from '@chakra-ui/react';
 import { getCrudContext } from 'contexts';
 import { FormikHelpers } from 'formik';
-import { useFetch, usePatch, usePost } from 'hooks';
+import { useDelete, useFetch, usePatch, usePost } from 'hooks';
 import fp from 'lodash/fp';
 import { ReactNode, useCallback, useMemo, useState } from 'react';
 import { IBaseResource, IResourcesObject } from 'services';
@@ -28,6 +28,8 @@ export const Crud = <T extends IBaseResource>(
 
   const { data, isFetching, isLoading, isRefetching, refetch } = useFetch<T>(r);
 
+  const { mutateAsync: mutateAsyncDelete } = useDelete<T>(r);
+
   const { mutateAsync: mutateAsyncPatch } = usePatch<T>(r);
 
   const { mutateAsync: mutateAsyncPost } = usePost<T>(r);
@@ -37,6 +39,12 @@ export const Crud = <T extends IBaseResource>(
   const [resource, setResource] = useState<Partial<T>>(defaultValues);
 
   const [type, setType] = useState<'delete' | 'patch' | 'post' | null>(null);
+
+  const prepareDelete = useCallback((v: T) => {
+    setResource(v);
+    setType('delete');
+    onOpen();
+  }, []);
 
   const preparePatch = useCallback((v: T) => {
     const payload = fp.omit(['created', 'updated'])(v);
@@ -49,6 +57,14 @@ export const Crud = <T extends IBaseResource>(
     setType('post');
     onOpen();
   }, []);
+
+  const onDelete = useCallback(async () => {
+    await mutateAsyncDelete(resource?.id as number);
+    onClose();
+    await refetch();
+    setResource(defaultValues);
+    setType(null);
+  }, [resource]);
 
   const onPatch = useCallback(
     async (payload: Partial<T>, h?: FormikHelpers<Partial<T>>) => {
@@ -81,9 +97,11 @@ export const Crud = <T extends IBaseResource>(
       isFetching: isFetching || isLoading || isRefetching,
       isOpen,
       onClose,
+      onDelete,
       onOpen,
       onPatch,
       onPost,
+      prepareDelete,
       preparePatch,
       preparePost,
       resource,

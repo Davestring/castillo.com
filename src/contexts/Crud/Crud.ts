@@ -25,13 +25,21 @@ export interface ICrudProps<T = IBaseResource> {
    */
   onOpen: VoidFunction;
   /**
-   * Performs a [PATCH] HTTP call to the API.
+   * Performs a [DELETE] HTTP request to the API.
+   */
+  onDelete: () => void;
+  /**
+   * Performs a [PATCH] HTTP request to the API.
    */
   onPatch: (p: Partial<T>, h?: FormikHelpers<Partial<T>>) => void;
   /**
-   * Performs a [POST] HTTP call to the API.
+   * Performs a [POST] HTTP request to the API.
    */
   onPost: (p: Partial<T>, h?: FormikHelpers<Partial<T>>) => void;
+  /**
+   * Prepares the provider for a [DELETE] request.
+   */
+  prepareDelete: (v: T) => void;
   /**
    * Prepares the provider for a [PATCH] request.
    */

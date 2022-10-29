@@ -99,6 +99,13 @@ export interface IResourcesObject<T> {
    */
   create: (p: Partial<T>) => Promise<IResponse<T>>;
   /**
+   * Makes an HTTP DELETE request for the given resource.
+   * @params {number} id - resource unique identifier.
+   *
+   * @returns {IResponse<unknown>}
+   */
+  delete: (id: number) => Promise<IResponse<unknown>>;
+  /**
    * Makes an HTTP GET request for the given resource.
    * @params {IQueryParams} p - query params for filter and order the results.
    *
