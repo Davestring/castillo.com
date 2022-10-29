@@ -20,7 +20,7 @@ export const TABLE_HEADERS = {
  */
 export const SERVICES_TABLE_HEADERS: string[] = fp.compose(
   fp.values,
-  fp.pick(['id', 'name', 'description', 'updated', 'created']),
+  fp.pick(['id', 'name', 'updated', 'created']),
 )(TABLE_HEADERS);
 
 /**

@@ -31,7 +31,6 @@ export const Listing: React.FC<IListingProps> = (props): JSX.Element => {
         <Tr key={nanoid()} position="relative">
           <Td>{item?.id}</Td>
           <Td>{item?.name}</Td>
-          <Td>{item?.description || '-'}</Td>
           <Td>{fp.compose(formatDate, fp.get('updated'))(item)}</Td>
           <Td>{fp.compose(formatDate, fp.get('created'))(item)}</Td>
           <TdEvents
