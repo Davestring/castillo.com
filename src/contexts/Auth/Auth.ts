@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { IBaseAuthentication, IUserResource } from 'services/resources';
+import { IBaseAuthentication } from 'services/resources';
 
 export interface IAuthProps {
   /**
@@ -24,10 +24,6 @@ export interface IAuthProps {
    * from the secure storage.
    */
   logoutFn: () => Promise<void>;
-  /**
-   * Authenticated user.
-   */
-  me?: IUserResource | null;
 }
 
 export const Auth = createContext({} as IAuthProps);

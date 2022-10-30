@@ -7,7 +7,7 @@ import {
 import { Overlay } from 'components/elements';
 import { Header, Sidebar } from 'components/layout';
 import { AuthContext } from 'contexts';
-import { useSidebar, useToggle } from 'hooks';
+import { useFetchMe, useSidebar, useToggle } from 'hooks';
 import fp from 'lodash/fp';
 import { useContext, useEffect, useRef } from 'react';
 import { use100vh } from 'react-div-100vh';
@@ -16,7 +16,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { SIDE_NAVIGATION } from './helpers';
 
 export const Admin = (): JSX.Element | null => {
-  const { access, isLoading, logoutFn, me } = useContext(AuthContext);
+  const { access, isLoading, logoutFn } = useContext(AuthContext);
+
+  const { data: me, isLoading: isLoadingMe } = useFetchMe();
 
   const [isOpen, toggle] = useToggle(false);
 
@@ -38,7 +40,7 @@ export const Admin = (): JSX.Element | null => {
     return () => clearAllBodyScrollLocks();
   }, [contentRef, isOpen]);
 
-  if (isLoading) return null;
+  if (isLoading || isLoadingMe) return null;
 
   if (fp.isNil(access)) return <Navigate replace to="/login" />;
 
