@@ -4,13 +4,32 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import listGridPlugin from '@fullcalendar/list';
 import { Icon, useMediaQuery } from '@chakra-ui/react';
 import { FaCalendar, FaList } from 'react-icons/fa';
+import { useCrudContext } from 'contexts';
+import { IBookingResource } from 'services/resources';
+import { useMemo } from 'react';
+import StringMask from 'string-mask';
+import { getFullname } from 'utils';
 
 export type ICalendarProps = CalendarOptions;
 
-export const Calendar: React.FC<ICalendarProps> = (props): JSX.Element => {
-  const { events, ...rest } = props;
+export const Calendar: React.FC<ICalendarProps> = (
+  props,
+): JSX.Element | null => {
+  const { data, isFetching } = useCrudContext<IBookingResource>();
+
+  const events = useMemo(() => {
+    const formatter = new StringMask('(##) ####-####');
+
+    return data?.results?.map((item) => ({
+      end: `${item?.check_out} 15:00:00`,
+      start: `${item?.check_in} 12:00:00`,
+      title: `${getFullname(item)} - ${formatter.apply(item?.phone)}`,
+    }));
+  }, [data]);
 
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+
+  if (isFetching) return null;
 
   return (
     <FullCalendar
@@ -21,7 +40,7 @@ export const Calendar: React.FC<ICalendarProps> = (props): JSX.Element => {
         left: isLargerThan768 ? 'prev,next' : 'title',
         right: 'dayGridMonth,listMonth',
       }}
-      {...rest}
+      {...props}
     />
   );
 };

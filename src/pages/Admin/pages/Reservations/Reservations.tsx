@@ -1,35 +1,27 @@
 import { Flex } from '@chakra-ui/react';
 import { PageHeadline } from 'components/elements';
-import { useFetch } from 'hooks';
-import { useMemo } from 'react';
+import { CrudProvider } from 'providers';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { IReservationResource, ReservationResources } from 'services/resources';
-import StringMask from 'string-mask';
-import { getFullname } from 'utils';
+import { BookingResources } from 'services/resources';
 
 import { Calendar } from './components/Calendar';
 
-export const Reservations = (): JSX.Element | null => {
-  const { data, isLoading } =
-    useFetch<IReservationResource>(ReservationResources);
+const DEFAULT_VALUES = {
+  check_in: '',
+  check_out: '',
+  email: '',
+  first_surname: '',
+  last_surname: '',
+  name: '',
+  phone: '',
+};
 
+export const Reservations = (): JSX.Element | null => {
   const { t } = useTranslation('page:admin');
 
-  const events = useMemo(() => {
-    const formatter = new StringMask('(##) ####-####');
-
-    return data?.results?.map((item) => ({
-      end: `${item?.check_out} 15:00:00`,
-      start: `${item?.check_in} 12:00:00`,
-      title: `${getFullname(item)} - ${formatter.apply(item?.phone)}`,
-    }));
-  }, [data]);
-
-  if (isLoading) return null;
-
   return (
-    <>
+    <CrudProvider defaultValues={DEFAULT_VALUES} resources={BookingResources}>
       <Helmet>
         <title>{t('reservations.helmet')}</title>
       </Helmet>
@@ -46,8 +38,8 @@ export const Reservations = (): JSX.Element | null => {
         overflowY="scroll"
         sx={{ '&>div': { flex: 1 } }}
       >
-        <Calendar events={events} />
+        <Calendar />
       </Flex>
-    </>
+    </CrudProvider>
   );
 };
