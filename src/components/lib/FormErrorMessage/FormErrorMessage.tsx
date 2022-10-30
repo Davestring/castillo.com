@@ -22,7 +22,7 @@ export const FormErrorMessage: React.FC<IFormErrorMessageProps> = (
 
   return (
     <FEM {...rest}>
-      <Stack align="start" isInline justify="center">
+      <Stack align="center" isInline>
         <Icon as={AiFillWarning} boxSize={4} color="red" />
         <Text align="start" as="span">
           {t(children as string)}
