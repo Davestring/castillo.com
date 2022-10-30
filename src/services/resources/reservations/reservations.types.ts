@@ -1,7 +1,5 @@
 import { IBaseResource } from 'services/services.types';
 
-import { IGuestPayload } from '../guests';
-
 export interface IReservationResource extends IBaseResource {
   /**
    * Date when the guests will arrive to the facilities.
@@ -12,9 +10,25 @@ export interface IReservationResource extends IBaseResource {
    */
   check_out: string;
   /**
-   * Guest related to this booking.
+   * Guest's email.
    */
-  guest: IGuestPayload;
+  email: string;
+  /**
+   * Guest's first surname, max length is 150 characters.
+   */
+  first_surname: string;
+  /**
+   * Guest's last surname, max length is 150 characters.
+   */
+  last_surname: string;
+  /**
+   * Guest's name and middle name, max length is 150 characters.
+   */
+  name: string;
+  /**
+   * Guest's phone number, max length is 12 characters.
+   */
+  phone: string;
 }
 
 export type IReservationPayload = Partial<IReservationResource>;

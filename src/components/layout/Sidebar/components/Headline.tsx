@@ -1,7 +1,7 @@
 import { Avatar, Box, Stack, StackProps, Text } from '@chakra-ui/react';
-import fp from 'lodash/fp';
 import { useTranslation } from 'react-i18next';
 import { IUserResource } from 'services/resources';
+import { getFullname } from 'utils';
 
 export interface IHeadlineProps extends StackProps {
   /**
@@ -14,14 +14,6 @@ export const Headline: React.FC<IHeadlineProps> = (props): JSX.Element => {
   const { user, ...rest } = props;
 
   const { t } = useTranslation('common');
-
-  const getFullname = fp.compose(
-    fp.trim,
-    fp.join(' '),
-    fp.values,
-    fp.omitBy(fp.isNil),
-    fp.pick(['name', 'first_surname', 'last_surname']),
-  );
 
   return (
     <Stack {...rest}>

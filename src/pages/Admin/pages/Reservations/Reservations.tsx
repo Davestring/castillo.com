@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { IReservationResource, ReservationResources } from 'services/resources';
 import StringMask from 'string-mask';
+import { getFullname } from 'utils';
 
 import { Calendar } from './components/Calendar';
 
@@ -19,9 +20,9 @@ export const Reservations = (): JSX.Element | null => {
     const formatter = new StringMask('(##) ####-####');
 
     return data?.results?.map((item) => ({
-      end: item?.check_out,
-      start: item?.check_in,
-      title: `${item?.guest?.name} - ${formatter.apply(item?.guest?.phone)}`,
+      end: `${item?.check_out} 15:00:00`,
+      start: `${item?.check_in} 12:00:00`,
+      title: `${getFullname(item)} - ${formatter.apply(item?.phone)}`,
     }));
   }, [data]);
 
