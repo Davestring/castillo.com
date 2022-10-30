@@ -1,11 +1,12 @@
 import { Flex } from '@chakra-ui/react';
-import { PageHeadline } from 'components/elements';
 import { CrudProvider } from 'providers';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { BookingResources } from 'services/resources';
 
 import { Calendar } from './components/Calendar';
+import { Form } from './components/Form';
+import { Headline } from './components/Headline';
 
 const DEFAULT_VALUES = {
   check_in: '',
@@ -23,14 +24,10 @@ export const Reservations = (): JSX.Element | null => {
   return (
     <CrudProvider defaultValues={DEFAULT_VALUES} resources={BookingResources}>
       <Helmet>
-        <title>{t('reservations.helmet')}</title>
+        <title>{t('bookings.helmet')}</title>
       </Helmet>
 
-      <PageHeadline
-        mb={6}
-        quote={t('reservations.quote')}
-        title={t('reservations.title')}
-      />
+      <Headline />
 
       <Flex
         flex={1}
@@ -40,6 +37,8 @@ export const Reservations = (): JSX.Element | null => {
       >
         <Calendar />
       </Flex>
+
+      <Form />
     </CrudProvider>
   );
 };

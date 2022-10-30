@@ -26,7 +26,7 @@ export interface IBookingResource extends IBaseResource {
    */
   name: string;
   /**
-   * Guest's phone number, max length is 12 characters.
+   * Guest's phone number, max length is 25 characters.
    */
   phone: string;
 }

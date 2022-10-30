@@ -1,13 +1,13 @@
 // eslint-disable-next-line simple-import-sort/imports
+import { Icon, useMediaQuery } from '@chakra-ui/react';
+
 import FullCalendar, { CalendarOptions } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listGridPlugin from '@fullcalendar/list';
-import { Icon, useMediaQuery } from '@chakra-ui/react';
-import { FaCalendar, FaList } from 'react-icons/fa';
 import { useCrudContext } from 'contexts';
-import { IBookingResource } from 'services/resources';
 import { useMemo } from 'react';
-import StringMask from 'string-mask';
+import { FaCalendar, FaList } from 'react-icons/fa';
+import { IBookingResource } from 'services/resources';
 import { getFullname } from 'utils';
 
 export type ICalendarProps = CalendarOptions;
@@ -17,15 +17,15 @@ export const Calendar: React.FC<ICalendarProps> = (
 ): JSX.Element | null => {
   const { data, isFetching } = useCrudContext<IBookingResource>();
 
-  const events = useMemo(() => {
-    const formatter = new StringMask('(##) ####-####');
-
-    return data?.results?.map((item) => ({
-      end: `${item?.check_out} 15:00:00`,
-      start: `${item?.check_in} 12:00:00`,
-      title: `${getFullname(item)} - ${formatter.apply(item?.phone)}`,
-    }));
-  }, [data]);
+  const events = useMemo(
+    () =>
+      data?.results?.map((item) => ({
+        end: `${item?.check_out} 15:00:00`,
+        start: `${item?.check_in} 12:00:00`,
+        title: `${getFullname(item)} - ${item?.phone}`,
+      })),
+    [data],
+  );
 
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
 
