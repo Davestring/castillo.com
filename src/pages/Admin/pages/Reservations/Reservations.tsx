@@ -1,4 +1,5 @@
 import { Flex } from '@chakra-ui/react';
+import { format } from 'date-fns';
 import { CrudProvider } from 'providers';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -9,8 +10,8 @@ import { Form } from './components/Form';
 import { Headline } from './components/Headline';
 
 const DEFAULT_VALUES = {
-  check_in: '',
-  check_out: '',
+  check_in: format(new Date(), 'yyyy-MM-dd'),
+  check_out: format(new Date(), 'yyyy-MM-dd'),
   email: '',
   first_surname: '',
   last_surname: '',

@@ -1,5 +1,5 @@
 import { FormModal } from 'components/elements';
-import { InputField, MaskedField } from 'components/inputs';
+import { InputField, PhoneField } from 'components/inputs';
 import { useCrudContext } from 'contexts';
 import { useTranslation } from 'react-i18next';
 import { IBookingPayload, IBookingResource } from 'services/resources';
@@ -16,7 +16,9 @@ const ValidationSchema = Yup.object().shape({
   name: Yup.string()
     .max(128, 'form.generic.max-length')
     .required('form.generic.required'),
-  phone: Yup.string().required('form.generic.required'),
+  phone: Yup.string()
+    .matches(/^\([0-9]{2}\) [0-9]{4}-[0-9]{4}$/, 'form.generic.phone')
+    .required('form.generic.required'),
 });
 
 export const Form: React.FC = (): JSX.Element => {
@@ -63,30 +65,27 @@ export const Form: React.FC = (): JSX.Element => {
         type="email"
       />
 
-      <MaskedField
-        format="(##) ####-####"
+      <PhoneField
         inputProps={{ background: 'white', borderRadius: '9999px' }}
         name="phone"
         placeholder={t('form.phone.label')}
         size="md"
       />
 
-      <MaskedField
-        format="####-##-##"
-        helper="El valor ingresador debe estar en el formato YYYY-MM-DD."
-        inputProps={{ background: 'white', borderRadius: '9999px' }}
+      <InputField
+        helper={t('form.check-in.helper')}
+        inputProps={{ bg: 'white', rounded: 'full' }}
         name="check_in"
-        placeholder={t('form.check-in.label')}
         size="md"
+        type="date"
       />
 
-      <MaskedField
-        format="####-##-##"
-        helper="El valor ingresador debe estar en el formato YYYY-MM-DD."
-        inputProps={{ background: 'white', borderRadius: '9999px' }}
+      <InputField
+        helper={t('form.check-out.helper')}
+        inputProps={{ bg: 'white', rounded: 'full' }}
         name="check_out"
-        placeholder={t('form.check-out.label')}
         size="md"
+        type="date"
       />
     </FormModal>
   );

@@ -1,3 +1,3 @@
 export * from './InputField';
-export * from './MaskedField';
+export * from './PhoneField';
 export * from './TextField';

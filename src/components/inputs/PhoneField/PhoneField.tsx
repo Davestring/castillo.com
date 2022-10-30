@@ -17,17 +17,13 @@ import { forwardRef, useCallback } from 'react';
 import { PatternFormat } from 'react-number-format';
 import { __DEV__ } from 'utils';
 
-export enum MaskedFieldSizeEnum {
+export enum PhoneFieldSizeEnum {
   sm = '32px',
   md = '40px',
   lg = '48px',
 }
 
-export interface IMaskedFieldProps extends FormControlProps {
-  /**
-   * Mask used by the field in order to transform the input.
-   */
-  format: string;
+export interface IPhoneFieldProps extends FormControlProps {
   /**
    * Field helper text that will be displayed below the input.
    */
@@ -54,10 +50,9 @@ export interface IMaskedFieldProps extends FormControlProps {
   placeholder?: string;
 }
 
-export const MaskedField = forwardRef<HTMLInputElement, IMaskedFieldProps>(
+export const PhoneField = forwardRef<HTMLInputElement, IPhoneFieldProps>(
   (props, ref): JSX.Element => {
     const {
-      format,
       helper,
       inputProps,
       label,
@@ -83,9 +78,8 @@ export const MaskedField = forwardRef<HTMLInputElement, IMaskedFieldProps>(
         </FormLabel>
         <InputGroup ref={ref}>
           <PatternFormat
-            allowNegative={false}
             customInput={Input}
-            format={format}
+            format="(##) ####-####"
             onBlur={setTouchedInput}
             onValueChange={({ formattedValue }) => {
               helpers.setValue(formattedValue);
@@ -93,7 +87,7 @@ export const MaskedField = forwardRef<HTMLInputElement, IMaskedFieldProps>(
             placeholder={!fp.isNil(placeholder) ? placeholder : undefined}
             style={{
               ...inputProps,
-              height: MaskedFieldSizeEnum[size as unknown as string],
+              height: PhoneFieldSizeEnum[size as unknown as string],
             }}
             value={field.value}
           />
@@ -106,10 +100,10 @@ export const MaskedField = forwardRef<HTMLInputElement, IMaskedFieldProps>(
 );
 
 if (__DEV__) {
-  MaskedField.displayName = 'MaskedField';
+  PhoneField.displayName = 'PhoneField';
 }
 
-MaskedField.defaultProps = {
+PhoneField.defaultProps = {
   helper: undefined,
   inputProps: { background: 'bg' },
   label: undefined,

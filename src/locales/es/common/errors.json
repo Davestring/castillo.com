@@ -9,5 +9,6 @@
   "form.generic.email": "Ingresa una cuenta de correo electrónico válida.",
   "form.generic.max-length": "Has alcanzado el máximo de caracteres permitidos.",
   "form.generic.min-length": "El mínimo de caracteres permitidos es 8.",
+  "form.generic.phone": "Ingresa un número de teléfono válido.",
   "form.generic.required": "Este campo es obligatorio."
 }
