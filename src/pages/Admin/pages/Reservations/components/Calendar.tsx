@@ -15,12 +15,13 @@ export type ICalendarProps = CalendarOptions;
 export const Calendar: React.FC<ICalendarProps> = (
   props,
 ): JSX.Element | null => {
-  const { data, isFetching } = useCrudContext<IBookingResource>();
+  const { data, preparePatch } = useCrudContext<IBookingResource>();
 
   const events = useMemo(
     () =>
       data?.results?.map((item) => ({
         end: `${item?.check_out} 15:00:00`,
+        meta: item,
         start: `${item?.check_in} 12:00:00`,
         title: `${getFullname(item)} - ${item?.phone}`,
       })),
@@ -29,10 +30,9 @@ export const Calendar: React.FC<ICalendarProps> = (
 
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
 
-  if (isFetching) return null;
-
   return (
     <FullCalendar
+      eventClick={(info) => preparePatch(info?.event?.extendedProps?.meta)}
       events={events}
       footerToolbar={isLargerThan768 ? false : { right: 'prev,next' }}
       headerToolbar={{
