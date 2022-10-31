@@ -28,7 +28,7 @@ export const Reservations = (): JSX.Element | null => {
         <title>{t('bookings.helmet')}</title>
       </Helmet>
 
-      <Headline />
+      <Headline mb={6} />
 
       <Flex
         flex={1}

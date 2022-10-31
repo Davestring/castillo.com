@@ -18,7 +18,7 @@ export const Services = (): JSX.Element => {
         <title>{t('services.helmet')}</title>
       </Helmet>
 
-      <Headline />
+      <Headline mb={6} />
       <Listing flex={1} />
       <Form />
     </CrudProvider>
