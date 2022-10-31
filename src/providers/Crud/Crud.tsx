@@ -49,7 +49,7 @@ export const Crud = <T extends IBaseResource>(
   }, []);
 
   const preparePatch = useCallback((v: T) => {
-    const payload = fp.omit(['created', 'updated'])(v);
+    const payload = fp.omit(['created', 'password', 'updated'])(v);
     setRegistry(payload);
     setType('patch');
     onOpen();

@@ -14,6 +14,7 @@
   "form.first-surname.label": "First surname",
   "form.last-surname.label": "Last surname",
   "form.name.label": "Name",
+  "form.password.label": "Password",
   "form.phone.label": "Mobile phone",
   "payments.helmet": "Casa Castillo | Payments",
   "payments.quote": "",
@@ -23,6 +24,8 @@
   "services.helmet": "Casa Castillo | Services",
   "services.quote": "On this page you can manage the Casa Castillo services that users will see on the site.",
   "services.title": "Services",
+  "users.add-new": "Add new user",
+  "user.edit": "Edit user",
   "users.helmet": "Casa Castillo | Users",
   "users.quote": "On this page you can manage the users that have access to the admin site.",
   "users.title": "Users"

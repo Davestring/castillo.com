@@ -4,6 +4,14 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export interface ITdEventsProps extends StackProps {
   /**
+   * If `true`, the delete button will be disabled.
+   */
+  isDeleteDisabled?: boolean;
+  /**
+   * If `true`, the edit button will be disabled.
+   */
+  isEditDisabled?: boolean;
+  /**
    * Action triggered on [DELETE] events.
    */
   onDelete: VoidFunction;
@@ -14,7 +22,8 @@ export interface ITdEventsProps extends StackProps {
 }
 
 export const TdEvents: React.FC<ITdEventsProps> = (props): JSX.Element => {
-  const { onDelete, onPatch, ...rest } = props;
+  const { isDeleteDisabled, isEditDisabled, onDelete, onPatch, ...rest } =
+    props;
 
   return (
     <Stack as={Td} {...rest}>
@@ -23,6 +32,7 @@ export const TdEvents: React.FC<ITdEventsProps> = (props): JSX.Element => {
         bg="primary.700"
         colorScheme="primary"
         icon={<FaEdit color="white" />}
+        isDisabled={isEditDisabled}
         onClick={onPatch}
         size="sm"
       />
@@ -31,6 +41,7 @@ export const TdEvents: React.FC<ITdEventsProps> = (props): JSX.Element => {
         bg="red.700"
         colorScheme="red"
         icon={<FaTrash color="white" />}
+        isDisabled={isDeleteDisabled}
         onClick={onDelete}
         size="sm"
       />

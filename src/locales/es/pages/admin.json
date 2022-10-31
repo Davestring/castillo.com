@@ -14,6 +14,7 @@
   "form.first-surname.label": "Apellido paterno",
   "form.last-surname.label": "Apellido materno",
   "form.name.label": "Nombre",
+  "form.password.label": "Contraseña",
   "form.phone.label": "Teléfono celular",
   "payments.helmet": "Casa Castillo | Pagos",
   "payments.quote": "",
@@ -23,6 +24,8 @@
   "services.helmet": "Casa Castillo | Servicios",
   "services.quote": "En esta página podrás administrar los servicios que ofrece Casa Castillo y que los usuarios visualizarán dentro del sitio.",
   "services.title": "Servicios",
+  "users.add-new": "Añadir nuevo usuario",
+  "users.edit": "Editar usuario",
   "users.helmet": "Casa Castillo | Usuarios",
   "users.quote": "En esta página podrás administrar a los usuarios que tendrán cuenta dentro del sitio de administración de Casa Castillo.",
   "users.title": "Usuarios"
