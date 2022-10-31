@@ -21,7 +21,11 @@ export const Users = (): JSX.Element => {
   const { t } = useTranslation('page:admin');
 
   return (
-    <CrudProvider defaultValues={DEFAULT_VALUES} resources={UserResources}>
+    <CrudProvider
+      defaultValues={DEFAULT_VALUES}
+      isProtected
+      resources={UserResources}
+    >
       <Helmet>
         <title>{t('users.helmet')}</title>
       </Helmet>

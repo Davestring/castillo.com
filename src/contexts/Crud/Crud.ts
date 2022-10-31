@@ -1,7 +1,7 @@
 import { FormikHelpers } from 'formik';
 import { once } from 'lodash/fp';
 import { createContext, useContext } from 'react';
-import { IBaseResource, IPagination } from 'services';
+import { IBaseResource, IDeletePayload, IPagination } from 'services';
 
 export interface ICrudProps<T = IBaseResource> {
   /**
@@ -17,6 +17,11 @@ export interface ICrudProps<T = IBaseResource> {
    */
   isOpen: boolean;
   /**
+   * Some endpoints use the authenticated user password in order to delete
+   * sensitive data, in that case, this prop will restrict the delete action.
+   */
+  isProtected: boolean;
+  /**
    * Action triggered to change the `isOpen` value to `false`.
    */
   onClose: VoidFunction;
@@ -26,8 +31,10 @@ export interface ICrudProps<T = IBaseResource> {
   onOpen: VoidFunction;
   /**
    * Performs a [DELETE] HTTP request to the API.
+   * @params {IDeletePayload} p - some endpoints use the authenticated user
+   * password in order to delete sensitive data, this value is optional.
    */
-  onDelete: () => void;
+  onDelete: (p?: IDeletePayload, h?: FormikHelpers<IDeletePayload>) => void;
   /**
    * Performs a [PATCH] HTTP request to the API.
    */

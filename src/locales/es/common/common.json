@@ -10,6 +10,8 @@
   "delete.title": "Eliminar registro",
   "empty-search": "No se han encontrado resultados para tu busqueda.",
   "logout": "Logout",
+  "password": "Contraseña",
+  "password.helper": "Ingresa tu contraseña para eliminar este registro.",
   "privacy": "Aviso de privacidad",
   "sidebar.dashboard": "Dashboard",
   "sidebar.payments": "Pagos",

@@ -10,6 +10,8 @@
   "delete.title": "Delete registry",
   "empty-search": "There're no results on your search.",
   "logout": "Logout",
+  "password": "Password",
+  "password.helper": "Enter your password in order to delete this registry.",
   "privacy": "Privacy notice",
   "sidebar.dashboard": "Dashboard",
   "sidebar.payments": "Payments",

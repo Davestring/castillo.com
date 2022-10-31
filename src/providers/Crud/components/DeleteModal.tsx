@@ -13,10 +13,21 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
+import { InputField } from 'components/inputs';
 import { useCrudContext } from 'contexts';
+import { Form, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { VscWarning } from 'react-icons/vsc';
-import { IBaseResource } from 'services';
+import { IBaseResource, IDeletePayload } from 'services';
+import * as Yup from 'yup';
+
+const DEFAULT_VALUES = { current_password: '' };
+
+const ValidationSchema = Yup.object().shape({
+  current_password: Yup.string()
+    .min(8, 'form.generic.min-length')
+    .required('form.generic.required'),
+});
 
 type IModalHeaderProps = ModalHeaderProps;
 
@@ -35,7 +46,7 @@ ModalHeader.defaultProps = {
 type IModalFooterProps = ModalFooterProps;
 
 const ModalFooter: React.FC<IModalFooterProps> = (props): JSX.Element => {
-  const { onClose, onDelete } = useCrudContext<IBaseResource>();
+  const { isProtected, onClose, onDelete } = useCrudContext<IBaseResource>();
 
   const { t } = useTranslation('common');
 
@@ -53,9 +64,13 @@ const ModalFooter: React.FC<IModalFooterProps> = (props): JSX.Element => {
       <Button
         bg="red.700"
         colorScheme="red"
-        onClick={onDelete}
         px={8}
         size="sm"
+        {...{
+          form: isProtected ? 'delete' : undefined,
+          onClick: isProtected ? undefined : () => onDelete(),
+          type: isProtected ? 'submit' : 'button',
+        }}
       >
         {t('button.continue')}
       </Button>
@@ -68,7 +83,15 @@ export type IDeleteModalProps = ModalBodyProps;
 export const DeleteModal: React.FC<IDeleteModalProps> = (
   props,
 ): JSX.Element => {
-  const { isOpen, onClose, registry, type } = useCrudContext<IBaseResource>();
+  const { isOpen, isProtected, onClose, registry, onDelete, type } =
+    useCrudContext<IBaseResource>();
+
+  const { handleReset, handleSubmit, ...formik } = useFormik<IDeletePayload>({
+    enableReinitialize: true,
+    initialValues: DEFAULT_VALUES,
+    onSubmit: onDelete,
+    validationSchema: ValidationSchema,
+  });
 
   const { t } = useTranslation('common');
 
@@ -85,9 +108,11 @@ export const DeleteModal: React.FC<IDeleteModalProps> = (
         <ModalCloseButton top={4} />
         <ModalBody {...props}>
           <Icon as={VscWarning} boxSize={24} color="red.700" />
+
           <Text align="center" fontSize="sm" fontWeight="bold">
             {t('delete.quote', { value: registry?.id || 0 })}
           </Text>
+
           <Text
             align="center"
             color="blackAlpha.500"
@@ -96,6 +121,23 @@ export const DeleteModal: React.FC<IDeleteModalProps> = (
           >
             {t('delete.reminder')}
           </Text>
+
+          {isProtected ? (
+            <FormikProvider value={{ handleReset, handleSubmit, ...formik }}>
+              <Form id="delete" onReset={handleReset} onSubmit={handleSubmit}>
+                <InputField
+                  helper={t('password.helper')}
+                  inputProps={{ bg: 'white', rounded: 'full' }}
+                  mt={4}
+                  name="current_password"
+                  placeholder={t('password')}
+                  size="md"
+                  type="password"
+                  w={320}
+                />
+              </Form>
+            </FormikProvider>
+          ) : null}
         </ModalBody>
         <ModalFooter />
       </ModalContent>

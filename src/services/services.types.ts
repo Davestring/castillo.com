@@ -90,6 +90,13 @@ export interface IBaseResource {
  */
 export type IFetchResponse<T> = IResponse<IPagination<T>>;
 
+export interface IDeletePayload {
+  /**
+   * Authenticated user current password.
+   */
+  current_password: string;
+}
+
 export interface IResourcesObject<T> {
   /**
    * Makes an HTTP POST request for the given resource.
@@ -101,10 +108,12 @@ export interface IResourcesObject<T> {
   /**
    * Makes an HTTP DELETE request for the given resource.
    * @params {number} id - resource unique identifier.
+   * @params {IDeletePayload} payload - some endpoints use the authenticated
+   * user password in order to delete sensitive data, this value is optional.
    *
    * @returns {IResponse<unknown>}
    */
-  delete: (id: number) => Promise<IResponse<unknown>>;
+  delete: (id: number, payload?: IDeletePayload) => Promise<IResponse<unknown>>;
   /**
    * Makes an HTTP GET request for the given resource.
    * @params {IQueryParams} p - query params for filter and order the results.

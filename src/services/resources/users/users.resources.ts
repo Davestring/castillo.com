@@ -1,4 +1,5 @@
 import {
+  IDeletePayload,
   IFetchResponse,
   instance,
   IQueryParams,
@@ -11,8 +12,8 @@ import { IUserPayload, IUserResource } from './users.types';
 type IMeResource = { me: () => Promise<IResponse<IUserResource>> };
 
 export const UserResources: IResourcesObject<IUserResource> & IMeResource = {
-  delete: (id: number): Promise<IResponse<unknown>> =>
-    instance.delete(`/user/${id}/`),
+  delete: (id: number, payload?: IDeletePayload): Promise<IResponse<unknown>> =>
+    instance.delete(`/user/${id}/`, { data: payload }),
 
   fetch: (p: IQueryParams): Promise<IFetchResponse<IUserResource>> =>
     instance.get('/user/', { params: p }),

@@ -4,7 +4,7 @@ import { FormikHelpers } from 'formik';
 import { useDelete, useFetch, usePatch, usePost } from 'hooks';
 import fp from 'lodash/fp';
 import { ReactNode, useCallback, useMemo, useState } from 'react';
-import { IBaseResource, IResourcesObject } from 'services';
+import { IBaseResource, IDeletePayload, IResourcesObject } from 'services';
 
 import { DeleteModal } from './components/DeleteModal';
 
@@ -18,6 +18,12 @@ export interface ICrudProps<T = IBaseResource> {
    */
   defaultValues: Partial<T>;
   /**
+   * Some endpoints use the authenticated user password in order to delete
+   * sensitive data, in that case, this prop will restrict the delete action.
+   */
+  // eslint-disable-next-line react/require-default-props
+  isProtected?: boolean;
+  /**
    * Resource object with all the configuration to perform CRUD operations.
    */
   resources: IResourcesObject<T>;
@@ -26,7 +32,7 @@ export interface ICrudProps<T = IBaseResource> {
 export const Crud = <T extends IBaseResource>(
   props: ICrudProps<T>,
 ): JSX.Element => {
-  const { children, defaultValues, resources: r } = props;
+  const { children, defaultValues, isProtected = false, resources: r } = props;
 
   const { data, isFetching, isLoading, isRefetching, refetch } = useFetch<T>(r);
 
@@ -61,13 +67,17 @@ export const Crud = <T extends IBaseResource>(
     onOpen();
   }, []);
 
-  const onDelete = useCallback(async () => {
-    await mutateAsyncDelete(registry?.id as number);
-    onClose();
-    await refetch();
-    setRegistry(defaultValues);
-    setType(null);
-  }, [registry]);
+  const onDelete = useCallback(
+    async (payload?: IDeletePayload, h?: FormikHelpers<IDeletePayload>) => {
+      await mutateAsyncDelete({ id: registry?.id as number, payload });
+      onClose();
+      await refetch();
+      h?.resetForm();
+      setRegistry(defaultValues);
+      setType(null);
+    },
+    [registry],
+  );
 
   const onPatch = useCallback(
     async (payload: Partial<T>, h?: FormikHelpers<Partial<T>>) => {
@@ -99,6 +109,7 @@ export const Crud = <T extends IBaseResource>(
       data,
       isFetching: isFetching || isLoading || isRefetching,
       isOpen,
+      isProtected,
       onClose,
       onDelete,
       onOpen,

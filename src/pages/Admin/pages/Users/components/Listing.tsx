@@ -37,7 +37,6 @@ export const Listing: React.FC<IListingProps> = (props): JSX.Element => {
           <Td>{fp.compose(formatDate, fp.get('updated'))(item)}</Td>
           <Td>{fp.compose(formatDate, fp.get('created'))(item)}</Td>
           <TdEvents
-            isDeleteDisabled
             onDelete={() => prepareDelete(item)}
             onPatch={() => preparePatch(item)}
           />

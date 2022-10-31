@@ -1,20 +1,22 @@
 import { useCallback, useEffect } from 'react';
 import { useMutation, UseMutationResult } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import { IResourcesObject, IResponse } from 'services';
+import { IDeletePayload, IResourcesObject, IResponse } from 'services';
+
+type IMutationFnParams = { id: number; payload?: IDeletePayload };
 
 type IMutation = UseMutationResult<
   IResponse<unknown>,
   unknown,
-  number,
+  IMutationFnParams,
   unknown
 >;
 
 export const useDelete = <T>(r: IResourcesObject<T>): IMutation => {
   const { pathname } = useLocation();
 
-  const fn = useCallback(async (id: number) => {
-    const response = await r.delete(id);
+  const fn = useCallback(async ({ id, payload }: IMutationFnParams) => {
+    const response = await r.delete(id, payload);
     return response;
   }, []);
 
