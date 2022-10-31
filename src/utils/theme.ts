@@ -57,4 +57,9 @@ export const GLOBAL_CSS = `
   .chakra-modal__overlay {
     z-index: 10000 !important;
   }
+
+  :root {
+    --toastify-color-error: #9B2C2C;
+    --toastify-z-index: 999999;
+  }
 `;
