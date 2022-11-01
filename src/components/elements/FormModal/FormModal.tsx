@@ -95,5 +95,5 @@ export const FormModal = <T,>(props: IFormModalProps<T>): JSX.Element => {
 FormModal.defaultProps = {
   formId: 'modal-form',
   isCentered: true,
-  size: { base: 'full', md: 'xl' },
+  size: 'xl',
 };

@@ -13,7 +13,7 @@ import { I18nextProvider } from 'react-i18next';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { GLOBAL_CSS, theme } from 'utils';
+import { theme, useGlobalCSS } from 'utils';
 
 const QUERY_CLIENT = new QueryClient({
   defaultOptions: {
@@ -27,23 +27,27 @@ const MOUNT_NODE = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
-const CasaCastillo: React.FC = (): JSX.Element => (
-  <React.StrictMode>
-    <I18nextProvider i18n={i18n} />
-    <ToastContainer theme="colored" />
-    <HelmetProvider>
-      <ChakraProvider theme={theme}>
-        <Global styles={GLOBAL_CSS} />
-        <BrowserRouter>
-          <AuthProvider>
-            <QueryClientProvider client={QUERY_CLIENT}>
-              <App />
-            </QueryClientProvider>
-          </AuthProvider>
-        </BrowserRouter>
-      </ChakraProvider>
-    </HelmetProvider>
-  </React.StrictMode>
-);
+const CasaCastillo: React.FC = (): JSX.Element => {
+  const css = useGlobalCSS();
+
+  return (
+    <React.StrictMode>
+      <I18nextProvider i18n={i18n} />
+      <ToastContainer theme="colored" />
+      <HelmetProvider>
+        <ChakraProvider theme={theme}>
+          <Global styles={css} />
+          <BrowserRouter>
+            <AuthProvider>
+              <QueryClientProvider client={QUERY_CLIENT}>
+                <App />
+              </QueryClientProvider>
+            </AuthProvider>
+          </BrowserRouter>
+        </ChakraProvider>
+      </HelmetProvider>
+    </React.StrictMode>
+  );
+};
 
 MOUNT_NODE.render(<CasaCastillo />);

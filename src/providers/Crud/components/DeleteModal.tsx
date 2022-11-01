@@ -100,7 +100,7 @@ export const DeleteModal: React.FC<IDeleteModalProps> = (
       isCentered
       isOpen={isOpen && type === 'delete'}
       onClose={onClose}
-      size={{ base: 'full', md: 'xl' }}
+      size="xl"
     >
       <ModalOverlay />
       <ModalContent>

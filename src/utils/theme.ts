@@ -1,5 +1,6 @@
 import { extendTheme } from '@chakra-ui/react';
 import Color from 'color';
+import { use100vh } from 'react-div-100vh';
 
 export const theme = extendTheme({
   colors: {
@@ -19,47 +20,72 @@ export const theme = extendTheme({
   },
 });
 
-export const GLOBAL_CSS = `
-  scroll-behavior: smooth;
+export const useGlobalCSS = () => {
+  const height = use100vh();
 
-  a {
-    text-decoration: none !important;
-  }
+  return `
+    scroll-behavior: smooth;
 
-  .fc .fc-button-primary {
-    background: #101D2C;
-  }
+    a {
+      text-decoration: none !important;
+    }
 
-  .fc .fc-button-primary:not(:disabled):active:focus, .fc .fc-button-primary:not(:disabled).fc-button-active:focus {
-    box-shadow: none;
-    background: ${Color('#101D2C').lighten(1).hex()};
-  }
+    .fc .fc-button-primary {
+      background: #101D2C;
+    }
 
-  .fc-toolbar {
-    color: #101D2C;
-    font-weight: 600;
-    text-transform: capitalize;
-  }
+    .fc .fc-button-primary:not(:disabled):active:focus, .fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+      box-shadow: none;
+      background: ${Color('#101D2C').lighten(1).hex()};
+    }
 
-  .fc .fc-scrollgrid-liquid {
-    background: white;
-    border-radius: 4px;
-  }
+    .fc-toolbar {
+      color: #101D2C;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
 
-  .fc {
-    font-size: 14px;
-  }
+    .fc .fc-scrollgrid-liquid {
+      background: white;
+      border-radius: 4px;
+    }
 
-  .chakra-modal__content-container {
-    z-index: 20000 !important;
-  }
+    .fc {
+      font-size: 14px;
+    }
 
-  .chakra-modal__overlay {
-    z-index: 10000 !important;
-  }
+    .chakra-modal__content-container {
+      height: auto !important;
+      z-index: 20000 !important;
+    }
 
-  :root {
-    --toastify-color-error: #9B2C2C;
-    --toastify-z-index: 999999;
-  }
-`;
+    .chakra-modal__content {
+      height: ${height || 0}px !important;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+      max-width: 100vw !important;
+    }
+
+    .chakra-modal__overlay {
+      z-index: 10000 !important;
+    }
+
+    @media (min-width: 768px) {
+      .chakra-modal__content-container {
+        height: 100vh !important;
+      }
+
+      .chakra-modal__content {
+        height: auto !important;
+        margin-bottom: 4rem !important;
+        margin-top: 4rem !important;
+        max-width: 36rem !important;
+      }
+    }
+
+    :root {
+      --toastify-color-error: #9B2C2C;
+      --toastify-z-index: 999999;
+    }
+  `;
+};
