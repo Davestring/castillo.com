@@ -1,9 +1,9 @@
-import { Divider as Base, DividerProps } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 
-export type IDividerProps = DividerProps;
+export type IDividerProps = BoxProps;
 
 export const Divider: React.FC<IDividerProps> = (props): JSX.Element => (
-  <Base {...props} />
+  <Box {...props} />
 );
 
 Divider.defaultProps = {

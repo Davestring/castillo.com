@@ -3,7 +3,9 @@ import DiningRoom from 'assets/img/gallery/dining-room.jpg';
 import Facade from 'assets/img/gallery/facade.jpg';
 import Pool from 'assets/img/gallery/pool.jpg';
 import Sauna from 'assets/img/gallery/sauna.jpg';
+import { Divider } from 'components/elements';
 import { Container, Header } from 'components/layout';
+import { H1 } from 'components/typography';
 import { AuthContext } from 'contexts';
 import { nanoid } from 'nanoid';
 import { useContext } from 'react';
@@ -13,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { FaBath, FaBed, FaUserFriends } from 'react-icons/fa';
 
 import { Gallery, GalleryItem } from './components/Gallery';
+import { Map } from './components/Map';
 import { Stats, StatsItem } from './components/Stats';
 
 const GALLERY_ITEMS = [
@@ -59,7 +62,7 @@ export const Booking = (): JSX.Element => {
           display="flex"
           flex={1}
           flexDir="column"
-          overflowX="hidden"
+          overflow="hidden"
           px={0}
           py={{ base: 0, lg: 4 }}
         >
@@ -84,6 +87,30 @@ export const Booking = (): JSX.Element => {
               <StatsItem key={nanoid()} {...item} />
             ))}
           </Stats>
+
+          <Divider
+            bg="primary.700"
+            h={0.33}
+            mx={{ base: 4, lg: 0 }}
+            my={4}
+            w="calc(100% - 32px)"
+          />
+
+          <H1
+            fontSize={{ base: 'xl', lg: '3xl' }}
+            mb={4}
+            px={{ base: 4, lg: 0 }}
+          >
+            {t('location.title')}
+          </H1>
+
+          <Map
+            h={512}
+            latitude={18.9198}
+            longitude={-98.9677}
+            mb={4}
+            px={{ base: 4, lg: 0 }}
+          />
         </Container>
       </Container>
     </>
