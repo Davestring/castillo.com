@@ -1,7 +1,15 @@
 import { Box, BoxProps, Icon } from '@chakra-ui/react';
+import mapboxgl from 'mapbox-gl';
 import { useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import ReactMapGL, { Marker, NavigationControl, ViewState } from 'react-map-gl';
+
+// Additional configuration for production build: https://github.com/visgl/react-map-gl/issues/1266
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+mapboxgl.workerClass =
+  // eslint-disable-next-line import/no-webpack-loader-syntax, @typescript-eslint/no-var-requires, import/no-unresolved
+  require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 export type IBaseMapProps = Omit<Partial<ViewState>, 'padding'>;
 
