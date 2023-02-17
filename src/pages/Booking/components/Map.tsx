@@ -24,6 +24,7 @@ export const Map: React.FC<IMapProps> = (props) => {
   return (
     <Box {...rest}>
       <ReactMapGL
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         mapStyle={mapStyle}
         onMove={(evt) => setViewState(evt.viewState)}
         scrollZoom={false}
