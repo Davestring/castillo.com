@@ -18,7 +18,7 @@ export const UserResources: IResourcesObject<IUserResource> & IMeResource = {
   fetch: (p: IQueryParams): Promise<IFetchResponse<IUserResource>> =>
     instance.get('/user/', { params: p }),
 
-  me: (): Promise<IResponse<IUserResource>> => instance.get('/user/me'),
+  me: (): Promise<IResponse<IUserResource>> => instance.get('/user/me/'),
 
   patch: (
     id: number,

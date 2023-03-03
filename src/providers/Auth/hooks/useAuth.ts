@@ -34,8 +34,9 @@ export const useAuth = <T extends IBaseAuthentication>(
     } catch (err) {
       dispatch({ type: Action.AUTH_FAILURE });
       if ((err as AxiosError)?.response?.status === 401) {
+        const MESSAGE = t('api.auth.status-code.401');
         toast.dismiss();
-        toast.error(t('api.auth.status-code.401'));
+        toast.error(MESSAGE);
       }
     }
   }, []);

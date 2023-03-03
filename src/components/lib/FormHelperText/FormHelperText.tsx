@@ -1,6 +1,6 @@
 import {
   FormHelperText as FHT,
-  HelpTextProps,
+  FormHelperTextProps,
   Icon,
   Stack,
   Text,
@@ -8,7 +8,7 @@ import {
 import fp from 'lodash/fp';
 import { FaInfoCircle } from 'react-icons/fa';
 
-export type IFormHelperTextProps = HelpTextProps;
+export type IFormHelperTextProps = FormHelperTextProps;
 
 export const FormHelperText: React.FC<IFormHelperTextProps> = (
   props,

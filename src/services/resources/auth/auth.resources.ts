@@ -8,8 +8,8 @@ import {
 
 export const AuthResources = {
   auth: (p: IBaseAuthentication): Promise<IResponse<IAuthTokens>> =>
-    instance.post('/jwt/create', p),
+    instance.post('/jwt/create/', p),
 
   refresh: (p: IRefreshPayload): Promise<IResponse<IAuthTokens>> =>
-    instance.post('/jwt/refresh', p),
+    instance.post('/jwt/refresh/', p),
 };
